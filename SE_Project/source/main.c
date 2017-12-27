@@ -1,9 +1,17 @@
-#include <nds.h>
+#include "Define.h"
+#include "Shared.h"
+#include "Game_Update.h"
+#include "Initialization.h"
 
-//---------------------------------------------------------------------------------
-int main(void) {
-//---------------------------------------------------------------------------------
+int main(){
+	srand(time(NULL));
+
+	Initialization();
+	//consoleDemoInit();
+
 	while(true){
+		Game_Update();
+		swiWaitForVBlank();
 	}
 	return 0;
 }

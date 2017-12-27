@@ -1,5 +1,6 @@
-main.o:  \
- /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/main.c \
+Init_Interruptions.o:  \
+ /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Init_Interruptions.c \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Init_Interruptions.h \
   /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Define.h \
   /opt/devkitPro/libnds/include/nds/arm9/sound.h \
   /opt/devkitPro/libnds/include/nds/ndstypes.h \
@@ -50,14 +51,9 @@ main.o:  \
   /opt/devkitPro/libnds/include/nds/arm9/sprite.h \
   /opt/devkitPro/libnds/include/nds/system.h \
   /opt/devkitPro/libnds/include/nds/arm9/decompress.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Shared.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Game_Update.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Init_Graphics.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Background.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/RSP.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Handle_Outcome.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Initialization.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Init_Interruptions.h
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Shared.h
+
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Init_Interruptions.h:
 
 /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Define.h:
 
@@ -160,17 +156,3 @@ main.o:  \
 /opt/devkitPro/libnds/include/nds/arm9/decompress.h:
 
 /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Shared.h:
-
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Game_Update.h:
-
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Init_Graphics.h:
-
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Background.h:
-
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/RSP.h:
-
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Handle_Outcome.h:
-
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Initialization.h:
-
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Init_Interruptions.h:
