@@ -1,7 +1,5 @@
 #include "Game_Update.h"
 
-int c=0;
-
 void Game_Update(){
 	irqSet(IRQ_TIMER0, &ISR_Timer0);
 
@@ -69,7 +67,7 @@ void Handle_Button(unsigned keys){
 		Game_Status = STOP;
 		Init_Graphics();
 
-		//consoleDemoInit(); // TO DELETE, JUST FOR TESTING
+		consoleDemoInit(); // TO DELETE, JUST FOR TESTING
 	}
 }
 

@@ -4,10 +4,10 @@
 #include "Initialization.h"
 
 int main(){
-	srand(time(NULL));
+	srand(time(NULL)); // Really random?
 
 	Initialization();
-	//consoleDemoInit();
+	consoleDemoInit();
 
 	while(true){
 		Game_Update();
