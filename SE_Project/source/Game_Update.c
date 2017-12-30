@@ -1,4 +1,5 @@
 #include "Game_Update.h"
+#define TILE_PAL(n) ((n) << 12)
 
 void Game_Update(){
 	irqSet(IRQ_TIMER0, &ISR_Timer0);
@@ -67,7 +68,7 @@ void Handle_Button(unsigned keys){
 		Game_Status = STOP;
 		Init_Graphics();
 
-		consoleDemoInit(); // TO DELETE, JUST FOR TESTING
+		//consoleDemoInit(); // TO DELETE, JUST FOR TESTING
 	}
 }
 
@@ -101,13 +102,19 @@ void Opponent_Move(){
 
 	int row, col;
 	int i=0;
+	u16* bg1Map = (u16*)BG_MAP_RAM(29);
+
+
+
+
 	for(row=row_sel;row<row_sel+8;row++){
 		for(col=16;col<32;col++){
-			BG_MAP_RAM(26)[row*32+col] = RSPMap[row_sel*16+i];
+			bg1Map[row*32+col] = RSPMap[row_sel*16+i] | TILE_PAL(8);
 			BG_MAP_RAM(25)[row*32+col] = 0;
 			i++;
 		}
 	}
+
 
 
 }

@@ -1,7 +1,7 @@
 Handle_Outcome.o:  \
- /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Handle_Outcome.c \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Handle_Outcome.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Define.h \
+ /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Handle_Outcome.c \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Handle_Outcome.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Define.h \
   /opt/devkitPro/libnds/include/nds/arm9/sound.h \
   /opt/devkitPro/libnds/include/nds/ndstypes.h \
   /opt/devkitPro/libnds/include/nds.h \
@@ -51,11 +51,11 @@ Handle_Outcome.o:  \
   /opt/devkitPro/libnds/include/nds/arm9/sprite.h \
   /opt/devkitPro/libnds/include/nds/system.h \
   /opt/devkitPro/libnds/include/nds/arm9/decompress.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Shared.h
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Shared.h
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Handle_Outcome.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Handle_Outcome.h:
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Define.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Define.h:
 
 /opt/devkitPro/libnds/include/nds/arm9/sound.h:
 
@@ -155,4 +155,4 @@ Handle_Outcome.o:  \
 
 /opt/devkitPro/libnds/include/nds/arm9/decompress.h:
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Shared.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Shared.h:

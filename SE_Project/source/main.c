@@ -7,7 +7,7 @@ int main(){
 	srand(time(NULL)); // Really random?
 
 	Initialization();
-	consoleDemoInit();
+	//consoleDemoInit();
 
 	while(true){
 		Game_Update();
