@@ -55,6 +55,8 @@ main.o:  \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Graphics.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/RSP.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/ecranBase.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Assemblage.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Handle_Outcome.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Initialization.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Interruptions.h
@@ -168,6 +170,10 @@ main.o:  \
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background.h:
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/RSP.h:
+
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/ecranBase.h:
+
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Assemblage.h:
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Handle_Outcome.h:
 

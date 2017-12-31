@@ -1,0 +1,1 @@
+Assemblage.o: Assemblage.s
