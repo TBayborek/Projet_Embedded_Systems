@@ -119,7 +119,7 @@ void Opponent_Move(){
 	}
 
 	int row, col;
-	u16* bg0Map = (u16*)BG_MAP_RAM(25);
+	u16* bg0Map = (u16*)BG_MAP_RAM(26);
 
 
 
@@ -190,7 +190,7 @@ void ISR_Timer0(void){
 
 void printMenu2(){
 	swiCopy(MenuInstructionTiles, BG_TILE_RAM_SUB(0), MenuInstructionTilesLen/2); // approx. 50KB of Tiles, 25x2KB slots used
-	swiCopy(MenuInstructionMap, BG_MAP_RAM_SUB(25), MenuInstructionMapLen/2); // store in the 26th slot => #25
+	swiCopy(MenuInstructionMap, BG_MAP_RAM_SUB(26), MenuInstructionMapLen/2); // store in the 26th slot => #25
 	swiCopy(MenuInstructionPal, BG_PALETTE_SUB, MenuInstructionPalLen/2);
 
 }
@@ -203,7 +203,7 @@ void drawArea(){
 
 	//we use two times "Background" in order to have two layers. This will be useful when printing computer choices
 	swiCopy(BackgroundTiles, BG_TILE_RAM(0), BackgroundTilesLen/2); // approx. 50KB of Tiles, 25x2KB slots used
-	swiCopy(BackgroundMap, BG_MAP_RAM(25), BackgroundMapLen/2); // store in the 26th slot => #25
+	swiCopy(BackgroundMap, BG_MAP_RAM(26), BackgroundMapLen/2); // store in the 26th slot => #25
 	swiCopy(BackgroundPal, BG_PALETTE, BackgroundPalLen/2);
 	swiCopy(BackgroundMap, BG_MAP_RAM(29), BackgroundMapLen/2);
 	swiCopy(BackgroundTiles, BG_TILE_RAM(4), BackgroundTilesLen/2);
@@ -211,7 +211,7 @@ void drawArea(){
 
 	//draw the interrogation point
 	int row, col;
-	u16* bg0Map = (u16*)BG_MAP_RAM(25);
+	u16* bg0Map = (u16*)BG_MAP_RAM(26);
 
 	for(row=0;row<9;row++){
 		for(col=0;col<10;col++){

@@ -54,6 +54,7 @@ main.o:  \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Game_Update.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Graphics.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background2.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/RSP.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/ecranBase.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Assemblage.h \
@@ -174,6 +175,8 @@ main.o:  \
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Graphics.h:
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background.h:
+
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background2.h:
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/RSP.h:
 

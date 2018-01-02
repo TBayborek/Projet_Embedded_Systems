@@ -54,6 +54,7 @@ Game_Update.o:  \
   /opt/devkitPro/libnds/include/nds/arm9/decompress.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Graphics.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background2.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/RSP.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/ecranBase.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Assemblage.h \
@@ -172,6 +173,8 @@ Game_Update.o:  \
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Graphics.h:
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background.h:
+
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background2.h:
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/RSP.h:
 
