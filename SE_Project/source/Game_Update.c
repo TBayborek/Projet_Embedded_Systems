@@ -16,9 +16,11 @@ void Game_Update(){
 	case START:
 		// PRINT explanations about game and "press A when ready"
 		gs_test = 1;
+		printMenu2();
 		break;
 	case USER_TURN:
 		gs_test = 2;
+		drawArea();
 		break;
 	case OPPONENT_TURN:
 
@@ -81,9 +83,23 @@ void Handle_Touchscreen(){
 
 	if (Game_Status == USER_TURN){
 		if ((posx>125 && posx<256) && (posy>=0 && posy<192)){
-			if(posy>=0 && posy<64) user_move = ROCK;
-			if(posy>=64 && posy<128) user_move = SCISSORS;
-			if(posy>=128 && posy<192) user_move = PAPER;
+			if(posy>=0 && posy<64) {
+
+				void userPlayRock();
+
+
+				user_move = ROCK;
+			}
+			if(posy>=64 && posy<128){
+				void userPlayScissor();
+
+				user_move = SCISSORS;
+			}
+			if(posy>=128 && posy<192){
+				void userPlayPaper();
+
+				user_move = PAPER;
+			}
 			Game_Status = OPPONENT_TURN;
 		}
 	}
@@ -123,13 +139,13 @@ void Check_Results(move user_move, move opponent_move){
 	if((user_move == ROCK && opponent_move == SCISSORS) ||
 			(user_move == SCISSORS && opponent_move == PAPER) ||
 			(user_move == PAPER && opponent_move == ROCK)){
-		Win_Round();
+		Win_Round(); //ä modifier!!!
 	}
 
 	if((user_move == ROCK && opponent_move == PAPER) ||
 			(user_move == SCISSORS && opponent_move == ROCK) ||
 			(user_move == PAPER && opponent_move == SCISSORS)){
-		Loose_Round();
+		Loose_Round(); //ä modifier!!!
 	}
 
 	if(user_move == opponent_move) Draw_Round();
@@ -168,3 +184,38 @@ void ISR_Timer0(void){
 
 // ------- END OF ISR ------------
 
+
+void printMenu2(){
+	swiCopy(MenuInstructionTiles, BG_TILE_RAM_SUB(0), MenuInstructionTilesLen/2); // approx. 50KB of Tiles, 25x2KB slots used
+	swiCopy(MenuInstructionMap, BG_MAP_RAM_SUB(25), MenuInstructionMapLen/2); // store in the 26th slot => #25
+	swiCopy(MenuInstructionPal, BG_PALETTE_SUB, MenuInstructionPalLen/2);
+
+}
+
+void drawArea(){
+	swiCopy(ecranBaseTiles, BG_TILE_RAM_SUB(0), ecranBaseTilesLen/2); // approx. 50KB of Tiles, 25x2KB slots used
+	swiCopy(ecranBaseMap, BG_MAP_RAM_SUB(25), ecranBaseMapLen/2); // store in the 26th slot => #25
+	swiCopy(ecranBasePal, BG_PALETTE_SUB, ecranBasePalLen/2);
+
+}
+
+
+void userPlayScissor(){
+	swiCopy(ScissorTiles, BG_TILE_RAM_SUB(0), ScissorTilesLen/2); // approx. 50KB of Tiles, 25x2KB slots used
+	swiCopy(ScissorMap, BG_MAP_RAM_SUB(25), ScissorMapLen/2); // store in the 26th slot => #25
+	swiCopy(ScissorPal, BG_PALETTE_SUB, ScissorPalLen/2);
+}
+
+void userPlayRock(){
+	swiCopy(RockTiles, BG_TILE_RAM_SUB(0), RockTilesLen/2); // approx. 50KB of Tiles, 25x2KB slots used
+	swiCopy(RockMap, BG_MAP_RAM_SUB(25), RockMapLen/2); // store in the 26th slot => #25
+	swiCopy(RockPal, BG_PALETTE_SUB, RockPalLen/2);
+
+}
+
+void userPlayPaper(){
+	swiCopy(PaperTiles, BG_TILE_RAM_SUB(0), PaperTilesLen/2); // approx. 50KB of Tiles, 25x2KB slots used
+	swiCopy(PaperMap, BG_MAP_RAM_SUB(25), PaperMapLen/2); // store in the 26th slot => #25
+	swiCopy(PaperPal, BG_PALETTE_SUB, PaperPalLen/2);
+
+}

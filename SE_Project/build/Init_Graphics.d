@@ -55,7 +55,12 @@ Init_Graphics.o:  \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/RSP.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/ecranBase.h \
-  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Assemblage.h
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Assemblage.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Menu.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/MenuInstruction.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Paper.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Rock.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Scissor.h
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Graphics.h:
 
@@ -168,3 +173,13 @@ Init_Graphics.o:  \
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/ecranBase.h:
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Assemblage.h:
+
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Menu.h:
+
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/MenuInstruction.h:
+
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Paper.h:
+
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Rock.h:
+
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Scissor.h:

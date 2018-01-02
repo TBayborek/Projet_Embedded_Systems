@@ -45,9 +45,9 @@ void Init_Sub_Graphics(void){
 	BGCTRL_SUB[0] = BG_MAP_BASE(25) | BG_TILE_BASE(0) | BG_32x32 | BG_COLOR_256;
 	BGCTRL_SUB[1] = BG_MAP_BASE(26) | BG_TILE_BASE(4) | BG_32x32 | BG_COLOR_256;
 
-	swiCopy(ecranBaseTiles, BG_TILE_RAM_SUB(0), BackgroundTilesLen/2); // approx. 50KB of Tiles, 25x2KB slots used
-	swiCopy(ecranBaseMap, BG_MAP_RAM_SUB(25), BackgroundMapLen/2); // store in the 26th slot => #25
-	swiCopy(ecranBasePal, BG_PALETTE_SUB, BackgroundPalLen/2);
+	swiCopy(MenuTiles, BG_TILE_RAM_SUB(0), MenuTilesLen/2); // approx. 50KB of Tiles, 25x2KB slots used
+	swiCopy(MenuMap, BG_MAP_RAM_SUB(25), MenuMapLen/2); // store in the 26th slot => #25
+	swiCopy(MenuPal, BG_PALETTE_SUB, MenuPalLen/2);
 
 	/*
 	swiCopy(AssemblageTiles, BG_TILE_RAM_SUB(0), BackgroundTilesLen/2); // approx. 50KB of Tiles, 25x2KB slots used

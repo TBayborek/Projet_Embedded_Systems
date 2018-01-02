@@ -24,3 +24,9 @@ void Check_Results(move,move);
 
 //void ISR_Keys();
 void ISR_Timer0();
+
+void printMenu2();
+void drawArea();
+void userPlayScissor();
+void userPlayRock();
+void userPlayPaper();

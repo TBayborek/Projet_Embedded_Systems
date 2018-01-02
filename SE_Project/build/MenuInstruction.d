@@ -1,0 +1,1 @@
+MenuInstruction.o: MenuInstruction.s
