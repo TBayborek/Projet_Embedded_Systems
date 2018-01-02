@@ -62,6 +62,7 @@ Initialization.o:  \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Paper.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Rock.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Scissor.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/WIN.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Interruptions.h
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Initialization.h:
@@ -187,5 +188,7 @@ Initialization.o:  \
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Rock.h:
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Scissor.h:
+
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/WIN.h:
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Interruptions.h:

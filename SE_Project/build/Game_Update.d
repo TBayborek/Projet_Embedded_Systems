@@ -62,6 +62,7 @@ Game_Update.o:  \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Paper.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Rock.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Scissor.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/WIN.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Handle_Outcome.h
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Game_Update.h:
@@ -187,5 +188,7 @@ Game_Update.o:  \
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Rock.h:
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Scissor.h:
+
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/WIN.h:
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Handle_Outcome.h:

@@ -60,7 +60,8 @@ Init_Graphics.o:  \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/MenuInstruction.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Paper.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Rock.h \
-  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Scissor.h
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Scissor.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/WIN.h
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Graphics.h:
 
@@ -183,3 +184,5 @@ Init_Graphics.o:  \
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Rock.h:
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Scissor.h:
+
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/WIN.h:

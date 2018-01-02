@@ -85,18 +85,18 @@ void Handle_Touchscreen(){
 		if ((posx>125 && posx<256) && (posy>=0 && posy<192)){
 			if(posy>=0 && posy<64) {
 
-				void userPlayRock();
+				userPlayRock();
 
 
 				user_move = ROCK;
 			}
 			if(posy>=64 && posy<128){
-				void userPlayScissor();
+				userPlayScissor();
 
 				user_move = SCISSORS;
 			}
 			if(posy>=128 && posy<192){
-				void userPlayPaper();
+				userPlayPaper();
 
 				user_move = PAPER;
 			}
@@ -125,7 +125,7 @@ void Opponent_Move(){
 
 	for(row=row_sel;row<row_sel+8;row++){
 		for(col=16;col<32;col++){
-			bg1Map[row*32+col] = RSPMap[row_sel*16+i] | TILE_PAL(8);
+			bg1Map[row*32+col] = RSPMap[row_sel*16+i];
 			BG_MAP_RAM(25)[row*32+col] = 0;
 			i++;
 		}
