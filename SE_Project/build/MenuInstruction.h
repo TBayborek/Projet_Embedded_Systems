@@ -5,11 +5,11 @@
 //
 //	MenuInstruction, 256x192@8, 
 //	+ palette 256 entries, not compressed
-//	+ 145 tiles (t|f reduced) not compressed
+//	+ 220 tiles (t|f reduced) not compressed
 //	+ regular map (flat), not compressed, 32x24 
-//	Total size: 512 + 9280 + 1536 = 11328
+//	Total size: 512 + 14080 + 1536 = 16128
 //
-//	Time-stamp: 2018-01-02, 11:52:12
+//	Time-stamp: 2018-01-02, 15:53:27
 //	Exported by Cearn's GBA Image Transmogrifier, v0.8.3
 //	( http://www.coranac.com/projects/#grit )
 //
@@ -18,8 +18,8 @@
 #ifndef GRIT_MENUINSTRUCTION_H
 #define GRIT_MENUINSTRUCTION_H
 
-#define MenuInstructionTilesLen 9280
-extern const unsigned int MenuInstructionTiles[2320];
+#define MenuInstructionTilesLen 14080
+extern const unsigned int MenuInstructionTiles[3520];
 
 #define MenuInstructionMapLen 1536
 extern const unsigned short MenuInstructionMap[768];

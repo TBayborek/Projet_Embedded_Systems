@@ -30,3 +30,4 @@ void drawArea();
 void userPlayScissor();
 void userPlayRock();
 void userPlayPaper();
+void printTimesUp();

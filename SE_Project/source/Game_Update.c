@@ -16,7 +16,9 @@ void Game_Update(){
 	case START:
 		// PRINT explanations about game and "press A when ready"
 		gs_test = 1;
-		printMenu2();
+		ticks = 0;
+		Game_Status = USER_TURN; //skip definitivement?
+		//printMenu2();
 		break;
 	case USER_TURN:
 		gs_test = 2;
@@ -117,17 +119,14 @@ void Opponent_Move(){
 	}
 
 	int row, col;
-	int i=0;
-	u16* bg1Map = (u16*)BG_MAP_RAM(29);
+	u16* bg1Map = (u16*)BG_MAP_RAM(25);
 
 
 
 
-	for(row=row_sel;row<row_sel+8;row++){
-		for(col=16;col<32;col++){
-			bg1Map[row*32+col] = RSPMap[row_sel*16+i];
-			BG_MAP_RAM(25)[row*32+col] = 0;
-			i++;
+	for(row=0;row<10;row++){
+		for(col=0;col<10;col++){
+			bg1Map[(row+8)*32+(col+12)] = BackgroundMap[(row+24)*32+col];
 		}
 	}
 
@@ -145,7 +144,7 @@ void Check_Results(move user_move, move opponent_move){
 	if((user_move == ROCK && opponent_move == PAPER) ||
 			(user_move == SCISSORS && opponent_move == ROCK) ||
 			(user_move == PAPER && opponent_move == SCISSORS)){
-		Loose_Round(); //ä modifier!!!
+		Loose_Round(0); //ä modifier!!!
 	}
 
 	if(user_move == opponent_move) Draw_Round();
@@ -178,7 +177,11 @@ void ISR_Keys(){
 void ISR_Timer0(void){
 	if(Game_Status == USER_TURN){
 		ticks++;
-		if (ticks>=300) Loose_Round();
+		if (ticks>=300) {
+			printTimesUp();
+			Loose_Round(1);
+
+		}
 	}
 }
 
@@ -196,6 +199,15 @@ void drawArea(){
 	swiCopy(ecranBaseTiles, BG_TILE_RAM_SUB(0), ecranBaseTilesLen/2); // approx. 50KB of Tiles, 25x2KB slots used
 	swiCopy(ecranBaseMap, BG_MAP_RAM_SUB(25), ecranBaseMapLen/2); // store in the 26th slot => #25
 	swiCopy(ecranBasePal, BG_PALETTE_SUB, ecranBasePalLen/2);
+
+
+	//we use two times "Background" in order to have two layers. This will be useful when printing computer choices
+	swiCopy(BackgroundTiles, BG_TILE_RAM(0), BackgroundTilesLen/2); // approx. 50KB of Tiles, 25x2KB slots used
+	swiCopy(BackgroundMap, BG_MAP_RAM(25), BackgroundMapLen/2); // store in the 26th slot => #25
+	swiCopy(BackgroundPal, BG_PALETTE, BackgroundPalLen/2);
+	swiCopy(BackgroundMap, BG_MAP_RAM(29), BackgroundMapLen/2);
+	swiCopy(BackgroundTiles, BG_TILE_RAM(4), BackgroundTilesLen/2);
+	swiCopy(BackgroundPal, BG_PALETTE, BackgroundPalLen/2);
 
 }
 
@@ -217,5 +229,28 @@ void userPlayPaper(){
 	swiCopy(PaperTiles, BG_TILE_RAM_SUB(0), PaperTilesLen/2); // approx. 50KB of Tiles, 25x2KB slots used
 	swiCopy(PaperMap, BG_MAP_RAM_SUB(25), PaperMapLen/2); // store in the 26th slot => #25
 	swiCopy(PaperPal, BG_PALETTE_SUB, PaperPalLen/2);
+
+}
+
+
+void printTimesUp(){
+	int row, col;
+	u16* bg1Map = (u16*)BG_MAP_RAM_SUB(25);
+	int rowEnd=(256-192)/8; //nb of rows of tile in the WIN picture
+
+	/*
+	int c;
+	for (c=0;c<256;c++){
+		BG_PALETTE_SUB[c] = RED;
+	}
+	*/
+	for(row=0;row<8;row++){
+		for(col=0;col<32;col++){
+			bg1Map[(row+24-rowEnd)*32+col] = bg1Map[(row+24)*32+col];
+
+
+		}
+	}
+
 
 }
