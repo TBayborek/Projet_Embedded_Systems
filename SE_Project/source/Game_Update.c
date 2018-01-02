@@ -114,19 +114,19 @@ void Opponent_Move(){
 	int row_sel;
 	switch(choice){
 		case 0: opponent_move = ROCK; row_sel = 0; break;
-		case 1: opponent_move = SCISSORS; row_sel = 8; break;
-		case 2: opponent_move = PAPER; row_sel = 16; break;
+		case 1: opponent_move = SCISSORS; row_sel = 10; break;
+		case 2: opponent_move = PAPER; row_sel = 20; break;
 	}
 
 	int row, col;
-	u16* bg1Map = (u16*)BG_MAP_RAM(25);
+	u16* bg0Map = (u16*)BG_MAP_RAM(25);
 
 
 
 
-	for(row=0;row<10;row++){
+	for(row=0;row<9;row++){
 		for(col=0;col<10;col++){
-			bg1Map[(row+8)*32+(col+12)] = BackgroundMap[(row+24)*32+col];
+			bg0Map[(row+8)*32+(col+12)] = BackgroundMap[(row+25+row_sel)*32+col+12];
 		}
 	}
 
@@ -208,6 +208,17 @@ void drawArea(){
 	swiCopy(BackgroundMap, BG_MAP_RAM(29), BackgroundMapLen/2);
 	swiCopy(BackgroundTiles, BG_TILE_RAM(4), BackgroundTilesLen/2);
 	swiCopy(BackgroundPal, BG_PALETTE, BackgroundPalLen/2);
+
+	//draw the interrogation point
+	int row, col;
+	u16* bg0Map = (u16*)BG_MAP_RAM(25);
+
+	for(row=0;row<9;row++){
+		for(col=0;col<10;col++){
+			bg0Map[(row+8)*32+(col+12)] = BackgroundMap[(row+25+30)*32+col+12];
+		}
+	}
+
 
 }
 
