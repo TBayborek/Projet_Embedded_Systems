@@ -3,6 +3,7 @@
 
 #include "Init_Graphics.h"
 #include "Handle_Outcome.h"
+#include "WiFi_minilib.h"
 
 unsigned keys;
 touchPosition touch;
@@ -31,3 +32,4 @@ void userPlayScissor();
 void userPlayRock();
 void userPlayPaper();
 void printTimesUp();
+void checkIfThe2HavePlayed();
