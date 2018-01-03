@@ -3,4 +3,5 @@
 void Initialization(){
 	Init_Graphics();
 	Init_Interruptions();
+	Init_Sound();
 }

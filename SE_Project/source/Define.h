@@ -8,6 +8,8 @@
 	#include <nds.h>
 	#include <string.h>
 
+
+
 	#define RED ARGB16(1,31,0,0)
 	#define GREEN ARGB16(1,0,31,0)
 	#define BLUE ARGB16(1,0,0,31)
