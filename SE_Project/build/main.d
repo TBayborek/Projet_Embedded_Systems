@@ -54,6 +54,7 @@ main.o:  \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Game_Update.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Graphics.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background2.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/RSP.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/ecranBase.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Assemblage.h \
@@ -62,7 +63,13 @@ main.o:  \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Paper.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Rock.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Scissor.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/WIN.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Handle_Outcome.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Sound.h \
+  /opt/devkitPro/libnds/include/maxmod9.h \
+  /opt/devkitPro/libnds/include/mm_types.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/soundbank.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/soundbank_bin.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Initialization.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Interruptions.h
 
@@ -174,6 +181,8 @@ main.o:  \
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background.h:
 
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background2.h:
+
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/RSP.h:
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/ecranBase.h:
@@ -190,7 +199,19 @@ main.o:  \
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Scissor.h:
 
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/WIN.h:
+
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Handle_Outcome.h:
+
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Sound.h:
+
+/opt/devkitPro/libnds/include/maxmod9.h:
+
+/opt/devkitPro/libnds/include/mm_types.h:
+
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/soundbank.h:
+
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/soundbank_bin.h:
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Initialization.h:
 

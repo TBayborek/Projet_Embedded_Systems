@@ -3,13 +3,13 @@
 
 //======================================================================
 //
-//	Paper, 256x192@8, 
+//	Paper, 256x336@8, 
 //	+ palette 256 entries, not compressed
-//	+ 113 tiles (t|f reduced) not compressed
-//	+ regular map (flat), not compressed, 32x24 
-//	Total size: 512 + 7232 + 1536 = 9280
+//	+ 191 tiles (t|f reduced) not compressed
+//	+ regular map (flat), not compressed, 32x42 
+//	Total size: 512 + 12224 + 2688 = 15424
 //
-//	Time-stamp: 2018-01-01, 16:00:49
+//	Time-stamp: 2018-01-03, 10:45:27
 //	Exported by Cearn's GBA Image Transmogrifier, v0.8.3
 //	( http://www.coranac.com/projects/#grit )
 //
@@ -18,11 +18,11 @@
 #ifndef GRIT_PAPER_H
 #define GRIT_PAPER_H
 
-#define PaperTilesLen 7232
-extern const unsigned int PaperTiles[1808];
+#define PaperTilesLen 12224
+extern const unsigned int PaperTiles[3056];
 
-#define PaperMapLen 1536
-extern const unsigned short PaperMap[768];
+#define PaperMapLen 2688
+extern const unsigned short PaperMap[1344];
 
 #define PaperPalLen 512
 extern const unsigned short PaperPal[256];

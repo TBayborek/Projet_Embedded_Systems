@@ -53,6 +53,7 @@ Init_Graphics.o:  \
   /opt/devkitPro/libnds/include/nds/arm9/decompress.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Shared.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background2.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/RSP.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/ecranBase.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Assemblage.h \
@@ -60,7 +61,8 @@ Init_Graphics.o:  \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/MenuInstruction.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Paper.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Rock.h \
-  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Scissor.h
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Scissor.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/WIN.h
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Graphics.h:
 
@@ -168,6 +170,8 @@ Init_Graphics.o:  \
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background.h:
 
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background2.h:
+
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/RSP.h:
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/ecranBase.h:
@@ -183,3 +187,5 @@ Init_Graphics.o:  \
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Rock.h:
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Scissor.h:
+
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/WIN.h:

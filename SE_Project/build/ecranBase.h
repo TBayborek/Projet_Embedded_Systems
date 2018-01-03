@@ -3,13 +3,13 @@
 
 //======================================================================
 //
-//	ecranBase, 256x192@8, 
+//	ecranBase, 256x256@8, 
 //	+ palette 256 entries, not compressed
-//	+ 70 tiles (t|f reduced) not compressed
-//	+ regular map (flat), not compressed, 32x24 
-//	Total size: 512 + 4480 + 1536 = 6528
+//	+ 163 tiles (t|f reduced) not compressed
+//	+ regular map (flat), not compressed, 32x32 
+//	Total size: 512 + 10432 + 2048 = 12992
 //
-//	Time-stamp: 2017-12-31, 14:26:07
+//	Time-stamp: 2018-01-03, 10:45:27
 //	Exported by Cearn's GBA Image Transmogrifier, v0.8.3
 //	( http://www.coranac.com/projects/#grit )
 //
@@ -18,11 +18,11 @@
 #ifndef GRIT_ECRANBASE_H
 #define GRIT_ECRANBASE_H
 
-#define ecranBaseTilesLen 4480
-extern const unsigned int ecranBaseTiles[1120];
+#define ecranBaseTilesLen 10432
+extern const unsigned int ecranBaseTiles[2608];
 
-#define ecranBaseMapLen 1536
-extern const unsigned short ecranBaseMap[768];
+#define ecranBaseMapLen 2048
+extern const unsigned short ecranBaseMap[1024];
 
 #define ecranBasePalLen 512
 extern const unsigned short ecranBasePal[256];
