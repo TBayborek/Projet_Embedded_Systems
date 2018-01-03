@@ -1,6 +1,9 @@
 #include "Shared.h"
 
 status Game_Status = STOP;
+int scoreHuman=0;
+int scoreBot=0;
+
 
 void Test(int color){
 	int i;

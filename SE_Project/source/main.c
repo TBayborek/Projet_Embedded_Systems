@@ -9,6 +9,9 @@ int main(){
 	Initialization();
 	//consoleDemoInit();
 
+	//int scoreHuman=0;
+	//int scoreBot=0;
+
 	while(true){
 		Game_Update();
 		swiWaitForVBlank();

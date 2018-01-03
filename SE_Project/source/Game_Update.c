@@ -219,6 +219,10 @@ void drawArea(){
 		}
 	}
 
+	//test
+	printScore(scoreHuman,12,0);
+	printScore(scoreBot,21,0);
+
 
 }
 
