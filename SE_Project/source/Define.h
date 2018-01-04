@@ -10,6 +10,7 @@
 	#include <nds.h>
 
 	#define n_elems(x) sizeof(x)/sizeof(x[0])
+	#define TILE_PAL(n) ((n) << 12)
 
 	#define PI 3.14159265
 

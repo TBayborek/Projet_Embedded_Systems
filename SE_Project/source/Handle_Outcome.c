@@ -1,5 +1,4 @@
 #include "Handle_Outcome.h"
-#define TILE_PAL(n) ((n) << 12)
 
 void Win_Round(){
 	handleScore(1);

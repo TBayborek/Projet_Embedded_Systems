@@ -1,5 +1,4 @@
 #include "Game_Update.h"
-#define TILE_PAL(n) ((n) << 12)
 
 void Game_Update(){
 	irqSet(IRQ_TIMER0, &ISR_Timer0);
@@ -99,6 +98,9 @@ void Handle_Touchscreen(){
 	posy = touch.py;
 
 	if (Game_Status == USER_TURN){
+		user_move = detect_move();
+		Game_Status = OPPONENT_TURN;
+		/*
 		if ((posx>125 && posx<256) && (posy>=0 && posy<192)){
 			if(posy>=0 && posy<64) {
 
@@ -119,9 +121,8 @@ void Handle_Touchscreen(){
 			}
 			Game_Status = OPPONENT_TURN;
 		}
+		*/
 	}
-
-
 
 	if (Game_Status == MULTIPLAYER_TURN){
 		if ((posx>125 && posx<256) && (posy>=0 && posy<192)){

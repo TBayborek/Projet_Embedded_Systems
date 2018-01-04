@@ -1,7 +1,7 @@
 Init_Graphics.o:  \
- /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Graphics.c \
-  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Graphics.h \
-  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Define.h \
+ /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Init_Graphics.c \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Init_Graphics.h \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Define.h \
   /opt/devkitPro/libnds/include/nds/arm9/sound.h \
   /opt/devkitPro/libnds/include/nds/ndstypes.h \
   /opt/devkitPro/libnds/include/nds.h \
@@ -51,22 +51,22 @@ Init_Graphics.o:  \
   /opt/devkitPro/libnds/include/nds/arm9/sprite.h \
   /opt/devkitPro/libnds/include/nds/system.h \
   /opt/devkitPro/libnds/include/nds/arm9/decompress.h \
-  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Shared.h \
-  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background.h \
-  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background2.h \
-  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/RSP.h \
-  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/ecranBase.h \
-  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Assemblage.h \
-  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Menu.h \
-  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/MenuInstruction.h \
-  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Paper.h \
-  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Rock.h \
-  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Scissor.h \
-  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/WIN.h
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Shared.h \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Background.h \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Background2.h \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/RSP.h \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/ecranBase.h \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Assemblage.h \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Menu.h \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/MenuInstruction.h \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Paper.h \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Rock.h \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Scissor.h \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/WIN.h
 
-/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Graphics.h:
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Init_Graphics.h:
 
-/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Define.h:
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Define.h:
 
 /opt/devkitPro/libnds/include/nds/arm9/sound.h:
 
@@ -166,26 +166,26 @@ Init_Graphics.o:  \
 
 /opt/devkitPro/libnds/include/nds/arm9/decompress.h:
 
-/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Shared.h:
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Shared.h:
 
-/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background.h:
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Background.h:
 
-/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background2.h:
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Background2.h:
 
-/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/RSP.h:
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/RSP.h:
 
-/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/ecranBase.h:
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/ecranBase.h:
 
-/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Assemblage.h:
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Assemblage.h:
 
-/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Menu.h:
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Menu.h:
 
-/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/MenuInstruction.h:
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/MenuInstruction.h:
 
-/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Paper.h:
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Paper.h:
 
-/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Rock.h:
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Rock.h:
 
-/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Scissor.h:
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Scissor.h:
 
-/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/WIN.h:
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/WIN.h:

@@ -1,4 +1,17 @@
-#include "WiFi_minilib.h"
+#include "Init_Peripherals.h"
+
+void Init_Sound() {
+	mmInitDefaultMem((mm_addr)soundbank_bin);
+
+
+	mmLoadEffect(SFX_WINSOUND);
+	mmLoadEffect(SFX_BUZZER);
+	mmLoadEffect(SFX_LOSINGHORNSOUNDEFFECT);
+	mmLoadEffect(SFX_BOING_X);
+}
+
+
+// -------- WIFI section ---------
 
 //Socket port
 #define LOCAL_PORT 8888
@@ -8,11 +21,8 @@
 struct sockaddr_in sa_out, sa_in;
 int socket_id;
 
-
-
 // Flags indicating whether the WiFi or the
 // socket has been initialized
-
 bool socket_opened = false;
 bool WiFi_initialized = false;
 
@@ -181,3 +191,4 @@ int receiveData(char* data_buff, int bytes)
 	//Return the amount of received bytes
 	return received_bytes;
 }
+

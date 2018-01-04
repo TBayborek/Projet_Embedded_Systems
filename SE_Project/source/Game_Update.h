@@ -1,9 +1,11 @@
-#include "Shared.h"
 #include "Define.h"
+#include "Shared.h"
 
 #include "Init_Graphics.h"
 #include "Handle_Outcome.h"
-#include "WiFi_minilib.h"
+#include "Init_Peripherals.h"
+
+#include "Pattern_Recognition.h"
 
 unsigned keys;
 touchPosition touch;

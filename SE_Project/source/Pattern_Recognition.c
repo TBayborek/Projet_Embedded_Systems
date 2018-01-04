@@ -3,6 +3,8 @@
 move detect_move(void) {
 	dx = dy = n_corners = posx_old = posy_old = dangle = dist_last_edge = init = max_dangle_init = 0;
 	n_points = start_draw = -1;
+	min_dist_edge = 30;
+	min_edge_ctrl_len = 10;
 
 	while(1) {
 		scanKeys();
@@ -89,8 +91,6 @@ move detect_move(void) {
 							VRAM_A[posi_n] = ARGB16(1,0,0,31);
 							VRAM_A[posi_o] = ARGB16(1,0,0,31);
 						}
-
-
 					}
 				}
 			}
@@ -130,7 +130,6 @@ move detect_move(void) {
 		swiWaitForVBlank();
 	}
 }
-
 
 double vectors_angle(int v1x, int v1y,int v2x, int v2y){
 	double scalar_prod = v1x*v2x+v1y*v2y;

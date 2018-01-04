@@ -1,14 +1,22 @@
+// SOUND INIT
+#include "Define.h"
+#include "Shared.h"
+#include <maxmod9.h> //sound
+#include "soundbank.h"
+#include "soundbank_bin.h"
+
+void Init_Sound();
+
+// WIFI INIT
 #ifndef WIFI_MINILIB_H
 #define WIFI_MINILIB_H
 
-#include <nds.h>
 #include <dswifi9.h>
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <sys/socket.h>
 
 #define SSID	"MES-NDS"
-
 
 //WiFi initialization
 int initWiFi();
@@ -22,6 +30,5 @@ int sendData(char* data_buff, int bytes);
 void closeSocket();
 //Disconnect the WiFi
 void disconnectFromWiFi();
-
 
 #endif // WIFI_MINILIB_H

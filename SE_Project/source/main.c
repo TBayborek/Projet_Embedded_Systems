@@ -1,7 +1,4 @@
-#include "Define.h"
-#include "Shared.h"
-#include "Game_Update.h"
-#include "Initialization.h"
+#include "main.h"
 
 int main(){
 	srand(time(NULL)); // Really random?
@@ -17,4 +14,11 @@ int main(){
 		swiWaitForVBlank();
 	}
 	return 0;
+}
+
+
+void Initialization(){
+	Init_Graphics();
+	Init_Interruptions();
+	Init_Sound();
 }
