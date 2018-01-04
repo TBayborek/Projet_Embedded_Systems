@@ -1,7 +1,7 @@
 Game_Update.o:  \
- /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Game_Update.c \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Game_Update.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Define.h \
+ /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Game_Update.c \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Game_Update.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Define.h \
   /opt/devkitPro/libnds/include/nds/arm9/sound.h \
   /opt/devkitPro/libnds/include/nds/ndstypes.h \
   /opt/devkitPro/libnds/include/nds.h \
@@ -51,34 +51,36 @@ Game_Update.o:  \
   /opt/devkitPro/libnds/include/nds/arm9/sprite.h \
   /opt/devkitPro/libnds/include/nds/system.h \
   /opt/devkitPro/libnds/include/nds/arm9/decompress.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Shared.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Init_Graphics.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Background.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Background2.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/RSP.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/ecranBase.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Assemblage.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Menu.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/MenuInstruction.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Paper.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Rock.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Scissor.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/WIN.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Handle_Outcome.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Init_Peripherals.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Shared.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Graphics.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background2.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/RSP.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/ecranBase.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Assemblage.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Menu.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/MenuInstruction.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/MenuDescription.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/MenuTactile.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Paper.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Rock.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Scissor.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/WIN.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Handle_Outcome.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Peripherals.h \
   /opt/devkitPro/libnds/include/maxmod9.h \
   /opt/devkitPro/libnds/include/mm_types.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/soundbank.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/soundbank_bin.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/soundbank.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/soundbank_bin.h \
   /opt/devkitPro/libnds/include/dswifi9.h \
   /opt/devkitPro/libnds/include/dswifi_version.h \
   /opt/devkitPro/libnds/include/netinet/in.h \
   /opt/devkitPro/libnds/include/sys/socket.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Pattern_Recognition.h
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Pattern_Recognition.h
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Game_Update.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Game_Update.h:
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Define.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Define.h:
 
 /opt/devkitPro/libnds/include/nds/arm9/sound.h:
 
@@ -178,43 +180,47 @@ Game_Update.o:  \
 
 /opt/devkitPro/libnds/include/nds/arm9/decompress.h:
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Shared.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Shared.h:
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Init_Graphics.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Graphics.h:
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Background.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background.h:
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Background2.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Background2.h:
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/RSP.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/RSP.h:
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/ecranBase.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/ecranBase.h:
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Assemblage.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Assemblage.h:
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Menu.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Menu.h:
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/MenuInstruction.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/MenuInstruction.h:
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Paper.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/MenuDescription.h:
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Rock.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/MenuTactile.h:
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Scissor.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Paper.h:
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/WIN.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Rock.h:
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Handle_Outcome.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/Scissor.h:
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Init_Peripherals.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/WIN.h:
+
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Handle_Outcome.h:
+
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Peripherals.h:
 
 /opt/devkitPro/libnds/include/maxmod9.h:
 
 /opt/devkitPro/libnds/include/mm_types.h:
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/soundbank.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/soundbank.h:
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/soundbank_bin.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/soundbank_bin.h:
 
 /opt/devkitPro/libnds/include/dswifi9.h:
 
@@ -224,4 +230,4 @@ Game_Update.o:  \
 
 /opt/devkitPro/libnds/include/sys/socket.h:
 
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Pattern_Recognition.h:
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Pattern_Recognition.h:

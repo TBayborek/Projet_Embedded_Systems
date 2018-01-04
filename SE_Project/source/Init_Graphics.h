@@ -8,10 +8,13 @@
 #include "Assemblage.h"
 #include "Menu.h"
 #include "MenuInstruction.h"
+#include "MenuDescription.h"
+#include "MenuTactile.h"
 #include "Paper.h"
 #include "Rock.h"
 #include "Scissor.h"
 #include "WIN.h"
+
 
 
 

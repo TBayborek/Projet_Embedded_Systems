@@ -1,0 +1,1 @@
+MenuDescription.o: MenuDescription.s

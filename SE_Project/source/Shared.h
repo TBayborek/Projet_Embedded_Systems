@@ -7,3 +7,5 @@ extern int scoreBot;
 
 extern int HasPlayed1;
 extern int HasPlayed2;
+
+extern int mode;

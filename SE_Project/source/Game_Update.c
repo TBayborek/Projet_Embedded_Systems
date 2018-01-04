@@ -26,6 +26,9 @@ void Game_Update(){
 			Game_Status = USER_TURN;
 		else if(mode==1)
 			Game_Status = MULTIPLAYER_TURN;
+
+
+
 		//printMenu2();
 		break;
 	case USER_TURN:
@@ -75,12 +78,13 @@ void Handle_Button(unsigned keys){
 	if((Game_Status == STOP) && (keys & KEY_START)){
 		Game_Status = START;
 	}
-
+	/*
 	if((Game_Status == START) && (keys & KEY_A)){
 		Game_Status = USER_TURN;
 		ticks = 0;
 
 	}
+	*/
 
 	if((Game_Status == NEXT) && (keys & KEY_A)){
 		Game_Status = STOP;
@@ -96,6 +100,21 @@ void Handle_Touchscreen(){
 
 	posx = touch.px;
 	posy = touch.py;
+/*
+	if(Game_Status == START){
+		if ((posx>27 & posx<=228) && (posy>=50 & posy<80)){
+			mode=0;
+			Game_Status = USER_TURN;
+		}
+		/*
+		if ((posx>27 && posx<=228) && (posy>=90 && posy<120)){
+			mode=1;
+			Game_Status = MULTIPLAYER_TURN;
+		}
+
+	}
+*/
+
 
 	if (Game_Status == USER_TURN){
 		user_move = detect_move();
@@ -233,9 +252,13 @@ void ISR_Timer0(void){
 
 
 void printMenu2(){
-	swiCopy(MenuInstructionTiles, BG_TILE_RAM_SUB(0), MenuInstructionTilesLen/2);
-	swiCopy(MenuInstructionMap, BG_MAP_RAM_SUB(26), MenuInstructionMapLen/2);
-	swiCopy(MenuInstructionPal, BG_PALETTE_SUB, MenuInstructionPalLen/2);
+	swiCopy(MenuDescriptionTiles, BG_TILE_RAM(0), MenuDescriptionTilesLen/2);
+	swiCopy(MenuDescriptionMap, BG_MAP_RAM(26), MenuDescriptionMapLen/2);
+	swiCopy(MenuDescriptionPal, BG_PALETTE, MenuDescriptionPalLen/2);
+
+	swiCopy(MenuTactileTiles, BG_TILE_RAM_SUB(0), MenuTactileTilesLen/2);
+	swiCopy(MenuTactileMap, BG_MAP_RAM_SUB(25), MenuTactileMapLen/2);
+	swiCopy(MenuTactilePal, BG_PALETTE_SUB, MenuTactilePalLen/2);
 
 }
 
@@ -299,7 +322,7 @@ void userPlayPaper(){
 }
 
 void checkIfThe2HavePlayed(){
-
+	int row_sel;
 	char msg[1];
 
 	//Listen for messages from others
@@ -310,18 +333,33 @@ void checkIfThe2HavePlayed(){
 		{
 		case 0:
 			opponent_move=ROCK;
+			row_sel = 0;
 			break;
 		case 1:
 			opponent_move=PAPER;
+			row_sel = 10;
 			break;
 		case 2:
 			opponent_move=SCISSORS;
+			row_sel = 20;
 			break;
 		}
 		HasPlayed2=1;
+
 	}
 
 	if(HasPlayed1==1 && HasPlayed2==1){
+
+		//print the corresponding player 2's choice (taken from the bottom of Background.png)
+		int row, col;
+		u16* bg0Map = (u16*)BG_MAP_RAM(26);
+		for(row=0;row<9;row++){
+			for(col=0;col<10;col++){
+				bg0Map[(row+8)*32+(col+12)] = BackgroundMap[(row+25+row_sel)*32+col+12];
+			}
+		}
+
+
 		Game_Status=RESULTS;
 
 	}
