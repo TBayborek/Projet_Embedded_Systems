@@ -33,3 +33,4 @@ void userPlayRock();
 void userPlayPaper();
 void printTimesUp();
 void checkIfThe2HavePlayed();
+void sendPlay(user_move);
