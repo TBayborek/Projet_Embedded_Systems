@@ -1,7 +1,13 @@
 Pattern_Recognition.o:  \
+<<<<<<< HEAD
  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Pattern_Recognition.c \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Pattern_Recognition.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Define.h \
+=======
+ /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Pattern_Recognition.c \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Pattern_Recognition.h \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Define.h \
+>>>>>>> 2743d86eaeba073f96bec08f0e4e64f11f2efbcf
   /opt/devkitPro/libnds/include/nds/arm9/sound.h \
   /opt/devkitPro/libnds/include/nds/ndstypes.h \
   /opt/devkitPro/libnds/include/nds.h \
@@ -51,11 +57,19 @@ Pattern_Recognition.o:  \
   /opt/devkitPro/libnds/include/nds/arm9/sprite.h \
   /opt/devkitPro/libnds/include/nds/system.h \
   /opt/devkitPro/libnds/include/nds/arm9/decompress.h \
+<<<<<<< HEAD
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Shared.h
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Pattern_Recognition.h:
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Define.h:
+=======
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Shared.h
+
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Pattern_Recognition.h:
+
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Define.h:
+>>>>>>> 2743d86eaeba073f96bec08f0e4e64f11f2efbcf
 
 /opt/devkitPro/libnds/include/nds/arm9/sound.h:
 
@@ -155,4 +169,8 @@ Pattern_Recognition.o:  \
 
 /opt/devkitPro/libnds/include/nds/arm9/decompress.h:
 
+<<<<<<< HEAD
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Shared.h:
+=======
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Shared.h:
+>>>>>>> 2743d86eaeba073f96bec08f0e4e64f11f2efbcf
