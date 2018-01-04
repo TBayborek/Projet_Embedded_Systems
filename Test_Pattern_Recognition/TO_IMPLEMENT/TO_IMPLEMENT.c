@@ -36,7 +36,7 @@ double vectors_angle(int v1x, int v1y,int v2x, int v2y){
 }
 
 //---------------------------------------------------------------------------------
-int main(void) {
+int TO_IMPLEMENT(void) {
 //---------------------------------------------------------------------------------
 	REG_DISPCNT = MODE_FB0;
 	VRAM_A_CR = VRAM_ENABLE | VRAM_A_LCD;
@@ -118,7 +118,6 @@ int main(void) {
 						init = 1;
 					}
 					dangle = vectors_angle(disp_x_new,disp_y_new,disp_x_old,disp_y_old);
-					printf("dangle: %f\n", dangle);
 
 					if (vectors_angle(disp_x_new,disp_y_new,init_dx,init_dy)>max_dangle_init) max_dangle_init = vectors_angle(disp_x_new,disp_y_new,init_dx,init_dy);
 				}
@@ -129,9 +128,6 @@ int main(void) {
 						if(n_corners<n_elems(angles_corner)) angles_corner[n_corners] = dangle;
 						n_corners++;
 						dist_last_edge = 0;
-
-						printf("number of corners: %i\n",n_corners);
-						printf("\n\n");
 
 						for(i=-5;i<5;i++)VRAM_A[(int) (pos[last_index_new+1][1]*256+pos[last_index_new+1][0]+i)] = ARGB16(1,31,0,0);
 
@@ -183,7 +179,6 @@ int main(void) {
 					break;
 				default: drawn_figure = ERROR;
 			}
-			printf("drawn_figure: %u\n",drawn_figure);
 			start_draw = -1;
 		}
 

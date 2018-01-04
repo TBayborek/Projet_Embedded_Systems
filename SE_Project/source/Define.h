@@ -4,11 +4,14 @@
 	#include <time.h>
 	#include <stdlib.h>
 	#include <stdio.h>
+	#include <string.h>
+	#include <math.h>
 	#include <nds/arm9/sound.h>		// sound functions
 	#include <nds.h>
-	#include <string.h>
 
+	#define n_elems(x) sizeof(x)/sizeof(x[0])
 
+	#define PI 3.14159265
 
 	#define RED ARGB16(1,31,0,0)
 	#define GREEN ARGB16(1,0,31,0)
@@ -33,8 +36,7 @@
 			ROCK,
 			SCISSORS,
 			PAPER,
+			ERROR,
 	}move;
-
-
 
 #endif

@@ -1,63 +1,8 @@
-#include <nds.h>
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include <stdbool.h>
+#include "Pattern_Recognition.h"
 
-#define PI 3.14159265
-
-enum figure{
-			ROCK=0,
-			SCISSORS=1,
-			PAPER=2,
-			ERROR=3,
-};
-
-#define n_elems(x) sizeof(x)/sizeof(x[0])
-
-double mean(double x[],int array_len){
-					int s, num_notnan=0; double sum=0;
-					for(s=0;s<array_len;s++){
-						if (!isnan(x[s])){
-							sum+=x[s];
-							num_notnan++;
-						}
-					}
-					if(isnan(sum/num_notnan)) return 0;
-					else return sum/num_notnan;
-}
-
-double vectors_angle(int v1x, int v1y,int v2x, int v2y){
-	double scalar_prod = v1x*v2x+v1y*v2y;
-	double norm_v1 = sqrt(pow(v1x,2) + pow(v1y,2));
-	double norm_v2 = sqrt(pow(v2x,2) + pow(v2y,2));
-
-	return acos(scalar_prod/(norm_v1*norm_v2));
-}
-
-//---------------------------------------------------------------------------------
-int main(void) {
-//---------------------------------------------------------------------------------
-	REG_DISPCNT = MODE_FB0;
-	VRAM_A_CR = VRAM_ENABLE | VRAM_A_LCD;
-	REG_POWERCNT ^= BIT(15);
-	memset(VRAM_A,0xFF,256*192*2);
-
-	u16 posx, posy, posx_old, posy_old;
-	int dx, dy, init_dx, init_dy, n_corners, n_points, init, i;
-	int disp_x_new, disp_y_new, disp_x_old, disp_y_old;
-	int start_draw = -1;
-	double pos[100][3], angles_corner[4], dangle, max_dangle_init, dist_last_edge;
-	double min_dist_edge = 30;
-	double min_edge_ctrl_len = 10;
-	touchPosition touch;
-
-	enum figure drawn_figure;
-
+move detect_move(void) {
 	dx = dy = n_corners = posx_old = posy_old = dangle = dist_last_edge = init = max_dangle_init = 0;
-	n_points = -1;
-
-	consoleDemoInit();
+	n_points = start_draw = -1;
 
 	while(1) {
 		scanKeys();
@@ -79,7 +24,7 @@ int main(void) {
 				n_points++;
 				if(n_points>1){
 					dist_last_edge += sqrt(pow(dx,2) + pow(dy,2));
-					int nsteps = 20;
+					int nsteps = 50;
 					for(i=0;i<=nsteps;i++) VRAM_A[(int) floor((posy_old+dy*i/nsteps)*256+posx_old+dx*i/nsteps)] = ARGB16(1,0,0,0);
 				}
 
@@ -118,7 +63,6 @@ int main(void) {
 						init = 1;
 					}
 					dangle = vectors_angle(disp_x_new,disp_y_new,disp_x_old,disp_y_old);
-					printf("dangle: %f\n", dangle);
 
 					if (vectors_angle(disp_x_new,disp_y_new,init_dx,init_dy)>max_dangle_init) max_dangle_init = vectors_angle(disp_x_new,disp_y_new,init_dx,init_dy);
 				}
@@ -129,9 +73,6 @@ int main(void) {
 						if(n_corners<n_elems(angles_corner)) angles_corner[n_corners] = dangle;
 						n_corners++;
 						dist_last_edge = 0;
-
-						printf("number of corners: %i\n",n_corners);
-						printf("\n\n");
 
 						for(i=-5;i<5;i++)VRAM_A[(int) (pos[last_index_new+1][1]*256+pos[last_index_new+1][0]+i)] = ARGB16(1,31,0,0);
 
@@ -183,10 +124,18 @@ int main(void) {
 					break;
 				default: drawn_figure = ERROR;
 			}
-			printf("drawn_figure: %u\n",drawn_figure);
 			start_draw = -1;
+			return drawn_figure;
 		}
-
 		swiWaitForVBlank();
 	}
+}
+
+
+double vectors_angle(int v1x, int v1y,int v2x, int v2y){
+	double scalar_prod = v1x*v2x+v1y*v2y;
+	double norm_v1 = sqrt(pow(v1x,2) + pow(v1y,2));
+	double norm_v2 = sqrt(pow(v2x,2) + pow(v2y,2));
+
+	return acos(scalar_prod/(norm_v1*norm_v2));
 }
