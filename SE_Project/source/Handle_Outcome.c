@@ -67,11 +67,10 @@ void printTimesUp(){
 
 	for(row=0;row<8;row++){
 		for(col=0;col<32;col++){
-			bg1Map[(row+24-rowEnd)*32+col] = bg1Map[(row+24)*32+col];
+			bg0Map_SUB[(row+24-rowEnd)*32+col] = bg0Map_SUB[(row+24)*32+col];
 		}
 	}
 }
-
 
 void printScore(int number, int posx, int posy){
 	int row, col;
@@ -86,7 +85,6 @@ void printScore(int number, int posx, int posy){
 				bg0Map[(row+posy)*32+(col+posx-2)] = BackgroundMap[(row+25+offDeci)*32+col];
 			}
 		}
-
 	//}
 
 	int offNumber=number*3;

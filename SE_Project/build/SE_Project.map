@@ -2332,43 +2332,43 @@ Linker script and memory map
  .debug_pubnames
                 0x0000240a       0xeb /opt/devkitPro/libnds/lib/libnds9.a(video.o)
 
-.debug_info     0x00000000     0xedb2
+.debug_info     0x00000000     0xedbf
  *(.debug_info)
  .debug_info    0x00000000       0x68 /opt/devkitPro/devkitARM/lib/gcc/arm-eabi/4.3.3/thumb/crti.o
  .debug_info    0x00000068      0xc4c Game_Update.o
- .debug_info    0x00000cb4      0x594 Handle_Outcome.o
- .debug_info    0x00001248      0x746 Init_Graphics.o
- .debug_info    0x0000198e      0x3f2 Init_Interruptions.o
- .debug_info    0x00001d80      0x767 Init_Peripherals.o
- .debug_info    0x000024e7      0x645 main.o
- .debug_info    0x00002b2c      0x6bd Pattern_Recognition.o
- .debug_info    0x000031e9      0x3fb Shared.o
- .debug_info    0x000035e4      0x5da /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP_Hub.o)
- .debug_info    0x00003bbe      0x418 /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP_memblock.o)
- .debug_info    0x00003fd6      0xf4e /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP_sockets.o)
- .debug_info    0x00004f24     0x22f6 /opt/devkitPro/libnds/lib/libdswifi9.a(wifi_arm9.o)
- .debug_info    0x0000721a       0xc6 /opt/devkitPro/libnds/lib/libdswifi9.a(spinlock.o)
- .debug_info    0x000072e0       0xfc /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP.o)
- .debug_info    0x000073dc      0x847 /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP_ARP.o)
- .debug_info    0x00007c23      0x857 /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP_DHCP.o)
- .debug_info    0x0000847a      0xaf1 /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP_DNS.o)
- .debug_info    0x00008f6b      0x344 /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP_IP.o)
- .debug_info    0x000092af      0xe0f /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP_TCP.o)
- .debug_info    0x0000a0be      0x678 /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP_UDP.o)
- .debug_info    0x0000a736      0x1b5 /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP_ICMP.o)
- .debug_info    0x0000a8eb      0x36a /opt/devkitPro/libnds/lib/libnds9.a(initSystem.o)
- .debug_info    0x0000ac55      0x317 /opt/devkitPro/libnds/lib/libnds9.a(keys.o)
- .debug_info    0x0000af6c      0x503 /opt/devkitPro/libnds/lib/libnds9.a(system.o)
- .debug_info    0x0000b46f      0x222 /opt/devkitPro/libnds/lib/libnds9.a(touch.o)
- .debug_info    0x0000b691     0x1382 /opt/devkitPro/libnds/lib/libnds9.a(videoGL.o)
- .debug_info    0x0000ca13     0x1452 /opt/devkitPro/libnds/lib/libnds9.a(fifosystem.o)
- .debug_info    0x0000de65      0x321 /opt/devkitPro/libnds/lib/libnds9.a(interrupts.o)
- .debug_info    0x0000e186       0xc2 /opt/devkitPro/libnds/lib/libnds9.a(dcache.o)
- .debug_info    0x0000e248       0xc7 /opt/devkitPro/libnds/lib/libnds9.a(biosCalls.o)
- .debug_info    0x0000e30f       0xd1 /opt/devkitPro/libnds/lib/libnds9.a(interruptDispatcher.o)
- .debug_info    0x0000e3e0      0x3a7 /opt/devkitPro/libnds/lib/libnds9.a(trig.o)
- .debug_info    0x0000e787      0x5c3 /opt/devkitPro/libnds/lib/libnds9.a(video.o)
- .debug_info    0x0000ed4a       0x68 /opt/devkitPro/devkitARM/lib/gcc/arm-eabi/4.3.3/thumb/crtn.o
+ .debug_info    0x00000cb4      0x5a1 Handle_Outcome.o
+ .debug_info    0x00001255      0x746 Init_Graphics.o
+ .debug_info    0x0000199b      0x3f2 Init_Interruptions.o
+ .debug_info    0x00001d8d      0x767 Init_Peripherals.o
+ .debug_info    0x000024f4      0x645 main.o
+ .debug_info    0x00002b39      0x6bd Pattern_Recognition.o
+ .debug_info    0x000031f6      0x3fb Shared.o
+ .debug_info    0x000035f1      0x5da /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP_Hub.o)
+ .debug_info    0x00003bcb      0x418 /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP_memblock.o)
+ .debug_info    0x00003fe3      0xf4e /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP_sockets.o)
+ .debug_info    0x00004f31     0x22f6 /opt/devkitPro/libnds/lib/libdswifi9.a(wifi_arm9.o)
+ .debug_info    0x00007227       0xc6 /opt/devkitPro/libnds/lib/libdswifi9.a(spinlock.o)
+ .debug_info    0x000072ed       0xfc /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP.o)
+ .debug_info    0x000073e9      0x847 /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP_ARP.o)
+ .debug_info    0x00007c30      0x857 /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP_DHCP.o)
+ .debug_info    0x00008487      0xaf1 /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP_DNS.o)
+ .debug_info    0x00008f78      0x344 /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP_IP.o)
+ .debug_info    0x000092bc      0xe0f /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP_TCP.o)
+ .debug_info    0x0000a0cb      0x678 /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP_UDP.o)
+ .debug_info    0x0000a743      0x1b5 /opt/devkitPro/libnds/lib/libdswifi9.a(sgIP_ICMP.o)
+ .debug_info    0x0000a8f8      0x36a /opt/devkitPro/libnds/lib/libnds9.a(initSystem.o)
+ .debug_info    0x0000ac62      0x317 /opt/devkitPro/libnds/lib/libnds9.a(keys.o)
+ .debug_info    0x0000af79      0x503 /opt/devkitPro/libnds/lib/libnds9.a(system.o)
+ .debug_info    0x0000b47c      0x222 /opt/devkitPro/libnds/lib/libnds9.a(touch.o)
+ .debug_info    0x0000b69e     0x1382 /opt/devkitPro/libnds/lib/libnds9.a(videoGL.o)
+ .debug_info    0x0000ca20     0x1452 /opt/devkitPro/libnds/lib/libnds9.a(fifosystem.o)
+ .debug_info    0x0000de72      0x321 /opt/devkitPro/libnds/lib/libnds9.a(interrupts.o)
+ .debug_info    0x0000e193       0xc2 /opt/devkitPro/libnds/lib/libnds9.a(dcache.o)
+ .debug_info    0x0000e255       0xc7 /opt/devkitPro/libnds/lib/libnds9.a(biosCalls.o)
+ .debug_info    0x0000e31c       0xd1 /opt/devkitPro/libnds/lib/libnds9.a(interruptDispatcher.o)
+ .debug_info    0x0000e3ed      0x3a7 /opt/devkitPro/libnds/lib/libnds9.a(trig.o)
+ .debug_info    0x0000e794      0x5c3 /opt/devkitPro/libnds/lib/libnds9.a(video.o)
+ .debug_info    0x0000ed57       0x68 /opt/devkitPro/devkitARM/lib/gcc/arm-eabi/4.3.3/thumb/crtn.o
 
 .debug_abbrev   0x00000000     0x3592
  *(.debug_abbrev)
@@ -2482,7 +2482,7 @@ Linker script and memory map
  .debug_str     0x00000000      0x732 Game_Update.o
                                 0x7b7 (size before relaxing)
  .debug_str     0x00000732       0xcd Handle_Outcome.o
-                                0x377 (size before relaxing)
+                                0x382 (size before relaxing)
  .debug_str     0x000007ff      0x726 Init_Graphics.o
                                 0x9a1 (size before relaxing)
  .debug_str     0x00000f25       0x81 Init_Interruptions.o
