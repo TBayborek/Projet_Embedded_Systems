@@ -29,6 +29,7 @@
 		OPPONENT_TURN,
 		RESULTS,
 		NEXT,
+		MULTIPLAYER_TURN,
 	}status;
 
 	typedef enum move{

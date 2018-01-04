@@ -1836,6 +1836,7 @@ Linker script and memory map
  .debug_abbrev  0x000016d2      0x178 /opt/devkitPro/libnds/lib/libnds9.a(trig.o)
  .debug_abbrev  0x0000184a       0x12 /opt/devkitPro/devkitARM/lib/gcc/arm-eabi/4.3.3/thumb/crtn.o
 
+<<<<<<< HEAD
 .debug_line     0x00000000     0x2f29
  *(.debug_line)
  .debug_line    0x00000000       0x49 /opt/devkitPro/devkitARM/lib/gcc/arm-eabi/4.3.3/thumb/crti.o
@@ -1856,6 +1857,28 @@ Linker script and memory map
  .debug_line    0x000029fd      0x2d0 /opt/devkitPro/libnds/lib/libnds9.a(background.o)
  .debug_line    0x00002ccd      0x1dd /opt/devkitPro/libnds/lib/libnds9.a(trig.o)
  .debug_line    0x00002eaa       0x7f /opt/devkitPro/devkitARM/lib/gcc/arm-eabi/4.3.3/thumb/crtn.o
+=======
+.debug_line     0x00000000     0x2ee3
+ *(.debug_line)
+ .debug_line    0x00000000       0x49 /opt/devkitPro/devkitARM/lib/gcc/arm-eabi/4.3.3/thumb/crti.o
+ .debug_line    0x00000049      0x200 main.o
+ .debug_line    0x00000249        0x0 Temp.o
+ .debug_line    0x00000249      0x751 /opt/devkitPro/libnds/lib/libnds9.a(console.o)
+ .debug_line    0x0000099a      0x31e /opt/devkitPro/libnds/lib/libnds9.a(initSystem.o)
+ .debug_line    0x00000cb8      0x2ec /opt/devkitPro/libnds/lib/libnds9.a(keys.o)
+ .debug_line    0x00000fa4      0x2d1 /opt/devkitPro/libnds/lib/libnds9.a(system.o)
+ .debug_line    0x00001275      0x27e /opt/devkitPro/libnds/lib/libnds9.a(touch.o)
+ .debug_line    0x000014f3      0x200 /opt/devkitPro/libnds/lib/libnds9.a(video.o)
+ .debug_line    0x000016f3      0x595 /opt/devkitPro/libnds/lib/libnds9.a(videoGL.o)
+ .debug_line    0x00001c88      0x936 /opt/devkitPro/libnds/lib/libnds9.a(fifosystem.o)
+ .debug_line    0x000025be      0x1d9 /opt/devkitPro/libnds/lib/libnds9.a(interrupts.o)
+ .debug_line    0x00002797       0xc5 /opt/devkitPro/libnds/lib/libnds9.a(biosCalls.o)
+ .debug_line    0x0000285c       0x98 /opt/devkitPro/libnds/lib/libnds9.a(debugprint.o)
+ .debug_line    0x000028f4       0xc3 /opt/devkitPro/libnds/lib/libnds9.a(interruptDispatcher.o)
+ .debug_line    0x000029b7      0x2d0 /opt/devkitPro/libnds/lib/libnds9.a(background.o)
+ .debug_line    0x00002c87      0x1dd /opt/devkitPro/libnds/lib/libnds9.a(trig.o)
+ .debug_line    0x00002e64       0x7f /opt/devkitPro/devkitARM/lib/gcc/arm-eabi/4.3.3/thumb/crtn.o
+>>>>>>> af63a5401edf850a9e609573884777200e3a17e4
 
 .debug_frame    0x00000000      0xd90
  *(.debug_frame)
@@ -1872,6 +1895,7 @@ Linker script and memory map
  .debug_frame   0x00000c00       0xb0 /opt/devkitPro/libnds/lib/libnds9.a(background.o)
  .debug_frame   0x00000cb0       0xe0 /opt/devkitPro/libnds/lib/libnds9.a(trig.o)
 
+<<<<<<< HEAD
 .debug_str      0x00000000     0x3290
  *(.debug_str)
  .debug_str     0x00000000      0x647 main.o
@@ -1897,6 +1921,33 @@ Linker script and memory map
  .debug_str     0x00002ec5      0x308 /opt/devkitPro/libnds/lib/libnds9.a(background.o)
                                 0x64c (size before relaxing)
  .debug_str     0x000031cd       0xc3 /opt/devkitPro/libnds/lib/libnds9.a(trig.o)
+=======
+.debug_str      0x00000000     0x31f0
+ *(.debug_str)
+ .debug_str     0x00000000      0x5a7 main.o
+                                0x608 (size before relaxing)
+ .debug_str     0x000005a7      0xd20 /opt/devkitPro/libnds/lib/libnds9.a(console.o)
+                                0xfa2 (size before relaxing)
+ .debug_str     0x000012c7      0x2b6 /opt/devkitPro/libnds/lib/libnds9.a(initSystem.o)
+                                0x39d (size before relaxing)
+ .debug_str     0x0000157d       0xd2 /opt/devkitPro/libnds/lib/libnds9.a(keys.o)
+                                0x28b (size before relaxing)
+ .debug_str     0x0000164f      0x2aa /opt/devkitPro/libnds/lib/libnds9.a(system.o)
+                                0x4ad (size before relaxing)
+ .debug_str     0x000018f9       0x74 /opt/devkitPro/libnds/lib/libnds9.a(touch.o)
+                                0x1a6 (size before relaxing)
+ .debug_str     0x0000196d      0x7d6 /opt/devkitPro/libnds/lib/libnds9.a(video.o)
+                                0xae7 (size before relaxing)
+ .debug_str     0x00002143      0x48f /opt/devkitPro/libnds/lib/libnds9.a(videoGL.o)
+                                0xc6c (size before relaxing)
+ .debug_str     0x000025d2      0x714 /opt/devkitPro/libnds/lib/libnds9.a(fifosystem.o)
+                                0x8ff (size before relaxing)
+ .debug_str     0x00002ce6      0x13f /opt/devkitPro/libnds/lib/libnds9.a(interrupts.o)
+                                0x2f0 (size before relaxing)
+ .debug_str     0x00002e25      0x308 /opt/devkitPro/libnds/lib/libnds9.a(background.o)
+                                0x64c (size before relaxing)
+ .debug_str     0x0000312d       0xc3 /opt/devkitPro/libnds/lib/libnds9.a(trig.o)
+>>>>>>> af63a5401edf850a9e609573884777200e3a17e4
                                 0x199 (size before relaxing)
 
 .debug_loc      0x00000000     0x37f9
@@ -1949,7 +2000,7 @@ LOAD /opt/devkitPro/devkitARM/lib/gcc/arm-eabi/4.3.3/../../../../arm-eabi/lib/th
 END GROUP
 LOAD /opt/devkitPro/devkitARM/lib/gcc/arm-eabi/4.3.3/thumb/crtend.o
 LOAD /opt/devkitPro/devkitARM/lib/gcc/arm-eabi/4.3.3/thumb/crtn.o
-OUTPUT(/home/nds/files/workspace/Projet_Embedded_Systems/Test_Pattern_Recognition/Test_Pattern_Recognition.elf elf32-littlearm)
+OUTPUT(/home/nds/files/workspace/realProject/Projet_Embedded_Systems/Test_Pattern_Recognition/Test_Pattern_Recognition.elf elf32-littlearm)
 
 .ARM.attributes
                 0x00000000       0x2f

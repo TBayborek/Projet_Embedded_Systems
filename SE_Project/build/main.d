@@ -70,6 +70,11 @@ main.o:  \
   /opt/devkitPro/libnds/include/mm_types.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/soundbank.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/soundbank_bin.h \
+  /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/WiFi_minilib.h \
+  /opt/devkitPro/libnds/include/dswifi9.h \
+  /opt/devkitPro/libnds/include/dswifi_version.h \
+  /opt/devkitPro/libnds/include/netinet/in.h \
+  /opt/devkitPro/libnds/include/sys/socket.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Initialization.h \
   /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Init_Interruptions.h
 
@@ -212,6 +217,16 @@ main.o:  \
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/soundbank.h:
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/build/soundbank_bin.h:
+
+/home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/WiFi_minilib.h:
+
+/opt/devkitPro/libnds/include/dswifi9.h:
+
+/opt/devkitPro/libnds/include/dswifi_version.h:
+
+/opt/devkitPro/libnds/include/netinet/in.h:
+
+/opt/devkitPro/libnds/include/sys/socket.h:
 
 /home/nds/files/workspace/realProject/Projet_Embedded_Systems/SE_Project/source/Initialization.h:
 

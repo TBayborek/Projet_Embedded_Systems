@@ -14,15 +14,29 @@ void Game_Update(){
 		gs_test = 0;
 		break;
 	case START:
-		// PRINT explanations about game and "press A when ready"
+		// PRINT explanations about game and "choose mode"
 		gs_test = 1;
 		ticks = 0;
-		Game_Status = USER_TURN; //skip definitivement?
+
+		HasPlayed1=0; //in case of multi game
+		HasPlayed2=0;
+
+		int mode=0; //mode=0 for solo, =1 for multi
+
+		if (mode==0)
+			Game_Status = USER_TURN;
+		else if(mode==1)
+			Game_Status = MULTIPLAYER_TURN;
 		//printMenu2();
 		break;
 	case USER_TURN:
 		gs_test = 2;
 		drawArea();
+		break;
+	case MULTIPLAYER_TURN:
+		gs_test=2;
+		drawArea(); //modifier "bot" par player 2 en cröant drawAreaMult()
+		checkIfThe2HavePlayed();
 		break;
 	case OPPONENT_TURN:
 
@@ -66,6 +80,7 @@ void Handle_Button(unsigned keys){
 	if((Game_Status == START) && (keys & KEY_A)){
 		Game_Status = USER_TURN;
 		ticks = 0;
+
 	}
 
 	if((Game_Status == NEXT) && (keys & KEY_A)){
@@ -105,6 +120,38 @@ void Handle_Touchscreen(){
 			Game_Status = OPPONENT_TURN;
 		}
 	}
+
+
+
+	if (Game_Status == MULTIPLAYER_TURN){
+		if ((posx>125 && posx<256) && (posy>=0 && posy<192)){
+			if(posy>=0 && posy<64) {
+
+				userPlayRock();
+
+
+				user_move = ROCK;
+			}
+			if(posy>=64 && posy<128){
+				userPlayScissor();
+
+				user_move = SCISSORS;
+			}
+			if(posy>=128 && posy<192){
+				userPlayPaper();
+
+				user_move = PAPER;
+			}
+			HasPlayed1=1; //player 1 has played
+
+
+		}
+	}
+
+
+
+
+
 }
 
 
@@ -219,6 +266,10 @@ void drawArea(){
 		}
 	}
 
+	//utile pour affichage du 0-0
+	printScore(scoreHuman,12,0);
+	printScore(scoreBot,21,0);
+
 
 }
 
@@ -246,4 +297,32 @@ void userPlayPaper(){
 
 }
 
+void checkIfThe2HavePlayed(){
+
+	char msg[1];
+
+	//Listen for messages from others
+	if(receiveData(msg,1)>0	)
+	{
+		//If received, decode the key and print
+		switch(msg[0])
+		{
+		case 0:
+			opponent_move=ROCK;
+			break;
+		case 1:
+			opponent_move=PAPER;
+			break;
+		case 2:
+			opponent_move=SCISSORS;
+			break;
+		}
+		HasPlayed2=1;
+	}
+
+	if(HasPlayed1==1 && HasPlayed2==1){
+		Game_Status=RESULTS;
+
+	}
+}
 
