@@ -21,8 +21,6 @@
 	#define ORANGE ARGB16(1,31,15,0)
 	#define CYAN ARGB16(1,0,31,31)
 
-	int ticks;
-
 	typedef enum status{
 		STOP,
 		START,

@@ -10,8 +10,6 @@ void Win_Round(){
 	u16* bg1Map = (u16*)BG_MAP_RAM_SUB(25);
 	int rowEnd=(WINMapLen/2)/32; //nb of rows in the WIN picture
 
-
-
 	for(row=0;row<6;row++){
 		for(col=0;col<32;col++){
 			bg1Map[(row+25-rowEnd)*32+col] = bg1Map[(row+24)*32+col];
@@ -20,16 +18,10 @@ void Win_Round(){
 		}
 	}
 
-
-
-
-
-
 	Game_Status = NEXT;
 }
 
 void Loose_Round(int raison){
-
 	//sound
 	mmEffect(SFX_BUZZER);
 
@@ -46,8 +38,6 @@ void Loose_Round(int raison){
 		for(row=0;row<6;row++){
 			for(col=0;col<32;col++){
 				bg1Map[(row+25-rowEnd)*32+col] = bg1Map[(row+30)*32+col];
-
-
 			}
 		}
 	}
@@ -55,10 +45,7 @@ void Loose_Round(int raison){
 	//if raison = 1, then the player didn t play in time
 	else if (raison==1) {
 		printTimesUp();
-
 	}
-
-
 
 	Game_Status = NEXT;
 }
@@ -126,8 +113,6 @@ void printScore(int number, int posx, int posy){
 	//}
 
 	int offNumber=number*3;
-
-
 
 
 	for(row=0;row<3;row++){

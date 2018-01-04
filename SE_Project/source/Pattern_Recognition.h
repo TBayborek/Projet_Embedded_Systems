@@ -9,5 +9,5 @@ double min_dist_edge, min_edge_ctrl_len;
 touchPosition touch;
 move drawn_figure;
 
-move detect_move(void);
-double vectors_angle(int, int, int, int);
+move Detect_Move(void);
+double Vectors_Angle(int, int, int, int);

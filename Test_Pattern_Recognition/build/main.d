@@ -1,5 +1,5 @@
 main.o:  \
- /home/nds/files/workspace/realProject/Projet_Embedded_Systems/Test_Pattern_Recognition/source/main.c \
+ /home/nds/files/workspace/Projet_Embedded_Systems/Test_Pattern_Recognition/source/main.c \
   /opt/devkitPro/libnds/include/nds.h \
   /opt/devkitPro/libnds/include/nds/libversion.h \
   /opt/devkitPro/libnds/include/nds/ndstypes.h \

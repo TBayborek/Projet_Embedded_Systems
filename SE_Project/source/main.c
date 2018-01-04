@@ -16,7 +16,6 @@ int main(){
 	return 0;
 }
 
-
 void Initialization(){
 	Init_Graphics();
 	Init_Interruptions();

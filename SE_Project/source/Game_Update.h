@@ -8,31 +8,29 @@
 #include "Pattern_Recognition.h"
 
 unsigned keys;
-touchPosition touch;
-u16 posx, posy;
-int choice;
+int err_cnt;
+int ticks, delay_ticks;
+bool times_up;
 
 move user_move;
 move opponent_move;
 
 void Game_Update();
 
-void Handle_Input();
-
 void Handle_Button(unsigned);
-void Handle_Touchscreen();
 
 void Opponent_Move();
 void Check_Results(move,move);
 
-//void ISR_Keys();
-void ISR_Timer0();
 
 void printMenu2();
 void drawArea();
-void userPlayScissor();
-void userPlayRock();
-void userPlayPaper();
+void userPlayed(move);
 void printTimesUp();
 void checkIfThe2HavePlayed();
-void sendPlay(user_move);
+void sendPlay(move);
+
+//void ISR_Keys();
+void ISR_Timer0();
+
+void delay_ds(int);
