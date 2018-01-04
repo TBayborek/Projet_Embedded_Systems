@@ -4,6 +4,10 @@ Init_Graphics.o:  \
   /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Define.h \
   /opt/devkitPro/libnds/include/nds/arm9/sound.h \
   /opt/devkitPro/libnds/include/nds/ndstypes.h \
+  /opt/devkitPro/libnds/include/maxmod9.h \
+  /opt/devkitPro/libnds/include/mm_types.h \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/soundbank.h \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/soundbank_bin.h \
   /opt/devkitPro/libnds/include/nds.h \
   /opt/devkitPro/libnds/include/nds/libversion.h \
   /opt/devkitPro/libnds/include/nds/ndstypes.h \
@@ -59,6 +63,8 @@ Init_Graphics.o:  \
   /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Assemblage.h \
   /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Menu.h \
   /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/MenuInstruction.h \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/MenuDescription.h \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/MenuTactile.h \
   /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Paper.h \
   /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Rock.h \
   /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Scissor.h \
@@ -71,6 +77,14 @@ Init_Graphics.o:  \
 /opt/devkitPro/libnds/include/nds/arm9/sound.h:
 
 /opt/devkitPro/libnds/include/nds/ndstypes.h:
+
+/opt/devkitPro/libnds/include/maxmod9.h:
+
+/opt/devkitPro/libnds/include/mm_types.h:
+
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/soundbank.h:
+
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/soundbank_bin.h:
 
 /opt/devkitPro/libnds/include/nds.h:
 
@@ -181,6 +195,10 @@ Init_Graphics.o:  \
 /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Menu.h:
 
 /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/MenuInstruction.h:
+
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/MenuDescription.h:
+
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/MenuTactile.h:
 
 /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/Paper.h:
 

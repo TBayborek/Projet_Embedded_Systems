@@ -1,4 +1,4 @@
-﻿#include "Game_Update.h"
+#include "Game_Update.h"
 
 void Game_Update(){
 	irqSet(IRQ_TIMER0, &ISR_Timer0);
@@ -21,7 +21,6 @@ void Game_Update(){
 		int mode=0; //mode=0 for solo, =1 for multi
 		if (mode==0) Game_Status = USER_TURN;
 		else if(mode==1) Game_Status = MULTIPLAYER_TURN;
-
 		//printMenu2();
 		break;
 	case USER_TURN:
@@ -93,7 +92,6 @@ void Handle_Button(unsigned keys){
 	}
 */
 }
-
 
 void Opponent_Move(){
 	int choice = rand()%3;
@@ -198,6 +196,7 @@ void userPlayed(move user_play){
 
 void checkIfThe2HavePlayed(){
 	int row_sel;
+
 	char msg[1];
 
 	//Listen for messages from others
@@ -212,31 +211,25 @@ void checkIfThe2HavePlayed(){
 			break;
 		case 1:
 			opponent_move=PAPER;
-			row_sel = 10;
+			row_sel = 20;
 			break;
 		case 2:
 			opponent_move=SCISSORS;
-			row_sel = 20;
+			row_sel = 10;
 			break;
 		}
 		HasPlayed2=1;
-
 	}
 
 	if(HasPlayed1==1 && HasPlayed2==1){
-
 		//print the corresponding player 2's choice (taken from the bottom of Background.png)
 		int row, col;
-		u16* bg0Map = (u16*)BG_MAP_RAM(26);
 		for(row=0;row<9;row++){
 			for(col=0;col<10;col++){
 				bg0Map[(row+8)*32+(col+12)] = BackgroundMap[(row+25+row_sel)*32+col+12];
 			}
 		}
-
-
 		Game_Status=RESULTS;
-
 	}
 }
 
@@ -271,12 +264,11 @@ void ISR_Keys(){
 void ISR_Timer0(void){
 	if(Game_Status == USER_TURN){
 		ticks++;
-		if (ticks>=300) {
+		if (ticks>=400) {
 			Loose_Round(1);
 			times_up = true;
 		}
 	}
-
 	delay_ticks++;
 }
 // ------- END OF ISR ------------

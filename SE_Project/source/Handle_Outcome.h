@@ -1,7 +1,6 @@
 #include "Define.h"
 #include "Shared.h"
 #include "Init_Graphics.h"
-#include "Init_Peripherals.h"
 
 void Win_Round();
 void Loose_Round(int raison);

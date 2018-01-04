@@ -7,17 +7,13 @@ void Win_Round(){
 
 	//print "you win"
 	int row, col;
-	u16* bg1Map = (u16*)BG_MAP_RAM_SUB(25);
 	int rowEnd=(WINMapLen/2)/32; //nb of rows in the WIN picture
 
 	for(row=0;row<6;row++){
 		for(col=0;col<32;col++){
 			bg1Map[(row+25-rowEnd)*32+col] = bg1Map[(row+24)*32+col];
-
-
 		}
 	}
-
 	Game_Status = NEXT;
 }
 
@@ -31,7 +27,6 @@ void Loose_Round(int raison){
 
 		//print "you lose" panel
 		int row, col;
-		u16* bg1Map = (u16*)BG_MAP_RAM_SUB(25);
 		int rowEnd=(WINMapLen/2)/32; //nb of rows in the WIN picture
 
 
@@ -46,58 +41,40 @@ void Loose_Round(int raison){
 	else if (raison==1) {
 		printTimesUp();
 	}
-
 	Game_Status = NEXT;
 }
 
 void Draw_Round(){
-
-
 	//sound
 	mmEffect(SFX_BOING_X);
 
-
 	//printing of "it's a draw" panel
 	int row, col;
-	u16* bg1Map = (u16*)BG_MAP_RAM_SUB(25);
 	int rowEnd=(WINMapLen/2)/32; //nb of rows in the WIN picture
 
 	for(row=0;row<6;row++){
 		for(col=0;col<32;col++){
 			bg1Map[(row+25-rowEnd)*32+col] = bg1Map[(row+36)*32+col];
-
-
 		}
 	}
-
 	Game_Status = NEXT;
 }
 
 
 void printTimesUp(){
-
 	int row, col;
-	u16* bg1Map = (u16*)BG_MAP_RAM_SUB(25);
 	int rowEnd=(256-192)/8; //nb of rows of tile in the WIN picture
-
 
 	for(row=0;row<8;row++){
 		for(col=0;col<32;col++){
 			bg1Map[(row+24-rowEnd)*32+col] = bg1Map[(row+24)*32+col];
-
-
 		}
 	}
-
-
 }
 
 
 void printScore(int number, int posx, int posy){
-
-
 	int row, col;
-	u16* bg0Map = (u16*)BG_MAP_RAM(26);
 
 	//if(number>9){
 		int deci=number/10;
@@ -114,21 +91,16 @@ void printScore(int number, int posx, int posy){
 
 	int offNumber=number*3;
 
-
 	for(row=0;row<3;row++){
 		for(col=0;col<2;col++){
 			bg0Map[(row+posy)*32+(col+posx)] = BackgroundMap[(row+25+offNumber)*32+col];
 		}
 	}
-
 }
 
 void handleScore(int winner){
-
-
 	if(winner==1){
 		scoreHuman=scoreHuman+1;
-
 
 		printScore(scoreHuman,12,0);
 		printScore(scoreBot,21,0);
@@ -136,9 +108,7 @@ void handleScore(int winner){
 	else if(winner==0){
 		scoreBot=scoreBot+1;
 
-
 		printScore(scoreHuman,12,0);
 		printScore(scoreBot,21,0);
 	}
-
 }

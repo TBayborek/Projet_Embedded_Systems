@@ -7,6 +7,9 @@
 	#include <string.h>
 	#include <math.h>
 	#include <nds/arm9/sound.h>		// sound functions
+	#include <maxmod9.h> //sound
+	#include "soundbank.h"
+	#include "soundbank_bin.h"
 	#include <nds.h>
 
 	#define n_elems(x) sizeof(x)/sizeof(x[0])

@@ -4,6 +4,10 @@ Init_Peripherals.o:  \
   /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Define.h \
   /opt/devkitPro/libnds/include/nds/arm9/sound.h \
   /opt/devkitPro/libnds/include/nds/ndstypes.h \
+  /opt/devkitPro/libnds/include/maxmod9.h \
+  /opt/devkitPro/libnds/include/mm_types.h \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/soundbank.h \
+  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/soundbank_bin.h \
   /opt/devkitPro/libnds/include/nds.h \
   /opt/devkitPro/libnds/include/nds/libversion.h \
   /opt/devkitPro/libnds/include/nds/ndstypes.h \
@@ -52,10 +56,6 @@ Init_Peripherals.o:  \
   /opt/devkitPro/libnds/include/nds/system.h \
   /opt/devkitPro/libnds/include/nds/arm9/decompress.h \
   /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Shared.h \
-  /opt/devkitPro/libnds/include/maxmod9.h \
-  /opt/devkitPro/libnds/include/mm_types.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/soundbank.h \
-  /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/soundbank_bin.h \
   /opt/devkitPro/libnds/include/dswifi9.h \
   /opt/devkitPro/libnds/include/dswifi_version.h \
   /opt/devkitPro/libnds/include/netinet/in.h \
@@ -68,6 +68,14 @@ Init_Peripherals.o:  \
 /opt/devkitPro/libnds/include/nds/arm9/sound.h:
 
 /opt/devkitPro/libnds/include/nds/ndstypes.h:
+
+/opt/devkitPro/libnds/include/maxmod9.h:
+
+/opt/devkitPro/libnds/include/mm_types.h:
+
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/soundbank.h:
+
+/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/soundbank_bin.h:
 
 /opt/devkitPro/libnds/include/nds.h:
 
@@ -164,14 +172,6 @@ Init_Peripherals.o:  \
 /opt/devkitPro/libnds/include/nds/arm9/decompress.h:
 
 /home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/source/Shared.h:
-
-/opt/devkitPro/libnds/include/maxmod9.h:
-
-/opt/devkitPro/libnds/include/mm_types.h:
-
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/soundbank.h:
-
-/home/nds/files/workspace/Projet_Embedded_Systems/SE_Project/build/soundbank_bin.h:
 
 /opt/devkitPro/libnds/include/dswifi9.h:
 
