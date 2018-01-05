@@ -7,13 +7,14 @@ void Win_Round(){
 
 	//print "you win"
 	int row, col;
-	int rowEnd=(WINMapLen/2)/32; //nb of rows in the WIN picture
-
+	//int rowEnd=(WINMapLen/2)/32; //nb of rows in the WIN picture
+	int rowEnd=6;
 	for(row=0;row<6;row++){
 		for(col=0;col<32;col++){
-			bg1Map[(row+25-rowEnd)*32+col] = bg1Map[(row+24)*32+col];
+			bg0Map_SUB[(row+25-rowEnd)*32+col] = bg0Map_SUB[(row+24)*32+col];
 		}
 	}
+
 	Game_Status = NEXT;
 }
 
@@ -32,16 +33,25 @@ void Loose_Round(int raison){
 
 		for(row=0;row<6;row++){
 			for(col=0;col<32;col++){
-				bg1Map[(row+25-rowEnd)*32+col] = bg1Map[(row+30)*32+col];
+				bg0Map_SUB[(row+25-rowEnd)*32+col] = bg0Map_SUB[(row+30)*32+col];
 			}
 		}
+		delay_ds(10);
+		Game_Status = NEXT;
 	}
-
+	/*
 	//if raison = 1, then the player didn t play in time
 	else if (raison==1) {
 		printTimesUp();
 	}
-	Game_Status = NEXT;
+	*/
+
+	//if raison = 1, then the player made 3 mistakes
+	else if (raison==1) {
+		printBadDraw();
+		handleScore(0);
+		Game_Status = NEXT;
+	}
 }
 
 void Draw_Round(){
@@ -54,9 +64,10 @@ void Draw_Round(){
 
 	for(row=0;row<6;row++){
 		for(col=0;col<32;col++){
-			bg1Map[(row+25-rowEnd)*32+col] = bg1Map[(row+36)*32+col];
+			bg0Map_SUB[(row+25-rowEnd)*32+col] = bg0Map_SUB[(row+36)*32+col];
 		}
 	}
+	delay_ds(10);
 	Game_Status = NEXT;
 }
 
@@ -110,3 +121,17 @@ void handleScore(int winner){
 		printScore(scoreBot,21,0);
 	}
 }
+
+void printBadDraw(){
+	int row, col;
+	int rowEnd=(256-192)/8; //nb of rows of tile in the WIN picture
+
+	for(row=0;row<8;row++){
+		for(col=0;col<32;col++){
+			bg0Map_SUB[(row+24-rowEnd)*32+col] = bg0Map_SUB[(row+32)*32+col];
+		}
+	}
+
+
+}
+

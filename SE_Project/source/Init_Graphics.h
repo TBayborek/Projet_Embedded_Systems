@@ -14,6 +14,7 @@
 #include "Rock.h"
 #include "Scissor.h"
 #include "WIN.h"
+#include "BackgroundMulti.h"
 
 void Init_Graphics(void);
 void Init_Main_Graphics(void);

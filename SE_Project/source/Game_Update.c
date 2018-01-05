@@ -30,7 +30,7 @@ void Game_Update(){
 		while(user_move==ERROR){
 			if(user_move != ERROR) break;
 			if (err_cnt>0)mmEffect(SFX_BUZZER);
-			if (err_cnt>2){Loose_Round(0); break;}
+			if (err_cnt>2){Loose_Round(1); break;}
 
 			err_cnt++;
 			ticks=0;
@@ -39,6 +39,7 @@ void Game_Update(){
 			user_move = Detect_Move();
 
 			if(times_up){
+
 				delay_ds(10);
 				user_move = ERROR;
 				times_up = false;
@@ -55,10 +56,52 @@ void Game_Update(){
 			case ERROR: break;
 		}
 		break;
+
+
 	case MULTIPLAYER_TURN:
-		drawArea(); //modifier "bot" par player 2 en cröant drawAreaMult()
-		user_move = Detect_Move();
-		HasPlayed1=1;
+		err_cnt=0;
+		user_move = ERROR;
+		//reste dans cette boucle tant que Detect_move n'a rien detecte
+		while(user_move==ERROR){
+			if(user_move != ERROR) break;
+			if (err_cnt>0)mmEffect(SFX_BUZZER);
+			if (err_cnt>2){Loose_Round(1); break;}
+
+			err_cnt++;
+			ticks=0;
+
+			drawAreaMulti();
+			user_move = Detect_Move();
+			if(times_up){
+
+				delay_ds(10);
+				user_move = ERROR;
+				times_up = false;
+				err_cnt = 0;
+			}
+		}
+
+		if(Game_Status == USER_TURN) Game_Status = OPPONENT_TURN;
+
+			//tant que joueur 1 n'a pas jouö, on n'arrive pas lä
+		switch(user_move){
+			case ROCK:
+				userPlayed(ROCK);
+				HasPlayed1=1;
+				break;
+			case PAPER:
+				userPlayed(PAPER);
+				HasPlayed1=1;
+				break;
+			case SCISSORS:
+				userPlayed(SCISSORS);
+				HasPlayed1=1;
+				break;
+			case ERROR: break;
+		}
+
+
+
 		checkIfThe2HavePlayed();
 		break;
 	case OPPONENT_TURN:
@@ -184,6 +227,39 @@ void drawArea(){
 }
 
 
+
+void drawAreaMulti(){
+	//print bottom screen ("please draw here")
+	swiCopy(ecranBaseTiles, BG_TILE_RAM_SUB(0), ecranBaseTilesLen/2);
+	swiCopy(ecranBaseMap, bg0Map_SUB, ecranBaseMapLen/2);
+	swiCopy(ecranBasePal, BG_PALETTE_SUB, ecranBasePalLen/2);
+
+	//print top screen (comic style)
+	//we use two times "Background" in order to have two layers. This will be
+	//useful when printing computer choices
+	swiCopy(BackgroundMultiTiles, BG_TILE_RAM(0), BackgroundMultiTilesLen/2);
+	swiCopy(BackgroundMultiMap, bg0Map, BackgroundMultiMapLen/2);
+	swiCopy(BackgroundMultiPal, BG_PALETTE, BackgroundMultiPalLen/2);
+
+	swiCopy(BackgroundMultiTiles, BG_TILE_RAM(4), BackgroundMultiTilesLen/2);
+	swiCopy(BackgroundMultiMap, bg1Map, BackgroundMultiMapLen/2);
+	swiCopy(BackgroundMultiPal, BG_PALETTE, BackgroundMultiPalLen/2);
+
+	//draw the interrogation point (taken from below the the Background.png)
+	int row, col;
+	for(row=0;row<9;row++){
+		for(col=0;col<10;col++){
+			bg0Map[(row+8)*32+(col+12)] = BackgroundMap[(row+25+30)*32+col+12];
+		}
+	}
+
+	//utile pour affichage du 0-0
+	printScore(scoreHuman,12,0);
+	printScore(scoreBot,21,0);
+}
+
+
+
 void userPlayed(move user_play){
 	switch(user_play){
 		case ROCK:
@@ -247,14 +323,14 @@ void checkIfThe2HavePlayed(){
 	}
 }
 
-
+/*
 void delay_ds(int ds){
 	delay_ticks = 0;
 	while(1){
 		if(delay_ticks>=ds*10)break;
 	}
 }
-
+*/
 // ---------- ISR ----------------
 /*
 void ISR_Keys(){
@@ -279,7 +355,8 @@ void ISR_Timer0(void){
 	if(Game_Status == USER_TURN){
 		ticks++;
 		if (ticks>=400) {
-			Loose_Round(1);
+			printTimesUp();
+			//Loose_Round(1);
 			times_up = true;
 		}
 	}
