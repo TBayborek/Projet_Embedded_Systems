@@ -30,11 +30,21 @@ void Init_Sub_Graphics(void){
 			DISPLAY_BG0_ACTIVE |
 			DISPLAY_BG3_ACTIVE; // Sub engine in mode 0, activate BG 0
 
-	BGCTRL_SUB[0] = BG_MAP_BASE(25) | BG_TILE_BASE(0) | BG_32x32 | BG_COLOR_256;
-	BGCTRL_SUB[3] = BG_MAP_BASE(26) | BgSize_B8_256x256 | BG_COLOR_256;
+	BGCTRL_SUB[0] = BG_MAP_BASE(15) | BG_TILE_BASE(0) | BG_32x32 | BG_COLOR_256;
+	BGCTRL_SUB[3] = BG_MAP_BASE(17) | BG_BMP16_256x256 | BG_COLOR_256;
 
-	bg0Map_SUB = BG_MAP_RAM_SUB(25);
-	bg3Map_SUB = BG_MAP_RAM_SUB(26);
+	bg0Map_SUB = (u16*) BG_MAP_RAM_SUB(15);
+	bg3Map_SUB = (u16*) BG_MAP_RAM_SUB(17);
+
+	BGCTRL_SUB[0] = (BGCTRL_SUB[0] & 0xFFFC) | 3;
+	BGCTRL_SUB[3] = (BGCTRL_SUB[3] & 0xFFFC) | 0;
+
+    REG_BG3PA_SUB = 256;
+    REG_BG3PB_SUB = 0;
+    REG_BG3PC_SUB = 0;
+    REG_BG3PD_SUB = 256;
+    REG_BG3X_SUB = 0;
+    REG_BG3Y_SUB = 256*8;
 
 	swiCopy(MenuInstructionTiles, BG_TILE_RAM_SUB(0), MenuInstructionTilesLen/2); // approx. 50KB of Tiles, 25x2KB slots used
 	swiCopy(MenuInstructionMap, bg0Map_SUB, MenuInstructionMapLen/2); // store in the 26th slot => #25

@@ -14,13 +14,6 @@ move Detect_Move(void) {
 	min_edge_ctrl_len = 10.0;
 	// --------- End Variable Init --------
 
-	/*
-	BG_PALETTE_SUB[0] = ARGB16(1,0,0,0);
-	BG_PALETTE_SUB[1] = ARGB16(1,31,0,0);
-	memset(BG_BMP_RAM_SUB(26),0,256*192*2);
-	//u16* bg3Map = (u16*) BG_BMP_RAM_SUB(26);
-	 */
-
 	while(1) {
 		touchRead(&touch);
 		posx = touch.px;
@@ -43,7 +36,7 @@ move Detect_Move(void) {
 				if(n_points>1){
 					dist_last_edge += sqrt(pow(dx,2) + pow(dy,2));
 					int nsteps = 50;
-					//for(i=0;i<=nsteps;i++) VRAM_A[(int) floor((posy_old+dy*i/nsteps)*256+posx_old+dx*i/nsteps)] = ARGB16(1,0,0,0);
+					for(i=0;i<=nsteps;i++) bg3Map_SUB[(int) floor((posy_old+dy*i/nsteps)*256+posx_old+dx*i/nsteps)] = ARGB16(1,0,0,0);
 				}
 
 				for(i=1;i<n_elems(pos);i++){
@@ -103,7 +96,7 @@ move Detect_Move(void) {
 			double sum_angles;
 			switch(n_corners){
 				case 0:
-					if ((Vectors_Angle(init_dx,init_dy, disp_x_new, disp_y_new)<PI/6) && (max_dangle_init>3*PI/4)) drawn_figure = ROCK;
+					if ((Vectors_Angle(init_dx,init_dy, disp_x_new, disp_y_new)<PI/4) && (max_dangle_init>6*PI/4)) drawn_figure = ROCK;
 					else drawn_figure = ERROR;
 					break;
 				case 1:
@@ -125,6 +118,7 @@ move Detect_Move(void) {
 				default: drawn_figure = ERROR;
 			}
 			start_draw = -1;
+			memset(bg3Map_SUB,ARGB16(0,0,0,0),256*256*2);
 			return drawn_figure;
 		}
 		swiWaitForVBlank();

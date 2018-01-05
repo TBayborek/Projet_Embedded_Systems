@@ -99,8 +99,6 @@ void Handle_Button(unsigned keys){
 
 		if((posx>27 & posx<=228) && (posy>=50 & posy<80)){
 			Game_Status = USER_TURN;
-
-
 		}
 
 

@@ -1,1 +1,0 @@
-YourChoice.o: YourChoice.s
