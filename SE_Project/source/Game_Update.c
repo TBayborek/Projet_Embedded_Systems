@@ -17,11 +17,12 @@ void Game_Update(){
 
 		HasPlayed1=0; //in case of multi game
 		HasPlayed2=0;
-
+		/*
 		int mode=0; //mode=0 for solo, =1 for multi
 		if (mode==0) Game_Status = USER_TURN;
 		else if(mode==1) Game_Status = MULTIPLAYER_TURN;
-		//printMenu2();
+*/
+		printMenu2();
 		break;
 	case USER_TURN:
 		err_cnt=0;
@@ -91,6 +92,21 @@ void Handle_Button(unsigned keys){
 		Init_Graphics();
 	}
 */
+	if ((keys & KEY_TOUCH) && (Game_Status==START)) {
+		touchRead(&touch);
+		int posx = touch.px;
+		int posy = touch.py;
+
+		if((posx>27 & posx<=228) && (posy>=50 & posy<80)){
+			Game_Status = USER_TURN;
+
+
+		}
+
+
+
+	}
+
 }
 
 void Opponent_Move(){
@@ -131,12 +147,12 @@ void Check_Results(move user_move, move opponent_move){
 
 void printMenu2(){
 	swiCopy(MenuDescriptionTiles, BG_TILE_RAM(0), MenuDescriptionTilesLen/2);
-	swiCopy(MenuDescriptionMap, bg1Map, MenuDescriptionMapLen/2);
+	swiCopy(MenuDescriptionMap, bg0Map, MenuDescriptionMapLen/2);
 	swiCopy(MenuDescriptionPal, BG_PALETTE, MenuDescriptionPalLen/2);
 
-	swiCopy(MenuInstructionTiles, BG_TILE_RAM_SUB(0), MenuInstructionTilesLen/2);
-	swiCopy(MenuInstructionMap, bg3Map_SUB, MenuInstructionMapLen/2);
-	swiCopy(MenuInstructionPal, BG_PALETTE_SUB, MenuInstructionPalLen/2);
+	swiCopy(MenuTactileTiles, BG_TILE_RAM_SUB(0), MenuTactileTilesLen/2);
+	swiCopy(MenuTactileMap, bg0Map_SUB, MenuTactileMapLen/2);
+	swiCopy(MenuTactilePal, BG_PALETTE_SUB, MenuTactilePalLen/2);
 }
 
 void drawArea(){
