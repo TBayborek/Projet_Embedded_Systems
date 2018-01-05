@@ -14,6 +14,7 @@
 #include "Rock.h"
 #include "Scissor.h"
 #include "WIN.h"
+#include "BackgroundMulti.h"
 
 
 

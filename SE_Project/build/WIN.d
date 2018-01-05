@@ -1,1 +1,0 @@
-WIN.o: WIN.s

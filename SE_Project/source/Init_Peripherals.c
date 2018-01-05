@@ -12,6 +12,24 @@ void Init_Sound() {
 
 
 // -------- WIFI section ---------
+//initialization
+void Init_WiFi(){
+    //Initialize WiFi
+    if(initWiFi())
+    	printf("WiFi OK!\n");
+    else
+    	printf("Error WiFi\n");
+
+    //Open Socket
+    if(openSocket())
+    	printf("Socket OK!\n");
+    else
+    	printf("Error Socket\n");
+
+
+
+}
+
 
 //Socket port
 #define LOCAL_PORT 8888

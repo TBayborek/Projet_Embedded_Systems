@@ -1,5 +1,6 @@
 #include "Define.h"
 
+
 extern status Game_Status;
 
 extern int scoreHuman;
@@ -12,3 +13,7 @@ extern u16* bg0Map;
 extern u16* bg1Map;
 extern u16* bg0Map_SUB;
 extern u16* bg3Map_SUB;
+
+extern int delay_ticks;
+
+extern void delay_ds(int);
