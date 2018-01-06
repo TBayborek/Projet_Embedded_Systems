@@ -20,3 +20,5 @@ void delay_ds(int ds){
 		if(delay_ticks>=ds*10)break;
 	}
 }
+
+int mode=0;

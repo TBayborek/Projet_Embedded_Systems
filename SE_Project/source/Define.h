@@ -32,6 +32,7 @@
 		RESULTS,
 		NEXT,
 		MULTIPLAYER_TURN,
+		LOBBY,
 	}status;
 
 	typedef enum move{
@@ -39,6 +40,7 @@
 			SCISSORS,
 			PAPER,
 			ERROR,
+			LOSE,
 	}move;
 
 #endif
