@@ -370,6 +370,7 @@ void ISR_Timer0(void){
 		if (ticksConf1>300){
 			confirmation1=0;
 			ticksConf1=0;
+			printLobby();
 		}
 	}
 	//erase confirmation2 if the first one isn t confirmed after 1 sec
@@ -378,6 +379,7 @@ void ISR_Timer0(void){
 		if (ticksConf2>300){
 			confirmation2=0;
 			ticksConf2=0;
+			printLobby();
 		}
 	}
 	//call receivePlay2 every 0.5 sec
@@ -482,13 +484,13 @@ void receiveConfirmation()
 //print images for the lobby (in test phase: you win (also you lose for some reason) on sub means you re connected to wifi,
 //you win on main means you send the confirmation, and you lose on main means you received a confirmation )
 void printLobby(){
-	swiCopy(PaperTiles, BG_TILE_RAM(0), PaperTilesLen/2);
-	swiCopy(PaperMap, bg0Map, PaperMapLen/2);
-	swiCopy(PaperPal, BG_PALETTE, PaperPalLen/2);
+	swiCopy(lobbyMainTiles, BG_TILE_RAM(0), lobbyMainTilesLen/2);
+	swiCopy(lobbyMainMap, bg0Map, lobbyMainMapLen/2);
+	swiCopy(lobbyMainPal, BG_PALETTE, lobbyMainPalLen/2);
 
-	swiCopy(PaperTiles, BG_TILE_RAM_SUB(0), PaperTilesLen/2);
-	swiCopy(PaperMap, bg0Map_SUB, PaperMapLen/2);
-	swiCopy(PaperPal, BG_PALETTE_SUB, PaperPalLen/2);
+	swiCopy(lobbyTiles, BG_TILE_RAM_SUB(0), lobbyTilesLen/2);
+	swiCopy(lobbyMap, bg0Map_SUB, lobbyMapLen/2);
+	swiCopy(lobbyPal, BG_PALETTE_SUB, lobbyPalLen/2);
 }
 
 //check if the two players have played
