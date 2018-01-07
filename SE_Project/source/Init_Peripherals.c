@@ -3,11 +3,18 @@
 void Init_Sound() {
 	mmInitDefaultMem((mm_addr)soundbank_bin);
 
-
 	mmLoadEffect(SFX_WINSOUND);
-	mmLoadEffect(SFX_BUZZER);
-	mmLoadEffect(SFX_LOSINGHORNSOUNDEFFECT);
+	mmLoadEffect(SFX_LOSINGHORN);
 	mmLoadEffect(SFX_BOING_X);
+
+	mmLoadEffect(SFX_GUITAR);
+	mmLoadEffect(SFX_PAPER);
+	mmLoadEffect(SFX_SHEARS);
+
+	mmLoadEffect(SFX_WHIP);
+	mmLoadEffect(SFX_BUZZER);
+
+	mmLoadEffect(SFX_NIRVANA);
 }
 
 
@@ -25,9 +32,6 @@ void Init_WiFi(){
     	printf("Socket OK!\n");
     else
     	printf("Error Socket\n");
-
-
-
 }
 
 

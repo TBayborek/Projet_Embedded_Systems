@@ -7,17 +7,20 @@
 
 #include "Pattern_Recognition.h"
 
-unsigned keys;
 int err_cnt;
 int ticks;
-bool times_up;
+int n_rock_streak;
+bool pause;
+bool key_released;
 
 move user_move;
 move opponent_move;
 
+status Old_Status;
+
 void Game_Update();
 
-void Handle_Button(unsigned);
+void Handle_Button();
 
 void Opponent_Move();
 void Check_Results(move,move);
@@ -34,4 +37,4 @@ void sendPlay(move);
 //void ISR_Keys();
 void ISR_Timer0();
 
-//void delay_ds(int);
+void Full_Rock();

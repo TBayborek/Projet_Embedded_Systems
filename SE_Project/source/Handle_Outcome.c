@@ -14,13 +14,12 @@ void Win_Round(){
 			bg0Map_SUB[(row+25-rowEnd)*32+col] = bg0Map_SUB[(row+24)*32+col];
 		}
 	}
-
 	Game_Status = NEXT;
 }
 
 void Loose_Round(int raison){
 	//sound
-	mmEffect(SFX_BUZZER);
+	mmEffect(SFX_LOSINGHORN);
 
 	//if "raison" is equal to 0, then the player lost the round
 	if(raison==0){
@@ -30,23 +29,15 @@ void Loose_Round(int raison){
 		int row, col;
 		int rowEnd=(WINMapLen/2)/32; //nb of rows in the WIN picture
 
-
 		for(row=0;row<6;row++){
 			for(col=0;col<32;col++){
 				bg0Map_SUB[(row+25-rowEnd)*32+col] = bg0Map_SUB[(row+30)*32+col];
 			}
 		}
-		delay_ds(10);
 		Game_Status = NEXT;
 	}
-	/*
-	//if raison = 1, then the player didn t play in time
-	else if (raison==1) {
-		printTimesUp();
-	}
-	*/
 
-	//if raison = 1, then the player made 3 mistakes
+	//if raison = 1, then the player made 3 drawing mistakes
 	else if (raison==1) {
 		printBadDraw();
 		handleScore(0);
@@ -67,7 +58,6 @@ void Draw_Round(){
 			bg0Map_SUB[(row+25-rowEnd)*32+col] = bg0Map_SUB[(row+36)*32+col];
 		}
 	}
-	delay_ds(10);
 	Game_Status = NEXT;
 }
 
@@ -131,7 +121,4 @@ void printBadDraw(){
 			bg0Map_SUB[(row+24-rowEnd)*32+col] = bg0Map_SUB[(row+32)*32+col];
 		}
 	}
-
-
 }
-
