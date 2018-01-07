@@ -34,7 +34,6 @@ void Loose_Round(int raison){
 				bg0Map_SUB[(row+25-rowEnd)*32+col] = bg0Map_SUB[(row+30)*32+col];
 			}
 		}
-
 		Game_Status = NEXT;
 	}
 
@@ -59,7 +58,6 @@ void Draw_Round(){
 			bg0Map_SUB[(row+25-rowEnd)*32+col] = bg0Map_SUB[(row+36)*32+col];
 		}
 	}
-
 	Game_Status = NEXT;
 }
 
@@ -94,7 +92,7 @@ void printScore(int number, int posx, int posy){
 
 	for(row=0;row<3;row++){
 		for(col=0;col<2;col++){
-			bg0Map[(row+posy)*32+(col+posx)] = bg0Map[(row+25+offNumber)*32+col];
+			bg0Map[(row+posy)*32+(col+posx)] = BackgroundMap[(row+25+offNumber)*32+col];
 		}
 	}
 }

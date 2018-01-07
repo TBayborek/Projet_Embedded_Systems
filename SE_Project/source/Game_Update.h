@@ -12,10 +12,10 @@ int ticks;
 int n_rock_streak;
 bool pause;
 bool key_released;
+int row_sel;
 
 move user_move;
 move opponent_move;
-
 
 status Old_Status;
 
@@ -26,14 +26,13 @@ int ticksConf2;
 int ticksPull;
 int flag2Play;
 
+
 typedef enum Messages_e {
 	A,	//0x00
 	B,	//0x01
 	X,	//0x02
 	Y	//0x03
 }Message;
-
-int row_sel;
 
 void Game_Update();
 
@@ -51,6 +50,9 @@ void printTimesUp();
 void checkIfThe2HavePlayed();
 void sendPlay(move);
 
+//void ISR_Keys();
+void ISR_Timer0();
+
 void lobby();
 void sendConfirmation();
 void receiveConfirmation();
@@ -58,8 +60,5 @@ void printLobby();
 void sendPlay1();
 void receivePlay2();
 void printOpponentChoice();
-
-//void ISR_Keys();
-void ISR_Timer0();
 
 void Full_Rock();

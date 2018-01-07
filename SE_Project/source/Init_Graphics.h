@@ -14,10 +14,9 @@
 #include "Scissor.h"
 #include "WIN.h"
 #include "BackgroundMulti.h"
+#include "Guitar.h"
 #include "lobby.h"
 #include "lobbyMain.h"
-#include "Guitar.h"
-
 
 void Init_Graphics(void);
 void Init_Main_Graphics(void);

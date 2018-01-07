@@ -25,5 +25,3 @@ void delay_ds(int ds){
 		swiWaitForVBlank();
 	}
 }
-
-int mode=0;

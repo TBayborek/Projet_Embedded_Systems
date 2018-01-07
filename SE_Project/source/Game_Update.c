@@ -1,4 +1,4 @@
-﻿#include "Game_Update.h"
+#include "Game_Update.h"
 
 void Game_Update(){
 	irqSet(IRQ_TIMER0, &ISR_Timer0);
@@ -18,6 +18,12 @@ void Game_Update(){
 		// PRINT "press START to play"
 		ticks = err_cnt = n_rock_streak = 0; times_up = pause =false;
 		scoreHuman = scoreBot = 0;
+
+		// in case of multi game
+		HasPlayed1=0;
+		HasPlayed2=0;
+		confirmation1=0;
+		confirmation2=0;
 
 		printMenu2();
 		break;
@@ -52,71 +58,62 @@ void Game_Update(){
 		break;
 	case LOBBY:
 
-			 //* ça menerait ä une fonction lobby
-			 //* qui activerait le wifi et attendrait le ping de l'autre ds
-			 //* au moment ou on recoit le ping (inclure double veref -> pas plus de 1 sec de döcalage)
-			 //* on passe ä fonction MULTIPLAYER_TURN
-			 //* modifier le handle outcome
-			//Game_Status = MULTIPLAYER_TURN;
-		HasPlayed1=0;
-		HasPlayed2=0;
-		confirmation1=0;
-		confirmation2=0;
-		printLobby();
+
 		lobby();
+
 		break;
 	case MULTIPLAYER_TURN:
-		err_cnt=0;
-		user_move = ERROR;
-		//reste dans cette boucle tant que Detect_move n'a rien detecte
-		while(user_move==ERROR){
-			if(user_move != ERROR) break;
-
-			if (err_cnt>0)mmEffect(SFX_BUZZER);
-			if (err_cnt>2){Loose_Round(1); user_move=LOSE; break;}
-
+		ticks=0;
+		drawAreaMulti();
+		user_move = Detect_Move();
+		if(Game_Status != USER_TURN) break;
+		if(user_move == ERROR){
 			err_cnt++;
-			ticks=0;
+			if (err_cnt>2) {Loose_Round(1); user_move==LOSE; err_cnt=0; break;}
+			//if(times_up){
+			//	mmEffect(SFX_BUZZER);
+			//	while(times_up){Handle_Button(); swiWaitForVBlank();}
+			//	err_cnt = 0;
+			//}
+			else mmEffect(SFX_WHIP);
+		}
 
-			drawAreaMulti();
-			user_move = Detect_Move();
 
-			if(times_up){
-				//delay_ds(10);
-				user_move = ERROR;
-				times_up = false;
-				err_cnt = 0;
+		else{
+			switch(user_move){
+			case ROCK: userPlayed(ROCK); break;
+			case PAPER: userPlayed(PAPER); break;
+			case SCISSORS: userPlayed(SCISSORS); break;
+			case ERROR: break;
+			}
+
+			sendPlay1(user_move);
+			HasPlayed1=1;
+			while (!flag2Play){
+				checkIfThe2HavePlayed();
+				swiWaitForVBlank();
+			}
+			break;
+
+
+
+
+			delay_ds(30);
+			err_cnt = 0;
+			//if (user_move == ROCK) n_rock_streak++; easter egg desactivö
+			//else if(user_move!= ERROR) n_rock_streak = 0;
+		}
+
+		if (user_move==LOSE){
+			HasPlayed1=1;
+			sendPlay1(user_move);
+			while (!flag2Play){
+				checkIfThe2HavePlayed();
+				swiWaitForVBlank();
 			}
 		}
 
-		//if(Game_Status == USER_TURN) Game_Status = OPPONENT_TURN;
 
-			//tant que joueur 1 n'a pas jouö, on n'arrive pas lä
-		switch(user_move){
-			case ROCK:
-				userPlayed(ROCK);
-
-				break;
-			case PAPER:
-				userPlayed(PAPER);
-
-				break;
-			case SCISSORS:
-				userPlayed(SCISSORS);
-
-				break;
-			case ERROR:
-				break;
-			case LOSE:
-				break;
-		}
-
-		sendPlay1(user_move);
-
-		while (!flag2Play){
-			checkIfThe2HavePlayed();
-			swiWaitForVBlank();
-		}
 
 		break;
 	case OPPONENT_TURN:
@@ -124,7 +121,6 @@ void Game_Update(){
 		Game_Status = RESULTS;
 		break;
 	case RESULTS:
-
 		if(mode==1){
 			printOpponentChoice();
 		}
@@ -158,16 +154,19 @@ void Handle_Button(){
 
 	if((Game_Status == START) && (keys & KEY_START) && (key_released == true)){
 		if(mode == 0) Game_Status = USER_TURN;
-		if(mode == 1) Game_Status = LOBBY;
+		if(mode == 1) {
+			Game_Status = LOBBY;
+			printLobby();
+		}
+
 		key_released = false;
 	}
-/*
+	/*
 	else if((Game_Status != START) && (Game_Status != STOP) && (keys & KEY_START) && (key_released == true)){
 		Old_Status = Game_Status;
 		Game_Status = PAUSE;
 		key_released = false;
 	}
-
 
 	if(Game_Status == PAUSE && (key_released == true)){
 		if(keys & KEY_A) Game_Status = Old_Status;
@@ -194,7 +193,7 @@ void Opponent_Move(){
 	int row, col;
 	for(row=0;row<9;row++){
 		for(col=0;col<10;col++){
-			bg0Map[(row+8)*32+(col+12)] = bg0Map[(row+25+row_sel)*32+col+12];
+			bg0Map[(row+8)*32+(col+12)] = BackgroundMap[(row+25+row_sel)*32+col+12];
 		}
 	}
 }
@@ -202,7 +201,7 @@ void Opponent_Move(){
 void Check_Results(move user_move, move opponent_move){
 	if((user_move == ROCK && opponent_move == SCISSORS) ||
 			(user_move == SCISSORS && opponent_move == PAPER) ||
-			(user_move == PAPER && opponent_move == ROCK) || (opponent_move==LOSE)){
+			(user_move == PAPER && opponent_move == ROCK)){
 		Win_Round();
 	}
 
@@ -246,7 +245,7 @@ void drawArea(){
 	int row, col;
 	for(row=0;row<9;row++){
 		for(col=0;col<10;col++){
-			bg0Map[(row+8)*32+(col+12)] = bg0Map[(row+25+30)*32+col+12];
+			bg0Map[(row+8)*32+(col+12)] = BackgroundMap[(row+25+30)*32+col+12];
 		}
 	}
 	//utile pour affichage du 0-0
@@ -311,8 +310,10 @@ void userPlayed(move user_play){
 			mmEffect(SFX_SHEARS);
 			break;
 		case ERROR: break;
+		case LOSE: break;
 	}
 }
+
 
 
 // ---------- ISR ----------------
@@ -336,6 +337,7 @@ void ISR_Keys(){
 }
 */
 void ISR_Timer0(void){
+	delay_ticks++;
 	if(Game_Status == USER_TURN){
 		ticks++;
 		if (ticks>=4000) {
@@ -374,21 +376,62 @@ void ISR_Timer0(void){
 			ticksPull=0;
 		}
 	}
-	delay_ticks++;
+
 }
 // ------- END OF ISR ------------
 
+void Full_Rock(){
+	u8 fullTile[64] = {
+		1,1,1,1,1,1,1,1,
+		1,1,1,1,1,1,1,1,
+		1,1,1,1,1,1,1,1,
+		1,1,1,1,1,1,1,1,
+		1,1,1,1,1,1,1,1,
+		1,1,1,1,1,1,1,1,
+		1,1,1,1,1,1,1,1,
+		1,1,1,1,1,1,1,1,
+	};
+	mmEffect(SFX_NIRVANA);
+	delay_ds(10);
+
+	swiCopy(GuitarTiles, BG_TILE_RAM(0), GuitarTilesLen/2);
+	swiCopy(GuitarMap, bg0Map, GuitarMapLen/2);
+	swiCopy(GuitarPal, BG_PALETTE, GuitarPalLen/2);
+
+	dmaCopy(fullTile,(u8*) BG_TILE_RAM(0), 64);
+	memset(bg1Map,1,32*32*64);
+
+	int cnt = 0;
+	while(cnt<50){
+		if (cnt%2){
+			BG_PALETTE[1] = RED;
+			memset(bg0Map_SUB,WHITE,256*256*2);
+		}
+		else{
+			BG_PALETTE[1] = WHITE;
+			memset(bg0Map_SUB, BLACK ,256*256*2);
+		}
+		if (cnt%4==3) REG_POWERCNT ^= BIT(15);
+		delay_ds(5);
+		swiWaitForVBlank();
+		cnt++;
+	}
+	n_rock_streak = 0;
+	Init_Graphics();
+	memset(bg3Map_SUB, ARGB16(0,0,0,0),256*192*2);
+	drawArea();
+}
 
 // --------MULTIPLAYER ---------
 
 // manages everything in the lobby
 void lobby(){
 
-	int test=0;
 
-	if (test==0){
-	test=Init_WiFi();
-	}
+
+
+	Init_WiFi();
+
 
 
 	//cröer une image explicative ("en attente de connexion" en haut, "Quand vous pensez etre connectö avec joueur 2, appuyez sur a simultanement (sinon, attendre 3 secondes)" en bas)
@@ -399,7 +442,7 @@ void lobby(){
 
 	if((confirmation1==1) && (confirmation2==1)){
 		Game_Status=MULTIPLAYER_TURN;
-		drawAreaMulti();
+		//drawAreaMulti();
 
 	}
 
@@ -477,24 +520,6 @@ void printLobby(){
 	swiCopy(lobbyPal, BG_PALETTE_SUB, lobbyPalLen/2);
 }
 
-//check if the two players have played
-void checkIfThe2HavePlayed(){
-
-
-
-
-	if(HasPlayed1==1 && HasPlayed2==1){
-		//print the corresponding player 2's choice (taken from the bottom of Background.png)
-		int row, col;
-		for(row=0;row<9;row++){
-			for(col=0;col<10;col++){
-				bg0Map[(row+8)*32+(col+12)] = bg0Map[(row+25+row_sel)*32+col+12];
-			}
-		}
-		flag2Play=1;
-		Game_Status=RESULTS;
-	}
-}
 
 
 //function called once to send the move of the user
@@ -523,6 +548,7 @@ void sendPlay1(){
 	}
 
 }
+
 
 
 //function called every 0.5 seconds, to get the move of the other player
@@ -578,48 +604,16 @@ void printOpponentChoice(){
 	}
 }
 
-
-
-// --------------------- EXTRAS ------------------
-
-void Full_Rock(){
-	u8 fullTile[64] = {
-		1,1,1,1,1,1,1,1,
-		1,1,1,1,1,1,1,1,
-		1,1,1,1,1,1,1,1,
-		1,1,1,1,1,1,1,1,
-		1,1,1,1,1,1,1,1,
-		1,1,1,1,1,1,1,1,
-		1,1,1,1,1,1,1,1,
-		1,1,1,1,1,1,1,1,
-	};
-	mmEffect(SFX_NIRVANA);
-	delay_ds(10);
-
-	swiCopy(GuitarTiles, BG_TILE_RAM(0), GuitarTilesLen/2);
-	swiCopy(GuitarMap, bg0Map, GuitarMapLen/2);
-	swiCopy(GuitarPal, BG_PALETTE, GuitarPalLen/2);
-
-	dmaCopy(fullTile,(u8*) BG_TILE_RAM(0), 64);
-	memset(bg1Map,1,32*32*64);
-
-	int cnt = 0;
-	while(cnt<50){
-		if (cnt%2){
-			BG_PALETTE[1] = RED;
-			memset(bg0Map_SUB,WHITE,256*256*2);
+void checkIfThe2HavePlayed(){
+	if(HasPlayed1==1 && HasPlayed2==1){
+		//print the corresponding player 2's choice (taken from the bottom of Background.png)
+		int row, col;
+		for(row=0;row<9;row++){
+			for(col=0;col<10;col++){
+				bg0Map[(row+8)*32+(col+12)] = bg0Map[(row+25+row_sel)*32+col+12];
+			}
 		}
-		else{
-			BG_PALETTE[1] = WHITE;
-			memset(bg0Map_SUB, BLACK ,256*256*2);
-		}
-		if (cnt%4==3) REG_POWERCNT ^= BIT(15);
-		delay_ds(5);
-		swiWaitForVBlank();
-		cnt++;
+		flag2Play=1;
+		Game_Status=RESULTS;
 	}
-	n_rock_streak = 0;
-	Init_Graphics();
-	memset(bg3Map_SUB, ARGB16(0,0,0,0),256*192*2);
-	drawArea();
 }

@@ -5,8 +5,8 @@
 void Init_Sound();
 
 // WIFI INIT
-
 int Init_WiFi();
+
 #ifndef WIFI_MINILIB_H
 #define WIFI_MINILIB_H
 
