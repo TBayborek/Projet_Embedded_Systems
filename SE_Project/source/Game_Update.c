@@ -212,7 +212,7 @@ void Opponent_Move(){
 void Check_Results(move user_move, move opponent_move){
 	if((user_move == ROCK && opponent_move == SCISSORS) ||
 			(user_move == SCISSORS && opponent_move == PAPER) ||
-			(user_move == PAPER && opponent_move == ROCK)){
+			(user_move == PAPER && opponent_move == ROCK) || (opponent_move==LOSE)){
 		Win_Round();
 	}
 
@@ -604,6 +604,7 @@ void printOpponentChoice(){
 		case ROCK: row_sel = 0; break;
 		case SCISSORS:row_sel = 10; break;
 		case PAPER:row_sel = 20; break;
+		case LOSE: row_sel = 30; break;
 	}
 
 	//print the corresponding bot's choice (taken from the bottom of BackgroundMulti.png)
