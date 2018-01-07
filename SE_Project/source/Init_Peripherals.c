@@ -3,11 +3,18 @@
 void Init_Sound() {
 	mmInitDefaultMem((mm_addr)soundbank_bin);
 
-
 	mmLoadEffect(SFX_WINSOUND);
-	mmLoadEffect(SFX_BUZZER);
-	mmLoadEffect(SFX_LOSINGHORNSOUNDEFFECT);
+	mmLoadEffect(SFX_LOSINGHORN);
 	mmLoadEffect(SFX_BOING_X);
+
+	mmLoadEffect(SFX_GUITAR);
+	mmLoadEffect(SFX_PAPER);
+	mmLoadEffect(SFX_SHEARS);
+
+	mmLoadEffect(SFX_WHIP);
+	mmLoadEffect(SFX_BUZZER);
+
+	mmLoadEffect(SFX_NIRVANA);
 }
 
 
@@ -47,13 +54,7 @@ int Init_WiFi(){
     else
     	printf("Error Socket\n");
 
-<<<<<<< HEAD
 return a;
-=======
-
-
-}
->>>>>>> parent of 69b1087... Update
 
 }
 

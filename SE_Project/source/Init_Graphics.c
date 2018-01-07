@@ -19,24 +19,24 @@ void Init_Main_Graphics(void){
 	bg0Map = BG_MAP_RAM(26);
 	bg1Map = BG_MAP_RAM(29);
 
-	swiCopy(MenuTiles, BG_TILE_RAM(0), MenuTilesLen/2); // approx. 50KB of Tiles, 25x2KB slots used
-	swiCopy(MenuMap, bg0Map, MenuMapLen/2); // store in the 26th slot => #25 (was finally chosen to be 26)
-	swiCopy(MenuPal, BG_PALETTE, MenuPalLen/2);
+	swiCopy(MenuDescriptionTiles, BG_TILE_RAM(0), MenuDescriptionTilesLen/2);
+	swiCopy(MenuDescriptionMap, bg0Map, MenuDescriptionMapLen/2);
+	swiCopy(MenuDescriptionPal, BG_PALETTE, MenuDescriptionPalLen/2);
 }
 
 void Init_Sub_Graphics(void){
 	VRAM_C_CR = VRAM_ENABLE | VRAM_C_SUB_BG; //Enable RAM memory bank for the sub engine
-	REG_DISPCNT_SUB = MODE_3_2D |
-			DISPLAY_BG0_ACTIVE |
-			DISPLAY_BG3_ACTIVE; // Sub engine in mode 0, activate BG 0
+
+	//consoleDemoInit(); // For Debugging purposes
+	REG_DISPCNT_SUB = MODE_3_2D | DISPLAY_BG0_ACTIVE | DISPLAY_BG3_ACTIVE; // Sub engine in mode 0, activate BG 0
 
 	BGCTRL_SUB[0] = BG_MAP_BASE(15) | BG_TILE_BASE(0) | BG_32x32 | BG_COLOR_256;
 	BGCTRL_SUB[3] = BG_MAP_BASE(17) | BG_BMP16_256x256 | BG_COLOR_256;
 
-	bg0Map_SUB = (u16*) BG_MAP_RAM_SUB(15);
-	bg3Map_SUB = (u16*) BG_MAP_RAM_SUB(17);
+	bg0Map_SUB = BG_MAP_RAM_SUB(15);
+	bg3Map_SUB = BG_MAP_RAM_SUB(17);
 
-	BGCTRL_SUB[0] = (BGCTRL_SUB[0] & 0xFFFC) | 3;
+	BGCTRL_SUB[0] = (BGCTRL_SUB[0] & 0xFFFC) | 3; //Mask with all but the last two bits and initialize these last bits with 3
 	BGCTRL_SUB[3] = (BGCTRL_SUB[3] & 0xFFFC) | 0;
 
     REG_BG3PA_SUB = 256;
@@ -44,9 +44,9 @@ void Init_Sub_Graphics(void){
     REG_BG3PC_SUB = 0;
     REG_BG3PD_SUB = 256;
     REG_BG3X_SUB = 0;
-    REG_BG3Y_SUB = 256*8;
+    REG_BG3Y_SUB = 256*36;
 
-	swiCopy(MenuInstructionTiles, BG_TILE_RAM_SUB(0), MenuInstructionTilesLen/2); // approx. 50KB of Tiles, 25x2KB slots used
-	swiCopy(MenuInstructionMap, bg0Map_SUB, MenuInstructionMapLen/2); // store in the 26th slot => #25
-	swiCopy(MenuInstructionPal, BG_PALETTE_SUB, MenuInstructionPalLen/2);
+	swiCopy(MenuTactileTiles, BG_TILE_RAM_SUB(0), MenuTactileTilesLen/2);
+	swiCopy(MenuTactileMap, bg0Map_SUB, MenuTactileMapLen/2);
+	swiCopy(MenuTactilePal, BG_PALETTE_SUB, MenuTactilePalLen/2);
 }

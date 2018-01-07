@@ -3,102 +3,71 @@
 void Game_Update(){
 	irqSet(IRQ_TIMER0, &ISR_Timer0);
 
-	scanKeys();
-	keys = keysHeld();
-	Handle_Button(keys);
+	Handle_Button();
+
+	if (n_rock_streak>=4) Full_Rock();
 
 	switch(Game_Status){
 	case STOP:
-		// PRINT "press START to play"
+		Init_Graphics();
+		scanKeys();
+		key_released = true;
+		// PRINT explanations about game and "choose mode"
 		break;
 	case START:
-		// PRINT explanations about game and "choose mode"
-		ticks = 0; times_up = false;
+		// PRINT "press START to play"
+		ticks = err_cnt = n_rock_streak = 0; times_up = pause =false;
+		scoreHuman = scoreBot = 0;
 
-<<<<<<< HEAD
 		// in case of multi game
 		HasPlayed1=0;
 		HasPlayed2=0;
 		confirmation1=0;
 		confirmation2=0;
 
-=======
-		HasPlayed1=0; //in case of multi game
-		HasPlayed2=0;
-		/*
-		int mode=0; //mode=0 for solo, =1 for multi
-		if (mode==0) Game_Status = USER_TURN;
-		else if(mode==1) Game_Status = MULTIPLAYER_TURN;
-*/
->>>>>>> b2b954f20d949036764dfc9e13851467f4d94d21
 		printMenu2();
 		break;
 	case USER_TURN:
-		err_cnt=0;
-		user_move = ERROR;
-		while(user_move==ERROR){
-			if(user_move != ERROR) break;
-			if (err_cnt>0)mmEffect(SFX_BUZZER);
-			if (err_cnt>2){Loose_Round(1); break;}
-
+		ticks=0;
+		drawArea();
+		user_move = Detect_Move();
+		if(Game_Status != USER_TURN) break;
+		if(user_move == ERROR){
 			err_cnt++;
-			ticks=0;
-
-			drawArea();
-			user_move = Detect_Move();
-
+			if (err_cnt>2) {Loose_Round(1); err_cnt=0; break;}
 			if(times_up){
-
-				delay_ds(10);
-				user_move = ERROR;
-				times_up = false;
+				mmEffect(SFX_BUZZER);
+				while(times_up){Handle_Button(); swiWaitForVBlank();}
 				err_cnt = 0;
 			}
+			else mmEffect(SFX_WHIP);
 		}
-
-		if(Game_Status == USER_TURN) Game_Status = OPPONENT_TURN;
-
-		switch(user_move){
+		else{
+			switch(user_move){
 			case ROCK: userPlayed(ROCK); break;
 			case PAPER: userPlayed(PAPER); break;
 			case SCISSORS: userPlayed(SCISSORS); break;
 			case ERROR: break;
+			}
+			Game_Status = OPPONENT_TURN;
+			delay_ds(30);
+			err_cnt = 0;
+			if (user_move == ROCK) n_rock_streak++;
+			else if(user_move!= ERROR) n_rock_streak = 0;
 		}
 		break;
-<<<<<<< HEAD
 	case LOBBY:
 
 
 		lobby();
 
 		break;
-=======
-
-
->>>>>>> parent of 69b1087... Update
 	case MULTIPLAYER_TURN:
-<<<<<<< HEAD
 		ticks=0;
 		drawAreaMulti();
 		user_move = Detect_Move();
 		if(Game_Status != USER_TURN) break;
 		if(user_move == ERROR){
-=======
-		err_cnt=0;
-		user_move = ERROR;
-		//reste dans cette boucle tant que Detect_move n'a rien detecte
-		while(user_move==ERROR){
-			if(user_move != ERROR) break;
-<<<<<<< HEAD
-
-			if (err_cnt>0)mmEffect(SFX_BUZZER);
-			if (err_cnt>2){Loose_Round(1); user_move=LOSE; break;}
-=======
-			if (err_cnt>0)mmEffect(SFX_BUZZER);
-			if (err_cnt>2){Loose_Round(1); break;}
->>>>>>> parent of 69b1087... Update
-
->>>>>>> b2b954f20d949036764dfc9e13851467f4d94d21
 			err_cnt++;
 			if (err_cnt>2) {Loose_Round(1); user_move==LOSE; err_cnt=0; break;}
 			//if(times_up){
@@ -109,7 +78,6 @@ void Game_Update(){
 			else mmEffect(SFX_WHIP);
 		}
 
-<<<<<<< HEAD
 
 		else{
 			switch(user_move){
@@ -117,16 +85,6 @@ void Game_Update(){
 			case PAPER: userPlayed(PAPER); break;
 			case SCISSORS: userPlayed(SCISSORS); break;
 			case ERROR: break;
-=======
-			drawAreaMulti();
-			user_move = Detect_Move();
-			if(times_up){
-
-				delay_ds(10);
-				user_move = ERROR;
-				times_up = false;
-				err_cnt = 0;
->>>>>>> b2b954f20d949036764dfc9e13851467f4d94d21
 			}
 
 			sendPlay1(user_move);
@@ -157,12 +115,6 @@ void Game_Update(){
 
 
 
-<<<<<<< HEAD
-=======
-
-
-		checkIfThe2HavePlayed();
->>>>>>> parent of 69b1087... Update
 		break;
 	case OPPONENT_TURN:
 		Opponent_Move();
@@ -179,42 +131,27 @@ void Game_Update(){
 		delay_ds(20);
 		Game_Status = USER_TURN;
 		break;
+	case PAUSE:
+		break;
 	}
 }
 
-void Handle_Button(unsigned keys){
-	if((Game_Status == STOP) && (keys & KEY_START)){
-		Game_Status = START;
-	}
-/*
-	if((Game_Status == START) && (keys & KEY_A)){
-		Game_Status = USER_TURN;
-		ticks = 0;
-	}
-*/
+void Handle_Button(){
+	scanKeys();
+	unsigned keys = keysHeld();
 
-/*
-	if((Game_Status == NEXT) && (keys & KEY_A)){
-		Game_Status = STOP;
-		Init_Graphics();
-	}
-*/
-	if ((keys & KEY_TOUCH) && (Game_Status==START)) {
+	if ((keys & KEY_TOUCH) && (Game_Status==STOP) && (key_released == true)) {
 		touchRead(&touch);
 		int posx = touch.px;
 		int posy = touch.py;
 
-<<<<<<< HEAD
 		if((posx>27) && (posx<=228)){
 			if((posy>=50) && (posy<80)){mode = 0; Game_Status = START;}
 			if((posy>=90) && (posy<120)){mode = 1; Game_Status = START;}
-=======
-		if((posx>27 & posx<=228) && (posy>=50 & posy<80)){
-			Game_Status = USER_TURN;
->>>>>>> parent of 69b1087... Update
 		}
+		key_released = false;
+	}
 
-<<<<<<< HEAD
 	if((Game_Status == START) && (keys & KEY_START) && (key_released == true)){
 		if(mode == 0) Game_Status = USER_TURN;
 		if(mode == 1) {
@@ -235,12 +172,11 @@ void Handle_Button(unsigned keys){
 		if(keys & KEY_A) Game_Status = Old_Status;
 		if(keys & KEY_START) Game_Status = STOP;
 		key_released = false;
-=======
-
-
->>>>>>> parent of 69b1087... Update
 	}
+*/
+	if((times_up == true) && (keys & KEY_A) && !(keys & KEY_TOUCH)){times_up = false; key_released = false;}
 
+	key_released = true; //(keys==KEY_A || keys==KEY_START || keys == KEY_TOUCH);
 }
 
 void Opponent_Move(){
@@ -276,17 +212,16 @@ void Check_Results(move user_move, move opponent_move){
 	}
 
 	if(user_move == opponent_move) Draw_Round();
-
 }
 
 void printMenu2(){
-	swiCopy(MenuDescriptionTiles, BG_TILE_RAM(0), MenuDescriptionTilesLen/2);
-	swiCopy(MenuDescriptionMap, bg0Map, MenuDescriptionMapLen/2);
-	swiCopy(MenuDescriptionPal, BG_PALETTE, MenuDescriptionPalLen/2);
+    swiCopy(MenuTiles, BG_TILE_RAM(0), MenuTilesLen/2); // approx. 50KB of Tiles, 25x2KB slots used
+    swiCopy(MenuMap, bg0Map, MenuMapLen/2); // store in the 26th slot => #25 (was finally chosen to be 26)
+    swiCopy(MenuPal, BG_PALETTE, MenuPalLen/2);
 
-	swiCopy(MenuTactileTiles, BG_TILE_RAM_SUB(0), MenuTactileTilesLen/2);
-	swiCopy(MenuTactileMap, bg0Map_SUB, MenuTactileMapLen/2);
-	swiCopy(MenuTactilePal, BG_PALETTE_SUB, MenuTactilePalLen/2);
+	swiCopy(MenuInstructionTiles, BG_TILE_RAM_SUB(0), MenuInstructionTilesLen/2); // approx. 50KB of Tiles, 25x2KB slots used
+	swiCopy(MenuInstructionMap, bg0Map_SUB, MenuInstructionMapLen/2); // store in the 26th slot => #25
+	swiCopy(MenuInstructionPal, BG_PALETTE_SUB, MenuInstructionPalLen/2);
 }
 
 void drawArea(){
@@ -313,7 +248,6 @@ void drawArea(){
 			bg0Map[(row+8)*32+(col+12)] = BackgroundMap[(row+25+30)*32+col+12];
 		}
 	}
-
 	//utile pour affichage du 0-0
 	printScore(scoreHuman,12,0);
 	printScore(scoreBot,21,0);
@@ -352,7 +286,6 @@ void drawAreaMulti(){
 }
 
 
-
 void userPlayed(move user_play){
 	switch(user_play){
 		case ROCK:
@@ -360,78 +293,29 @@ void userPlayed(move user_play){
 			swiCopy(RockTiles, BG_TILE_RAM_SUB(0), RockTilesLen/2);
 			swiCopy(RockMap, bg0Map_SUB, RockMapLen/2);
 			swiCopy(RockPal, BG_PALETTE_SUB, RockPalLen/2);
+			mmEffect(SFX_GUITAR);
 			break;
 		case PAPER:
 			//print player's choice
 			swiCopy(PaperTiles, BG_TILE_RAM_SUB(0), PaperTilesLen/2);
 			swiCopy(PaperMap, bg0Map_SUB, PaperMapLen/2);
 			swiCopy(PaperPal, BG_PALETTE_SUB, PaperPalLen/2);
+			mmEffect(SFX_PAPER);
 			break;
 		case SCISSORS:
 			//print player's choice
 			swiCopy(ScissorTiles, BG_TILE_RAM_SUB(0), ScissorTilesLen/2);
 			swiCopy(ScissorMap, bg0Map_SUB, ScissorMapLen/2);
 			swiCopy(ScissorPal, BG_PALETTE_SUB, ScissorPalLen/2);
+			mmEffect(SFX_SHEARS);
 			break;
 		case ERROR: break;
 		case LOSE: break;
 	}
 }
 
-<<<<<<< HEAD
-=======
-void checkIfThe2HavePlayed(){
-	int row_sel;
 
-	char msg[1];
 
-	//Listen for messages from others
-	if(receiveData(msg,1)>0	)
-	{
-		//If received, decode the key and print
-		switch(msg[0])
-		{
-		case 0:
-			opponent_move=ROCK;
-			row_sel = 0;
-			break;
-		case 1:
-			opponent_move=PAPER;
-			row_sel = 20;
-			break;
-		case 2:
-			opponent_move=SCISSORS;
-			row_sel = 10;
-			break;
-		}
-		HasPlayed2=1;
-	}
-
-	if(HasPlayed1==1 && HasPlayed2==1){
-		//print the corresponding player 2's choice (taken from the bottom of Background.png)
-		int row, col;
-		for(row=0;row<9;row++){
-			for(col=0;col<10;col++){
-				bg0Map[(row+8)*32+(col+12)] = BackgroundMap[(row+25+row_sel)*32+col+12];
-			}
-		}
-		Game_Status=RESULTS;
-	}
-}
->>>>>>> parent of 69b1087... Update
-
-<<<<<<< HEAD
-
-=======
-/*
-void delay_ds(int ds){
-	delay_ticks = 0;
-	while(1){
-		if(delay_ticks>=ds*10)break;
-	}
-}
-*/
->>>>>>> b2b954f20d949036764dfc9e13851467f4d94d21
 // ---------- ISR ----------------
 /*
 void ISR_Keys(){
@@ -456,13 +340,12 @@ void ISR_Timer0(void){
 	delay_ticks++;
 	if(Game_Status == USER_TURN){
 		ticks++;
-		if (ticks>=400) {
+		if (ticks>=4000) {
 			printTimesUp();
-			//Loose_Round(1);
 			times_up = true;
+			ticks = 0;
 		}
 	}
-<<<<<<< HEAD
 
 	//-------- Multiplayer --------
 	//erase confirmation1 if the second one isn t confirmed after 1 sec
@@ -733,17 +616,4 @@ void checkIfThe2HavePlayed(){
 		flag2Play=1;
 		Game_Status=RESULTS;
 	}
-<<<<<<< HEAD
 }
-=======
-	n_rock_streak = 0;
-	Init_Graphics();
-	memset(bg3Map_SUB, ARGB16(0,0,0,0),256*192*2);
-	drawArea();
-}
-=======
-	delay_ticks++;
-}
-// ------- END OF ISR ------------
->>>>>>> parent of 69b1087... Update
->>>>>>> b2b954f20d949036764dfc9e13851467f4d94d21
