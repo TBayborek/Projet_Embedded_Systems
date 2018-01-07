@@ -40,6 +40,7 @@
 			SCISSORS,
 			PAPER,
 			ERROR,
+			LOSE,
 	}move;
 
 #endif

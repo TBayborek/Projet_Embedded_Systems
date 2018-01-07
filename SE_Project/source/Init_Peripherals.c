@@ -20,19 +20,41 @@ void Init_Sound() {
 
 // -------- WIFI section ---------
 //initialization
-void Init_WiFi(){
+int Init_WiFi(){
     //Initialize WiFi
-    if(initWiFi())
-    	printf("WiFi OK!\n");
-    else
-    	printf("Error WiFi\n");
+	int a;
+    if(initWiFi()){
+    	//print "you win"
+    	int row, col;
+    	//int rowEnd=(WINMapLen/2)/32; //nb of rows in the WIN picture
+    	int rowEnd=6;
+    	for(row=0;row<6;row++){
+    		for(col=0;col<32;col++){
+    			bg0Map_SUB[(row+25-rowEnd)*32+col] = bg0Map_SUB[(row+24)*32+col];
+    		}
+    	}
+    	a=1;
+    }
+    else{
+		int row, col;
+		int rowEnd=6; //nb of rows in the WIN picture
+
+
+		for(row=0;row<6;row++){
+			for(col=0;col<32;col++){
+				bg0Map_SUB[(row+25-rowEnd)*32+col] = bg0Map_SUB[(row+30)*32+col];
+			}
+		}
+		a=0;
+    }
 
     //Open Socket
     if(openSocket())
     	printf("Socket OK!\n");
     else
     	printf("Error Socket\n");
-}
+
+return a;
 
 
 //Socket port

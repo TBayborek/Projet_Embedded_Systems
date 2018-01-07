@@ -19,3 +19,5 @@ extern int delay_ticks;
 extern bool times_up;
 
 extern void delay_ds(int);
+
+extern int mode;
