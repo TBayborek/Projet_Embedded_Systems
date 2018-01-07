@@ -365,21 +365,23 @@ void ISR_Timer0(void){
 
 	//-------- Multiplayer --------
 	//erase confirmation1 if the second one isn t confirmed after 1 sec
-	if(confirmation1==1){
-		ticksConf1++;
-		if (ticksConf1>300){
-			confirmation1=0;
-			ticksConf1=0;
-			printLobby();
+	if (Game_Status==LOBBY){
+		if(confirmation1==1){
+			ticksConf1++;
+			if (ticksConf1>300){
+				confirmation1=0;
+				ticksConf1=0;
+				printLobby();
+			}
 		}
-	}
-	//erase confirmation2 if the first one isn t confirmed after 1 sec
-	if(confirmation2==1){
-		ticksConf2++;
-		if (ticksConf2>300){
-			confirmation2=0;
-			ticksConf2=0;
-			printLobby();
+		//erase confirmation2 if the first one isn t confirmed after 1 sec
+		if(confirmation2==1){
+			ticksConf2++;
+			if (ticksConf2>300){
+				confirmation2=0;
+				ticksConf2=0;
+				printLobby();
+			}
 		}
 	}
 	//call receivePlay2 every 0.5 sec
