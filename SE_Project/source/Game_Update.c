@@ -24,6 +24,7 @@ void Game_Update(){
 		HasPlayed2=0;
 		confirmation1=0;
 		confirmation2=0;
+		flag2Play=0;
 
 		printMenu2();
 		break;
@@ -65,11 +66,22 @@ void Game_Update(){
 	case MULTIPLAYER_TURN:
 		ticks=0;
 		drawAreaMulti();
-		user_move = Detect_Move();
-		if(Game_Status != USER_TURN) break;
+		if(user_move!=LOSE){
+			user_move = Detect_Move();
+		}
+		else {
+			sendPlay1(user_move);
+			HasPlayed1=1;
+			while (!flag2Play){
+				checkIfThe2HavePlayed();
+				swiWaitForVBlank();
+			}
+		}
+
+		if(Game_Status != MULTIPLAYER_TURN) break;
 		if(user_move == ERROR){
 			err_cnt++;
-			if (err_cnt>2) {Loose_Round(1); user_move==LOSE; err_cnt=0; break;}
+			if (err_cnt>2) {Loose_Round(1); user_move=LOSE; err_cnt=0; break;}
 			//if(times_up){
 			//	mmEffect(SFX_BUZZER);
 			//	while(times_up){Handle_Button(); swiWaitForVBlank();}
@@ -93,25 +105,13 @@ void Game_Update(){
 				checkIfThe2HavePlayed();
 				swiWaitForVBlank();
 			}
-			break;
-
-
-
-
 			delay_ds(30);
 			err_cnt = 0;
 			//if (user_move == ROCK) n_rock_streak++; easter egg desactivö
 			//else if(user_move!= ERROR) n_rock_streak = 0;
 		}
 
-		if (user_move==LOSE){
-			HasPlayed1=1;
-			sendPlay1(user_move);
-			while (!flag2Play){
-				checkIfThe2HavePlayed();
-				swiWaitForVBlank();
-			}
-		}
+
 
 
 
@@ -128,8 +128,19 @@ void Game_Update(){
 		Check_Results(user_move, opponent_move);
 		break;
 	case NEXT:
+		HasPlayed1=0;
+		HasPlayed2=0;
+		flag2Play=0;
+
 		delay_ds(20);
-		Game_Status = USER_TURN;
+		if (mode==0){
+			Game_Status = USER_TURN;
+		}
+		else if (mode==1){
+
+			Game_Status = MULTIPLAYER_TURN;
+
+		}
 		break;
 	case PAUSE:
 		break;
@@ -245,7 +256,7 @@ void drawArea(){
 	int row, col;
 	for(row=0;row<9;row++){
 		for(col=0;col<10;col++){
-			bg0Map[(row+8)*32+(col+12)] = BackgroundMap[(row+25+30)*32+col+12];
+			bg0Map[(row+8)*32+(col+12)] = bg0Map[(row+25+30)*32+col+12];
 		}
 	}
 	//utile pour affichage du 0-0
