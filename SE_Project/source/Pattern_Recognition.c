@@ -1,5 +1,4 @@
 #include "Pattern_Recognition.h"
-#include "Game_Update.h"
 
 move Detect_Move(void) {
 	// ----------- Variable Init ----------------
@@ -12,18 +11,18 @@ move Detect_Move(void) {
 
 	n_points = start_draw = -1;
 	min_dist_edge = 30.0;
-	min_edge_ctrl_len = 8;
+	min_edge_ctrl_len = 10.0;
 	// --------- End Variable Init --------
 
 	while(1) {
-		//Handle_Button();
-		if(times_up || Game_Status == PAUSE){drawn_figure = ERROR; break;}
-
 		touchRead(&touch);
 		posx = touch.px;
 		posy = touch.py;
 
-		if ((posx || posy) && (posx>=0) && (posx<256) && (posy>=0) && (posy<192)){
+		if (posx || posy){
+			touchRead(&touch);
+			posx = touch.px;
+			posy = touch.py;
 
 			if (!(posx_old || posy_old)) n_points = 0;
 			if (n_points>=0){
@@ -32,15 +31,12 @@ move Detect_Move(void) {
 			}
 
 			if ((dx || dy) && (n_points>=0)){
-				printf("posx: %i posy: %i \n", posx, posy);
 				start_draw = 1;
 				n_points++;
 				if(n_points>1){
 					dist_last_edge += sqrt(pow(dx,2) + pow(dy,2));
 					int nsteps = 50;
-					if (posy<180){
-						for(i=0;i<=nsteps;i++) bg3Map_SUB[(int) floor((posy_old+dy*i/nsteps)*256+posx_old+dx*i/nsteps)] = ARGB16(1,0,0,0);
-					}
+					for(i=0;i<=nsteps;i++) bg3Map_SUB[(int) floor((posy_old+dy*i/nsteps)*256+posx_old+dx*i/nsteps)] = ARGB16(1,0,0,0);
 				}
 
 				for(i=1;i<n_elems(pos);i++){
@@ -100,7 +96,7 @@ move Detect_Move(void) {
 			double sum_angles;
 			switch(n_corners){
 				case 0:
-					if ((Vectors_Angle(init_dx,init_dy, disp_x_new, disp_y_new)<PI/4) && (max_dangle_init>3*PI/4)) drawn_figure = ROCK;
+					if ((Vectors_Angle(init_dx,init_dy, disp_x_new, disp_y_new)<PI/4) && (max_dangle_init>6*PI/4)) drawn_figure = ROCK;
 					else drawn_figure = ERROR;
 					break;
 				case 1:
@@ -121,12 +117,12 @@ move Detect_Move(void) {
 					break;
 				default: drawn_figure = ERROR;
 			}
-			break;
+			start_draw = -1;
+			memset(bg3Map_SUB,ARGB16(0,0,0,0),256*256*2);
+			return drawn_figure;
 		}
 		swiWaitForVBlank();
 	}
-	memset(bg3Map_SUB, ARGB16(0,0,0,0),256*185*2);
-	return drawn_figure;
 }
 
 double Vectors_Angle(int v1x, int v1y,int v2x, int v2y){

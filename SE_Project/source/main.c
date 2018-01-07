@@ -4,8 +4,11 @@ int main(){
 	srand(time(NULL)); // Really random?
 
 	Initialization();
+	//consoleDemoInit();
 
-	Game_Status = STOP;
+	//int scoreHuman=0;
+	//int scoreBot=0;
+
 	while(true){
 		Game_Update();
 		swiWaitForVBlank();

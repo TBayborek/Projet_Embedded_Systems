@@ -7,16 +7,26 @@
 
 #include "Pattern_Recognition.h"
 
+unsigned keys;
 int err_cnt;
 int ticks;
+<<<<<<< HEAD
 int n_rock_streak;
 bool pause;
 bool key_released;
 int row_sel;
+=======
+bool times_up;
+>>>>>>> b2b954f20d949036764dfc9e13851467f4d94d21
 
 move user_move;
 move opponent_move;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+>>>>>>> b2b954f20d949036764dfc9e13851467f4d94d21
 status Old_Status;
 
 int confirmation1;
@@ -34,9 +44,16 @@ typedef enum Messages_e {
 	Y	//0x03
 }Message;
 
+<<<<<<< HEAD
+=======
+int row_sel;
+
+=======
+>>>>>>> parent of 69b1087... Update
+>>>>>>> b2b954f20d949036764dfc9e13851467f4d94d21
 void Game_Update();
 
-void Handle_Button();
+void Handle_Button(unsigned);
 
 void Opponent_Move();
 void Check_Results(move,move);
@@ -61,4 +78,15 @@ void sendPlay1();
 void receivePlay2();
 void printOpponentChoice();
 
+<<<<<<< HEAD
 void Full_Rock();
+=======
+//void ISR_Keys();
+void ISR_Timer0();
+
+<<<<<<< HEAD
+void Full_Rock();
+=======
+//void delay_ds(int);
+>>>>>>> parent of 69b1087... Update
+>>>>>>> b2b954f20d949036764dfc9e13851467f4d94d21

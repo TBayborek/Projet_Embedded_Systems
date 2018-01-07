@@ -49,7 +49,7 @@ int main(void) {
 	int start_draw = -1;
 	double pos[100][3], angles_corner[4], dangle, max_dangle_init, dist_last_edge;
 	double min_dist_edge = 30;
-	double min_edge_ctrl_len = 8;
+	double min_edge_ctrl_len = 10;
 	touchPosition touch;
 
 	enum figure drawn_figure;
@@ -59,12 +59,9 @@ int main(void) {
 
 	consoleDemoInit();
 
-
 	while(1) {
 		scanKeys();
 		unsigned keys = keysHeld();
-		if (keys & KEY_A) main();
-
 
 		if ((keys & KEY_TOUCH)){
 			touchRead(&touch);
@@ -165,8 +162,7 @@ int main(void) {
 			double sum_angles;
 			switch(n_corners){
 				case 0:
-					printf("max dangle init %f \n", max_dangle_init);
-					if ((vectors_angle(init_dx,init_dy, disp_x_new, disp_y_new)<PI/4) && (max_dangle_init>3*PI/4)) drawn_figure = ROCK;
+					if ((vectors_angle(init_dx,init_dy, disp_x_new, disp_y_new)<PI/6) && (max_dangle_init>3*PI/4)) drawn_figure = ROCK;
 					else drawn_figure = ERROR;
 					break;
 				case 1:
