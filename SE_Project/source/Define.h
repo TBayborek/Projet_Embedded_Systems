@@ -20,8 +20,9 @@
 	#define RED ARGB16(1,31,0,0)
 	#define GREEN ARGB16(1,0,31,0)
 	#define BLUE ARGB16(1,0,0,31)
-	#define WHITE ARGB16(1,31,31,31)
-	#define BLACK ARGB16(1,0,0,0)
+	#define YELLOW ARGB16(1,31,31,0)
+	#define ORANGE ARGB16(1,31,15,0)
+	#define CYAN ARGB16(1,0,31,31)
 
 	typedef enum status{
 		STOP,
@@ -30,9 +31,7 @@
 		OPPONENT_TURN,
 		RESULTS,
 		NEXT,
-		LOBBY,
 		MULTIPLAYER_TURN,
-		PAUSE,
 	}status;
 
 	typedef enum move{
