@@ -7,13 +7,17 @@
 
 #include "Pattern_Recognition.h"
 
-unsigned keys;
 int err_cnt;
 int ticks;
-bool times_up;
+int n_rock_streak;
+bool pause;
+bool key_released;
 
 move user_move;
 move opponent_move;
+
+
+status Old_Status;
 
 int confirmation1;
 int confirmation2;
@@ -31,10 +35,9 @@ typedef enum Messages_e {
 
 int row_sel;
 
-
 void Game_Update();
 
-void Handle_Button(unsigned);
+void Handle_Button();
 
 void Opponent_Move();
 void Check_Results(move,move);
@@ -48,8 +51,6 @@ void printTimesUp();
 void checkIfThe2HavePlayed();
 void sendPlay(move);
 
-//void ISR_Keys();
-void ISR_Timer0();
 void lobby();
 void sendConfirmation();
 void receiveConfirmation();
@@ -58,5 +59,7 @@ void sendPlay1();
 void receivePlay2();
 void printOpponentChoice();
 
+//void ISR_Keys();
+void ISR_Timer0();
 
-//void delay_ds(int);
+void Full_Rock();

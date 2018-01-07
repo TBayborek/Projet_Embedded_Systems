@@ -3,7 +3,6 @@
 
 #include "Background.h"
 #include "Background2.h"
-#include "RSP.h"
 #include "ecranBase.h"
 #include "Assemblage.h"
 #include "Menu.h"
@@ -17,6 +16,8 @@
 #include "BackgroundMulti.h"
 #include "lobby.h"
 #include "lobbyMain.h"
+#include "Guitar.h"
+
 
 void Init_Graphics(void);
 void Init_Main_Graphics(void);
