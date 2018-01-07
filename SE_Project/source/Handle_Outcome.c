@@ -34,7 +34,7 @@ void Loose_Round(int raison){
 				bg0Map_SUB[(row+25-rowEnd)*32+col] = bg0Map_SUB[(row+30)*32+col];
 			}
 		}
-		if (mode==0)
+
 		Game_Status = NEXT;
 
 	}
@@ -43,7 +43,7 @@ void Loose_Round(int raison){
 	else if (raison==1) {
 		printBadDraw();
 		handleScore(0);
-		Game_Status = NEXT;
+		if (mode==0) Game_Status = NEXT;
 	}
 }
 

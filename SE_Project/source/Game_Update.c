@@ -65,8 +65,9 @@ void Game_Update(){
 		break;
 	case MULTIPLAYER_TURN:
 		ticks=0;
-		drawAreaMulti();
 		if(user_move!=LOSE){
+			drawAreaMulti();
+
 			user_move = Detect_Move();
 		}
 		else {
@@ -137,7 +138,7 @@ void Game_Update(){
 			Game_Status = USER_TURN;
 		}
 		else if (mode==1){
-
+			user_move=ERROR; //not sure if useful
 			Game_Status = MULTIPLAYER_TURN;
 
 		}
@@ -223,6 +224,8 @@ void Check_Results(move user_move, move opponent_move){
 	}
 
 	if(user_move == opponent_move) Draw_Round();
+
+	if(user_move==LOSE) Game_Status==NEXT;
 }
 
 void printMenu2(){
@@ -619,12 +622,14 @@ void printOpponentChoice(){
 void checkIfThe2HavePlayed(){
 	if(HasPlayed1==1 && HasPlayed2==1){
 		//print the corresponding player 2's choice (taken from the bottom of Background.png)
+		/*
 		int row, col;
 		for(row=0;row<9;row++){
 			for(col=0;col<10;col++){
 				bg0Map[(row+8)*32+(col+12)] = bg0Map[(row+25+row_sel)*32+col+12];
 			}
 		}
+		*/
 		flag2Play=1;
 		Game_Status=RESULTS;
 	}
