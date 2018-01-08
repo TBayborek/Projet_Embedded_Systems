@@ -27,7 +27,6 @@ void Init_Main_Graphics(void){
 void Init_Sub_Graphics(void){
 	VRAM_C_CR = VRAM_ENABLE | VRAM_C_SUB_BG; //Enable RAM memory bank for the sub engine
 
-	//consoleDemoInit(); // For Debugging purposes
 	REG_DISPCNT_SUB = MODE_3_2D | DISPLAY_BG0_ACTIVE | DISPLAY_BG3_ACTIVE; // Sub engine in mode 0, activate BG 0
 
 	BGCTRL_SUB[0] = BG_MAP_BASE(15) | BG_TILE_BASE(0) | BG_32x32 | BG_COLOR_256;

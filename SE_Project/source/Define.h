@@ -24,15 +24,15 @@
 	#define BLACK ARGB16(1,0,0,0)
 
 	typedef enum status{
-		STOP,
-		START,
-		USER_TURN,
-		OPPONENT_TURN,
-		RESULTS,
-		NEXT,
-		LOBBY,
-		MULTIPLAYER_TURN,
-		PAUSE,
+		STOP=0,
+		START=1,
+		USER_TURN=2,
+		OPPONENT_TURN=3,
+		RESULTS=4,
+		LOBBY=5,
+		MULTIPLAYER_TURN=6,
+		NEXT=7,
+		PAUSE=8,
 	}status;
 
 	typedef enum move{
@@ -42,5 +42,10 @@
 			ERROR,
 			LOSE,
 	}move;
+
+	typedef enum mode{
+		SINGLE,
+		MULTI,
+	}mode;
 
 #endif

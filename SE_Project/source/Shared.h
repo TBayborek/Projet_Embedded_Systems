@@ -2,13 +2,16 @@
 
 extern status Game_Status;
 
+extern move user_move;
+extern move opponent_move;
+
 extern int scoreHuman;
 extern int scoreBot;
 
 extern int HasPlayed1;
 extern int HasPlayed2;
 
-extern int mode; //mode=0 for solo, =1 for multi
+extern mode game_mode; // mode=SINGLE/MULTI
 
 extern u16* bg0Map;
 extern u16* bg1Map;
