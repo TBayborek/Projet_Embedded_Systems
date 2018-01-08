@@ -2,12 +2,10 @@
 
 void Win_Round(){
 	handleScore(1);
-	//sound
-	mmEffect(SFX_WINSOUND);
+	mmEffect(SFX_WINSOUND); //sound
 
 	//print "you win"
 	int row, col;
-	//int rowEnd=(WINMapLen/2)/32; //nb of rows in the WIN picture
 	int rowEnd=6;
 	for(row=0;row<6;row++){
 		for(col=0;col<32;col++){
@@ -18,11 +16,9 @@ void Win_Round(){
 }
 
 void Loose_Round(int raison){
-	//sound
-	mmEffect(SFX_LOSINGHORN);
+	mmEffect(SFX_LOSINGHORN); //sound
 
-	//if "raison" is equal to 0, then the player lost the round
-	if(raison==0){
+	if(raison==0){ //if "raison" is equal to 0, then the player lost the round
 		handleScore(0);
 
 		//print "you lose" panel
@@ -34,22 +30,17 @@ void Loose_Round(int raison){
 				bg0Map_SUB[(row+25-rowEnd)*32+col] = bg0Map_SUB[(row+30)*32+col];
 			}
 		}
-
-		Game_Status = NEXT;
-
 	}
-
-	//if raison = 1, then the player made 3 drawing mistakes
-	else if (raison==1) {
+	else if (raison==1) { //if raison = 1, then the player made 3 drawing mistakes
 		printBadDraw();
 		handleScore(0);
-		if (mode==0) Game_Status = NEXT;
+		user_move = LOSE;
 	}
+	Game_Status = NEXT;
 }
 
 void Draw_Round(){
-	//sound
-	mmEffect(SFX_BOING_X);
+	mmEffect(SFX_BOING_X); //sound
 
 	//printing of "it's a draw" panel
 	int row, col;
@@ -63,38 +54,26 @@ void Draw_Round(){
 	Game_Status = NEXT;
 }
 
-
-void printTimesUp(){
-	int row, col;
-	int rowEnd=(256-192)/8; //nb of rows of tile in the WIN picture
-
-	for(row=0;row<8;row++){
-		for(col=0;col<32;col++){
-			bg0Map_SUB[(row+24-rowEnd)*32+col] = bg0Map_SUB[(row+24)*32+col];
-		}
-	}
-}
-
 void printScore(int number, int posx, int posy){
 	int row, col;
 
-	//if(number>9){
-		int deci=number/10;
-		int offDeci = deci*3;
-		number=number-(10*deci);
+	int digit_unit = number%10;
+	int digit_deca = ((number-digit_unit)%100)/10;
 
-		for(row=0;row<3;row++){
-			for(col=0;col<2;col++){
-				bg0Map[(row+posy)*32+(col+posx-2)] = bg0Map[(row+25+offDeci)*32+col];
-			}
-		}
-	//}
+	int offUnit = digit_unit*3;
+	int offDeca = digit_deca*3;
 
-	int offNumber=number*3;
-
+	// Print the decade digit
 	for(row=0;row<3;row++){
 		for(col=0;col<2;col++){
-			bg0Map[(row+posy)*32+(col+posx)] = bg0Map[(row+25+offNumber)*32+col];
+			bg0Map[(row+posy)*32+(col+posx-2)] = bg0Map[(row+25+offDeca)*32+col];
+		}
+	}
+
+	// Print the unit digit
+	for(row=0;row<3;row++){
+		for(col=0;col<2;col++){
+			bg0Map[(row+posy)*32+(col+posx)] = bg0Map[(row+25+offUnit)*32+col];
 		}
 	}
 }

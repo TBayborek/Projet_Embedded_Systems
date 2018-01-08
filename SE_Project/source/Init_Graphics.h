@@ -15,9 +15,10 @@
 #include "WIN.h"
 #include "BackgroundMulti.h"
 #include "Guitar.h"
+//#include "pause.h"
 #include "lobby.h"
 #include "lobbyMain.h"
 
-void Init_Graphics(void);
-void Init_Main_Graphics(void);
-void Init_Sub_Graphics(void);
+void Init_Graphics();
+void Init_Main_Graphics();
+void Init_Sub_Graphics();

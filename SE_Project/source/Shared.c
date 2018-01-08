@@ -2,13 +2,16 @@
 
 status Game_Status = STOP;
 
+move user_move;
+move opponent_move;
+
 int scoreHuman=0;
 int scoreBot=0;
 
 int HasPlayed1=0;
 int HasPlayed2=0;
 
-int mode;
+mode game_mode;
 
 u16* bg0Map;
 u16* bg1Map;
