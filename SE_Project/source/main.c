@@ -3,11 +3,12 @@
 int main(){
 	srand(time(NULL)); // Really random?
 
+	// Initialize all the Graphics, Peripherals and Interruptions
 	Initialization();
 
-	Game_Status = STOP;
+	Game_Status = STOP; // init Game_Status
 	while(true){
-		Game_Update();
+		Game_Update(); // Update the game
 		swiWaitForVBlank();
 	}
 	return 0;

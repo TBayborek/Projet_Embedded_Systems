@@ -1,4 +1,4 @@
-﻿#include "Game_Update.h"
+#include "Game_Update.h"
 
 void Game_Update(){
 	irqSet(IRQ_TIMER0, &ISR_Timer0);
@@ -73,11 +73,9 @@ void Game_Update(){
 		if (game_mode==MULTI) Game_Status = MULTIPLAYER_TURN;
 		break;
 	case PAUSE:
-		/*
-		swiCopy(pauseTiles, BG_TILE_RAM(0), pauseTilesLen/2);
-		swiCopy(pauseMap, bg0Map_SUB, pauseLen/2);
-		swiCopy(pausePal, BG_PALETTE, pausePalLen/2);
-		*/
+		swiCopy(PauseTiles, BG_TILE_RAM(0), PauseTilesLen/2);
+		swiCopy(PauseMap, bg0Map_SUB, PauseMapLen/2);
+		swiCopy(PausePal, BG_PALETTE_SUB, PausePalLen/2);
 		break;
 	}
 }
@@ -171,7 +169,7 @@ void printUserChoice(){
 		case ERROR: break;
 		case LOSE: break;
 	}
-	delay_ds(30);
+	if(user_move != ERROR && user_move != LOSE) delay_ds(30);
 }
 
 //print opponent choice

@@ -9,5 +9,8 @@ double min_dist_edge, min_edge_ctrl_len;
 touchPosition touch;
 move drawn_figure;
 
+// main function that detects the pattern
 move Detect_Move(void);
+
+// function that calculates the angle between two vectors given their x,y component
 double Vectors_Angle(int, int, int, int);

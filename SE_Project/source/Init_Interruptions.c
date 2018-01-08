@@ -1,14 +1,13 @@
 #include "Init_Interruptions.h"
 
 void Init_Interruptions(){
-	//irqInit();
 	Init_Timer();	// Init Timer
 	Init_Keys();	// Init Button
 }
 
 void Init_Timer(){
 	TIMER0_CR = TIMER_ENABLE | TIMER_DIV_64 | TIMER_IRQ_REQ;
-	TIMER0_DATA = TIMER_FREQ_64(100);
+	TIMER0_DATA = TIMER_FREQ_64(100); // Set the interruption with 100Hz
 
 	irqEnable(IRQ_TIMER0);
 }

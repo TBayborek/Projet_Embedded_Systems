@@ -3,6 +3,7 @@
 void Init_Sound() {
 	mmInitDefaultMem((mm_addr)soundbank_bin);
 
+	// Upload all the sounds
 	mmLoadEffect(SFX_WINSOUND);
 	mmLoadEffect(SFX_LOSINGHORN);
 	mmLoadEffect(SFX_BOING_X);
@@ -38,7 +39,6 @@ int Init_WiFi(){
     else{
 		int row, col;
 		int rowEnd=6; //nb of rows in the WIN picture
-
 
 		for(row=0;row<6;row++){
 			for(col=0;col<32;col++){
@@ -237,4 +237,3 @@ int receiveData(char* data_buff, int bytes)
 	//Return the amount of received bytes
 	return received_bytes;
 }
-

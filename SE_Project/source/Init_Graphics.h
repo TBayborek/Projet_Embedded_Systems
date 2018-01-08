@@ -2,9 +2,7 @@
 #include "Shared.h"
 
 #include "Background.h"
-#include "Background2.h"
 #include "ecranBase.h"
-#include "Assemblage.h"
 #include "Menu.h"
 #include "MenuInstruction.h"
 #include "MenuDescription.h"
@@ -15,7 +13,7 @@
 #include "WIN.h"
 #include "BackgroundMulti.h"
 #include "Guitar.h"
-//#include "pause.h"
+#include "Pause.h"
 #include "lobby.h"
 #include "lobbyMain.h"
 
