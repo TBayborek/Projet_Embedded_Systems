@@ -1,4 +1,4 @@
-#include "Game_Update.h"
+﻿#include "Game_Update.h"
 
 void Game_Update(){
 	irqSet(IRQ_TIMER0, &ISR_Timer0);
