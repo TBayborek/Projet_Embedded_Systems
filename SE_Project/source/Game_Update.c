@@ -225,7 +225,7 @@ void Check_Results(move user_move, move opponent_move){
 
 	if(user_move == opponent_move) Draw_Round();
 
-	if(user_move==LOSE) Game_Status==NEXT;
+	if(user_move==LOSE) Game_Status=NEXT;
 }
 
 void printMenu2(){
