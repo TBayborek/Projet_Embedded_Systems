@@ -14,7 +14,7 @@
 #include "WIN.h"
 #include "BackgroundMulti.h"
 #include "Guitar.h"
-//#include "pause.h"
+#include "pause.h"
 #include "lobby.h"
 #include "lobbyMain.h"
 
