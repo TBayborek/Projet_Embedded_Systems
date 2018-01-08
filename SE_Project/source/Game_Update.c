@@ -182,18 +182,29 @@ void printUserChoice(){
 void printOpponentChoice(){
 	int row_sel;
 	int col_sel;
+	int col_max;
+	int lose;
 	switch(opponent_move){
-		case ROCK: {row_sel = 0; col_sel=0; break;}
-		case SCISSORS:{row_sel = 10; col_sel=0; break;}
-		case PAPER: {row_sel = 20; col_sel=0; break;}
+		case ROCK: {row_sel = 0; col_sel=0; col_max=10;lose=0; break;}
+		case SCISSORS:{row_sel = 10; col_sel=0; col_max=10;lose=0; break;}
+		case PAPER: {row_sel = 20; col_sel=0; col_max=10;lose=0; break;}
 		case ERROR: break;
-		case LOSE: {row_sel = 0; col_sel=11; break;}
+		case LOSE: {row_sel = 0; col_sel=11; col_max=8;lose=1; break;}
 	}
 	//print the corresponding bot's choice (taken from the bottom of BackgroundMulti.png)
 	int row, col;
-	for(row=0;row<9;row++){
-		for(col=0;col<10;col++){
-			bg0Map[(row+8)*32+(col+12)] = bg0Map[(row+25+row_sel)*32+col+12+col_sel];
+	if(lose==0){
+		for(row=0;row<9;row++){
+			for(col=0;col<col_max;col++){
+				bg0Map[(row+8)*32+(col+12)] = bg0Map[(row+25+row_sel)*32+col+12+col_sel];
+			}
+		}
+	}
+	else if (lose==1){
+		for(row=0;row<9;row++){
+			for(col=0;col<10;col++){
+				bg0Map[(row+8)*32+(col+11)] = bg0Map[(row+25+0)*32+col+22];
+			}
 		}
 	}
 }
@@ -340,6 +351,8 @@ void drawArea(){
 			bg0Map[(row+8)*32+(col+12)] = bg0Map[(row+25+30)*32+col+12];
 		}
 	}
+
+
 
 
 
