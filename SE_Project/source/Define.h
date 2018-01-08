@@ -1,3 +1,4 @@
+// File containing all the definitions and libraries and some basic functions that are needed in most of the files.
 #ifndef Global
 	#define Global
 

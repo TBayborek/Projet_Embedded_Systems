@@ -1,3 +1,4 @@
+// File that contains all the global variable or global functions which are needed in most of the files.
 #include "Shared.h"
 
 status Game_Status = STOP;

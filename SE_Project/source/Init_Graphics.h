@@ -3,7 +3,6 @@
 
 #include "Background.h"
 #include "ecranBase.h"
-#include "Assemblage.h"
 #include "Menu.h"
 #include "MenuInstruction.h"
 #include "MenuDescription.h"
@@ -14,11 +13,9 @@
 #include "WIN.h"
 #include "BackgroundMulti.h"
 #include "Guitar.h"
-#include "pause.h"
+#include "Pause.h"
 #include "lobby.h"
 #include "lobbyMain.h"
-#include "invisible.h"
-
 
 void Init_Graphics();
 void Init_Main_Graphics();

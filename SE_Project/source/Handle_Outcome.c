@@ -15,7 +15,7 @@ void Win_Round(){
 	Game_Status = NEXT;
 }
 
-void Loose_Round(int raison){
+void Lose_Round(int raison){
 	mmEffect(SFX_LOSINGHORN); //sound
 
 	if(raison==0){ //if "raison" is equal to 0, then the player lost the round
