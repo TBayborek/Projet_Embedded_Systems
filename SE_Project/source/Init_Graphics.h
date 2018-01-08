@@ -2,7 +2,6 @@
 #include "Shared.h"
 
 #include "Background.h"
-#include "Background2.h"
 #include "ecranBase.h"
 #include "Assemblage.h"
 #include "Menu.h"

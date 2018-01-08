@@ -1,4 +1,4 @@
-﻿#include "Game_Update.h"
+#include "Game_Update.h"
 
 void Game_Update(){
 	irqSet(IRQ_TIMER0, &ISR_Timer0);
@@ -32,7 +32,7 @@ void Game_Update(){
 	case LOBBY:
 		HasPlayed1 = HasPlayed2 = 0;
 
-		printLobby();
+
 		Init_WiFi();
 
 		//creer une image explicative ("en attente de connexion" en haut, "Quand vous pensez etre connectö avec joueur 2, appuyez sur a simultanement (sinon, attendre 3 secondes)" en bas)
@@ -109,7 +109,7 @@ void Handle_Button(){
 
 	if((Game_Status == START) && (keys & KEY_START)){
 		if(game_mode == SINGLE) Game_Status = USER_TURN;
-		if(game_mode == MULTI) Game_Status = LOBBY;
+		if(game_mode == MULTI) {printLobby(); Game_Status = LOBBY;}
 	}
 
 	if((times_up == true) && (keys & KEY_A) && !(keys & KEY_TOUCH)){times_up = false;}
@@ -171,8 +171,9 @@ void printUserChoice(){
 		case ERROR: break;
 		case LOSE: break;
 	}
-	delay_ds(30);
+	if(user_move != ERROR && user_move != LOSE) delay_ds(30);
 }
+
 
 //print opponent choice
 void printOpponentChoice(){
@@ -208,11 +209,8 @@ void Check_Results(){
 
 	if(user_move == opponent_move) Draw_Round();
 
-<<<<<<< HEAD
 	if(user_move==LOSE) Game_Status=NEXT;
-=======
-	if (opponent_move == LOSE) Win_Round();
->>>>>>> de42d39ad5cefafc456a70b04726e6dab39b3ea8
+
 }
 
 
@@ -221,12 +219,14 @@ void Check_Results(){
 //send your confirmation from the lobby to the other player
 void sendConfirmation(){
 	//Poll the keypad
-	scanKeys();
+	//scanKeys();
+	char msg[1];
 	unsigned short keysLobby = keysDown();
 
 	//Print and send a message if key pressed
 	if (keysLobby == KEY_A){
-		sendData((char)A, 1);
+		msg[0]=(char)A;
+		sendData(msg, 1);
 
     	int row, col;
     	int rowEnd=6;
@@ -246,7 +246,8 @@ void receiveConfirmation(){
 	//Listen for messages from others
 	if(receiveData(msg,1)>0	){
 		//If received, decode the key and print
-		if(msg[0] == A){
+		switch(msg[0]){
+		case A:
 			confirmation2 = 1;
 
 			int row, col;
@@ -256,6 +257,7 @@ void receiveConfirmation(){
 					bg0Map[(row+25-rowEnd)*32+col] = bg0Map[(row+30)*32+col];
 				}
 			}
+			break;
 		}
 	}
 }
@@ -427,7 +429,7 @@ void ISR_Timer0(void){
 		//call receivePlay2 every 0.5 sec
 		if(Game_Status==OPPONENT_TURN){
 			ticksPull++;
-			if (ticksPull>50){
+			if (ticksPull>10){
 				receivePlay2();
 				ticksPull=0;
 			}
