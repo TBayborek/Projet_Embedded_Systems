@@ -1,4 +1,4 @@
-#include "Game_Update.h"
+﻿#include "Game_Update.h"
 
 void Game_Update(){
 	irqSet(IRQ_TIMER0, &ISR_Timer0);
@@ -23,6 +23,7 @@ void Game_Update(){
 		printMenu2();
 		break;
 	case USER_TURN:
+
 		ticks=0;
 		drawArea();
 		User_Move();
@@ -32,7 +33,7 @@ void Game_Update(){
 	case LOBBY:
 		HasPlayed1 = HasPlayed2 = 0;
 
-		printLobby();
+
 		Init_WiFi();
 
 		//creer une image explicative ("en attente de connexion" en haut, "Quand vous pensez etre connectö avec joueur 2, appuyez sur a simultanement (sinon, attendre 3 secondes)" en bas)
@@ -42,6 +43,7 @@ void Game_Update(){
 		if((confirmation1==1) && (confirmation2==1)) Game_Status = MULTIPLAYER_TURN;
 		break;
 	case MULTIPLAYER_TURN:
+
 		ticks=0; // >>>> On pourrait ajouter tres facilement le times_up <<<<<<
 		drawAreaMulti();
 		User_Move();
@@ -52,6 +54,7 @@ void Game_Update(){
 		}
 		break;
 	case OPPONENT_TURN:
+
 		if (game_mode == SINGLE){
 			Opponent_Move();
 			Game_Status = RESULTS;
@@ -107,7 +110,7 @@ void Handle_Button(){
 
 	if((Game_Status == START) && (keys & KEY_START)){
 		if(game_mode == SINGLE) Game_Status = USER_TURN;
-		if(game_mode == MULTI) Game_Status = LOBBY;
+		if(game_mode == MULTI) {printLobby(); Game_Status = LOBBY;}
 	}
 
 	if((times_up == true) && (keys & KEY_A) && !(keys & KEY_TOUCH)){times_up = false;}
@@ -172,21 +175,23 @@ void printUserChoice(){
 	if(user_move != ERROR && user_move != LOSE) delay_ds(30);
 }
 
+
 //print opponent choice
 void printOpponentChoice(){
 	int row_sel;
+	int col_sel;
 	switch(opponent_move){
-		case ROCK: {row_sel = 0; break;}
-		case SCISSORS:{row_sel = 10; break;}
-		case PAPER: {row_sel = 20; break;}
+		case ROCK: {row_sel = 0; col_sel=0; break;}
+		case SCISSORS:{row_sel = 10; col_sel=0; break;}
+		case PAPER: {row_sel = 20; col_sel=0; break;}
 		case ERROR: break;
-		case LOSE: {row_sel = 30; break;}
+		case LOSE: {row_sel = 0; col_sel=11; break;}
 	}
 	//print the corresponding bot's choice (taken from the bottom of BackgroundMulti.png)
 	int row, col;
 	for(row=0;row<9;row++){
 		for(col=0;col<10;col++){
-			bg0Map[(row+8)*32+(col+12)] = bg0Map[(row+25+row_sel)*32+col+12];
+			bg0Map[(row+8)*32+(col+12)] = bg0Map[(row+25+row_sel)*32+col+12+col_sel];
 		}
 	}
 }
@@ -198,15 +203,20 @@ void Check_Results(){
 		Win_Round();
 	}
 
-	if((user_move == ROCK && opponent_move == PAPER) ||
+	else if((user_move == ROCK && opponent_move == PAPER) ||
 			(user_move == SCISSORS && opponent_move == ROCK) ||
 			(user_move == PAPER && opponent_move == SCISSORS)){
 		Loose_Round(0);
 	}
 
-	if(user_move == opponent_move) Draw_Round();
+	else if((user_move == opponent_move) && (opponent_move == LOSE)) Game_Status=NEXT; //draw sanic?
 
-	if (opponent_move == LOSE) Win_Round();
+	else if(user_move==LOSE) Game_Status=NEXT;
+
+	else if(user_move == opponent_move) Draw_Round();
+
+
+
 }
 
 
@@ -215,12 +225,14 @@ void Check_Results(){
 //send your confirmation from the lobby to the other player
 void sendConfirmation(){
 	//Poll the keypad
-	scanKeys();
+	//scanKeys();
+	char msg[1];
 	unsigned short keysLobby = keysDown();
 
 	//Print and send a message if key pressed
 	if (keysLobby == KEY_A){
-		sendData((char)A, 1);
+		msg[0]=(char)A;
+		sendData(msg, 1);
 
     	int row, col;
     	int rowEnd=6;
@@ -240,7 +252,8 @@ void receiveConfirmation(){
 	//Listen for messages from others
 	if(receiveData(msg,1)>0	){
 		//If received, decode the key and print
-		if(msg[0] == A){
+		switch(msg[0]){
+		case A:
 			confirmation2 = 1;
 
 			int row, col;
@@ -250,6 +263,7 @@ void receiveConfirmation(){
 					bg0Map[(row+25-rowEnd)*32+col] = bg0Map[(row+30)*32+col];
 				}
 			}
+			break;
 		}
 	}
 }
@@ -317,12 +331,16 @@ void drawArea(){
 	swiCopy(BackgroundPal, BG_PALETTE, BackgroundPalLen/2);
 
 	//draw the interrogation point (taken from below the the Background.png)
+
 	int row, col;
 	for(row=0;row<9;row++){
 		for(col=0;col<10;col++){
 			bg0Map[(row+8)*32+(col+12)] = bg0Map[(row+25+30)*32+col+12];
 		}
 	}
+
+
+
 	//utile pour affichage du 0-0
 	printScore(scoreHuman,12,0);
 	printScore(scoreBot,21,0);
@@ -421,7 +439,7 @@ void ISR_Timer0(void){
 		//call receivePlay2 every 0.5 sec
 		if(Game_Status==OPPONENT_TURN){
 			ticksPull++;
-			if (ticksPull>50){
+			if (ticksPull>10){
 				receivePlay2();
 				ticksPull=0;
 			}
@@ -473,6 +491,9 @@ void Full_Rock(){ // Declare tile
 	// End of Easter Egg Init all the parameters/Graphics
 	n_rock_streak = 0;
 	Init_Graphics();
+
+	drawArea();
+
 	memset(bg3Map_SUB, ARGB16(0,0,0,0),256*192*2);
 	printUserChoice();
 }
