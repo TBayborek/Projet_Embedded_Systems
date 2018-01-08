@@ -73,8 +73,8 @@ void Game_Update(){
 		if (game_mode==MULTI) Game_Status = MULTIPLAYER_TURN;
 		break;
 	case PAUSE:
-		swiCopy(PauseTiles, BG_TILE_RAM(0), PauseTilesLen/2);
-		swiCopy(PauseMap, bg0Map, PauseMapLen/2);
+		swiCopy(PauseTiles, BG_TILE_RAM_SUB(0), PauseTilesLen/2);
+		swiCopy(PauseMap, bg0Map_SUB, PauseMapLen/2);
 		swiCopy(PausePal, BG_PALETTE_SUB, PausePalLen/2);
 		break;
 	}

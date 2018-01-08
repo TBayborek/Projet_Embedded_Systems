@@ -52,7 +52,7 @@ move Detect_Move(void) {
 				n_points++; // increment number of points
 				if(n_points>1){ // for the first point there is no displacement to calculate
 					dist_last_edge += sqrt(pow(dx,2) + pow(dy,2)); // add the traveled distance
-					int nsteps = 50;
+					int nsteps = 100;
 					if (posy<180){ // Draw the points with linear interpolation between two last points
 						for(i=0;i<=nsteps;i++) bg3Map_SUB[(int) floor((posy_old+dy*i/nsteps)*256+posx_old+dx*i/nsteps)] = ARGB16(1,0,0,0);
 					}
