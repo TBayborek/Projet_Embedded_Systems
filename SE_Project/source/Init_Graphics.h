@@ -10,7 +10,6 @@
 #include "Paper.h"
 #include "Rock.h"
 #include "Scissor.h"
-#include "WIN.h"
 #include "BackgroundMulti.h"
 #include "Guitar.h"
 #include "Pause.h"

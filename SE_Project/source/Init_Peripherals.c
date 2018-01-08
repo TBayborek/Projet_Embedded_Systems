@@ -28,9 +28,9 @@ int Init_WiFi(){
     	// Print Connected
     	int row, col;
     	int rowEnd=6;
-    	for(row=0;row<6;row++){
+    	for(row=0;row<5;row++){
     		for(col=0;col<32;col++){
-    			bg0Map_SUB[(row+25-rowEnd)*32+col] = bg0Map_SUB[(row+24)*32+col];
+    			bg0Map_SUB[(row+26-rowEnd)*32+col] = bg0Map_SUB[(row+25)*32+col];
     		}
     	}
     	a=1;
@@ -39,9 +39,9 @@ int Init_WiFi(){
 		int row, col;
 		int rowEnd=6; //nb of rows in the connected picture
 
-		for(row=0;row<6;row++){
+		for(row=0;row<5;row++){
 			for(col=0;col<32;col++){
-				bg0Map_SUB[(row+25-rowEnd)*32+col] = bg0Map_SUB[(row+30)*32+col];
+				bg0Map_SUB[(row+26-rowEnd)*32+col] = bg0Map_SUB[(row+25)*32+col];
 			}
 		}
 		a=0;

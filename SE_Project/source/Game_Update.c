@@ -46,9 +46,9 @@ void Game_Update(){
 		drawAreaMulti();
 		User_Move();
 		if (user_move !=ERROR){
-			sendPlay1();
 			Game_Status = OPPONENT_TURN;
 			printUserChoice();
+			sendPlay1();
 		}
 		break;
 	case OPPONENT_TURN:
@@ -207,7 +207,7 @@ void printOpponentChoice(){
 void Check_Results(){
 	if((user_move == ROCK && opponent_move == SCISSORS) ||
 			(user_move == SCISSORS && opponent_move == PAPER) ||
-			(user_move == PAPER && opponent_move == ROCK) || (opponent_move==LOSE)){
+			(user_move == PAPER && opponent_move == ROCK) || ((opponent_move==LOSE)&&(user_move!=LOSE))){
 		Win_Round();
 	}
 
@@ -217,7 +217,10 @@ void Check_Results(){
 		Lose_Round(0);
 	}
 
-	else if((user_move == opponent_move) && (opponent_move == LOSE)) Game_Status=NEXT; //draw sanic?
+	else if((user_move == opponent_move) && (opponent_move == LOSE)){
+		handleScore(1);
+		Game_Status=NEXT;
+	}
 
 	else if(user_move==LOSE) Game_Status=NEXT;
 
@@ -262,7 +265,7 @@ void receiveConfirmation(){
 			confirmation2 = 1;
 
 			int row, col;
-			int rowEnd=(WINMapLen/2)/32; //nb of rows in the WIN picture
+			int rowEnd=6; //nb of rows in the WIN picture
 			for(row=0;row<6;row++){
 				for(col=0;col<32;col++){
 					bg0Map[(row+25-rowEnd)*32+col] = bg0Map[(row+30)*32+col];
