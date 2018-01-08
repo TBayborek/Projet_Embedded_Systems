@@ -25,9 +25,8 @@ int Init_WiFi(){
     //Initialize WiFi
 	int a;
     if(initWiFi()){
-    	//print "you win"
+    	// Print Connected
     	int row, col;
-    	//int rowEnd=(WINMapLen/2)/32; //nb of rows in the WIN picture
     	int rowEnd=6;
     	for(row=0;row<6;row++){
     		for(col=0;col<32;col++){
@@ -38,7 +37,7 @@ int Init_WiFi(){
     }
     else{
 		int row, col;
-		int rowEnd=6; //nb of rows in the WIN picture
+		int rowEnd=6; //nb of rows in the connected picture
 
 		for(row=0;row<6;row++){
 			for(col=0;col<32;col++){
@@ -55,7 +54,6 @@ int Init_WiFi(){
     	printf("Error Socket\n");
 
 return a;
-
 }
 
 

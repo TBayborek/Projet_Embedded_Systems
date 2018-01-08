@@ -1,8 +1,7 @@
 #include "Handle_Outcome.h"
 
-// User won
 void Win_Round(){
-	handleScore(1); // Increment his score
+	handleScore(1);
 	mmEffect(SFX_WINSOUND); //sound
 
 	//print "you win"
@@ -16,12 +15,11 @@ void Win_Round(){
 	Game_Status = NEXT;
 }
 
-// User lost, reason is an integer indicating why the user lost.
-void Loose_Round(int reason){
+void Lose_Round(int raison){
 	mmEffect(SFX_LOSINGHORN); //sound
 
-	if(reason==0){ //if "reason" = 0, then the player lost the round
-		handleScore(0); // Increase score of opponent
+	if(raison==0){ //if "raison" is equal to 0, then the player lost the round
+		handleScore(0);
 
 		//print "you lose" panel
 		int row, col;
@@ -33,15 +31,14 @@ void Loose_Round(int reason){
 			}
 		}
 	}
-	else if (reason==1) { //if reason = 1, then the player made too many drawing mistakes
+	else if (raison==1) { //if raison = 1, then the player made 3 drawing mistakes
 		printBadDraw();
-		handleScore(0); // Increment opponent score
+		handleScore(0);
 		user_move = LOSE;
 	}
 	Game_Status = NEXT;
 }
 
-// It's a draw, nobody won
 void Draw_Round(){
 	mmEffect(SFX_BOING_X); //sound
 
@@ -57,15 +54,12 @@ void Draw_Round(){
 	Game_Status = NEXT;
 }
 
-// function that prints the score given as input on the main screen, at a specifically given location
 void printScore(int number, int posx, int posy){
 	int row, col;
 
-	// Extract digit from number
-	int digit_unit = number%10; // the digit of the units
-	int digit_deca = ((number-digit_unit)%100)/10; // the digit of the decade
+	int digit_unit = number%10;
+	int digit_deca = ((number-digit_unit)%100)/10;
 
-	// Required offset to print correctly
 	int offUnit = digit_unit*3;
 	int offDeca = digit_deca*3;
 
@@ -84,16 +78,21 @@ void printScore(int number, int posx, int posy){
 	}
 }
 
-// Increments the score and calls function to print the score
 void handleScore(int winner){
-	if(winner==1) scoreHuman++;
-	else if(winner==0) scoreBot++;
+	if(winner==1){
+		scoreHuman=scoreHuman+1;
 
-	printScore(scoreHuman,12,0);
-	printScore(scoreBot,21,0);
+		printScore(scoreHuman,12,0);
+		printScore(scoreBot,21,0);
+	}
+	else if(winner==0){
+		scoreBot=scoreBot+1;
+
+		printScore(scoreHuman,12,0);
+		printScore(scoreBot,21,0);
+	}
 }
 
-// Print image to indicate the user made too many bad draws
 void printBadDraw(){
 	int row, col;
 	int rowEnd=(256-192)/8; //nb of rows of tile in the WIN picture

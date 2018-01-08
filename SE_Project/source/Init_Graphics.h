@@ -16,7 +16,6 @@
 #include "Pause.h"
 #include "lobby.h"
 #include "lobbyMain.h"
-#include "invisible.h"
 
 void Init_Graphics();
 void Init_Main_Graphics();

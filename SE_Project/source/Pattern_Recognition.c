@@ -155,7 +155,7 @@ move Detect_Move(void) {
 	}
 	// Clean the background and return the figure
 	memset(bg3Map_SUB, ARGB16(0,0,0,0),256*185*2);
-	REG_DISPCNT_SUB=REG_DISPCNT_SUB &~DISPLAY_BG3_ACTIVE;
+	REG_DISPCNT_SUB &= ~DISPLAY_BG3_ACTIVE;
 	return drawn_figure;
 }
 

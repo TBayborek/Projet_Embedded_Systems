@@ -1,4 +1,4 @@
-﻿#include "Game_Update.h"
+#include "Game_Update.h"
 
 void Game_Update(){
 	irqSet(IRQ_TIMER0, &ISR_Timer0);
@@ -33,7 +33,6 @@ void Game_Update(){
 	case LOBBY:
 		HasPlayed1 = HasPlayed2 = 0;
 
-
 		Init_WiFi();
 
 		//creer une image explicative ("en attente de connexion" en haut, "Quand vous pensez etre connectö avec joueur 2, appuyez sur a simultanement (sinon, attendre 3 secondes)" en bas)
@@ -43,7 +42,6 @@ void Game_Update(){
 		if((confirmation1==1) && (confirmation2==1)) Game_Status = MULTIPLAYER_TURN;
 		break;
 	case MULTIPLAYER_TURN:
-
 		ticks=0; // >>>> On pourrait ajouter tres facilement le times_up <<<<<<
 		drawAreaMulti();
 		User_Move();
@@ -54,7 +52,6 @@ void Game_Update(){
 		}
 		break;
 	case OPPONENT_TURN:
-
 		if (game_mode == SINGLE){
 			Opponent_Move();
 			Game_Status = RESULTS;
@@ -77,7 +74,7 @@ void Game_Update(){
 		break;
 	case PAUSE:
 		swiCopy(PauseTiles, BG_TILE_RAM(0), PauseTilesLen/2);
-		swiCopy(PauseMap, bg0Map_SUB, PauseMapLen/2);
+		swiCopy(PauseMap, bg0Map, PauseMapLen/2);
 		swiCopy(PausePal, BG_PALETTE_SUB, PausePalLen/2);
 		break;
 	}
@@ -126,7 +123,7 @@ void User_Move(){
 			while(times_up){Handle_Button(); swiWaitForVBlank();}
 			err_cnt = 0;
 		}
-		else if (err_cnt>2) {Loose_Round(1); err_cnt=0; return;}
+		else if (err_cnt>2) {Lose_Round(1); err_cnt=0; return;}
 		else mmEffect(SFX_WHIP);
 	}
 	else{
@@ -206,7 +203,7 @@ void Check_Results(){
 	else if((user_move == ROCK && opponent_move == PAPER) ||
 			(user_move == SCISSORS && opponent_move == ROCK) ||
 			(user_move == PAPER && opponent_move == SCISSORS)){
-		Loose_Round(0);
+		Lose_Round(0);
 	}
 
 	else if((user_move == opponent_move) && (opponent_move == LOSE)) Game_Status=NEXT; //draw sanic?
@@ -214,9 +211,6 @@ void Check_Results(){
 	else if(user_move==LOSE) Game_Status=NEXT;
 
 	else if(user_move == opponent_move) Draw_Round();
-
-
-
 }
 
 

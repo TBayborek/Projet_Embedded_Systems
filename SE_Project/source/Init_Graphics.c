@@ -9,11 +9,11 @@ void Init_Main_Graphics(void){
 	VRAM_A_CR = VRAM_ENABLE | VRAM_A_MAIN_BG; //Enable RAM memory bank for the main engine
 	REG_DISPCNT = MODE_0_2D | DISPLAY_BG0_ACTIVE | DISPLAY_BG1_ACTIVE; // Main engine in mode 0, activate BG 0 and 1
 
-	BGCTRL[0] = BG_MAP_BASE(26) | BG_TILE_BASE(0) | BG_32x32 | BG_COLOR_256; // Both BG as tiled mode
+	BGCTRL[0] = BG_MAP_BASE(27) | BG_TILE_BASE(0) | BG_32x32 | BG_COLOR_256; // Both BG as tiled mode
 	BGCTRL[1] = BG_MAP_BASE(29) | BG_TILE_BASE(4) | BG_32x32 | BG_COLOR_256;
 
 	// Define global variables containing the BG map RAM
-	bg0Map = BG_MAP_RAM(26);
+	bg0Map = BG_MAP_RAM(27);
 	bg1Map = BG_MAP_RAM(29);
 
 	// Display Menu Screen
@@ -25,7 +25,7 @@ void Init_Main_Graphics(void){
 void Init_Sub_Graphics(void){
 	VRAM_C_CR = VRAM_ENABLE | VRAM_C_SUB_BG; //Enable RAM memory bank for the sub engine
 
-	REG_DISPCNT_SUB = MODE_3_2D | DISPLAY_BG0_ACTIVE; // Sub engine in mode 0, activate BG 0
+	REG_DISPCNT_SUB = MODE_3_2D | DISPLAY_BG0_ACTIVE; // Sub engine in mode 3, activate BG 0, BG3 will be activated in the pattern recognition
 
 	BGCTRL_SUB[0] = BG_MAP_BASE(15) | BG_TILE_BASE(0) | BG_32x32 | BG_COLOR_256; // Tiled mode
 	BGCTRL_SUB[3] = BG_MAP_BASE(17) | BG_BMP16_256x256 | BG_COLOR_256; // Rotoscale emulating FB mode
@@ -39,12 +39,12 @@ void Init_Sub_Graphics(void){
 	BGCTRL_SUB[3] = (BGCTRL_SUB[3] & 0xFFFC) | 0;
 
 	// Affine transformation of the BG3 to set it correctly
-    	REG_BG3PA_SUB = 256;
-	REG_BG3PB_SUB = 0;
-	REG_BG3PC_SUB = 0;
-	REG_BG3PD_SUB = 256;
-	REG_BG3X_SUB = 0;
-	REG_BG3Y_SUB = 256*36;
+    REG_BG3PA_SUB = 256;
+    REG_BG3PB_SUB = 0;
+    REG_BG3PC_SUB = 0;
+    REG_BG3PD_SUB = 256;
+    REG_BG3X_SUB = 0;
+    REG_BG3Y_SUB = 256*36;
 
     // Display the Menu for the Sub screen
 	swiCopy(MenuTactileTiles, BG_TILE_RAM_SUB(0), MenuTactileTilesLen/2);
