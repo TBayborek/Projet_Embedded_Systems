@@ -15,7 +15,7 @@
 
 move Detect_Move(void) {
 	//------------ Activation BG3 ---------------
-	//REG_DISPCNT_SUB |= DISPLAY_BG3_ACTIVE;
+	REG_DISPCNT_SUB |= DISPLAY_BG3_ACTIVE;
 	// ----------- Variable Init ----------------
 	posx = posy = posx_old = posy_old = 0;
 	dx = dy = init_dx = init_dy = n_corners = init = i = 0;
