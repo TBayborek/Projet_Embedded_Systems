@@ -29,7 +29,7 @@ void Init_Sub_Graphics(void){
 
 	BGCTRL_SUB[0] = BG_MAP_BASE(0) | BG_TILE_BASE(1) | BG_32x32 | BG_COLOR_256; // Tiled mode
 	BGCTRL_SUB[3] = BG_MAP_BASE(17) | BG_BMP16_256x256 | BG_COLOR_256; // Rotoscale emulating FB mode
-	//BGCTRL_SUB[3] = BG_MAP_BASE(50) | BgSize_B8_256x256;
+
 
     //Affine Marix Transformation
     REG_BG3PA_SUB = 256;

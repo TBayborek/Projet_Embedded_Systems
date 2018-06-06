@@ -57,7 +57,6 @@ move Detect_Move(void) {
 					if (posy<180){ // Draw the points with linear interpolation between two last points
 						for(i=0;i<=nsteps;i++) bg3Map_SUB[(int) floor((posy_old+dy*i/nsteps)*256+posx_old+dx*i/nsteps)] =ARGB16(1,0,0,0);
 
-						//for(i=0;i<=nsteps;i++) BG_MAP_RAM_SUB(17)[posy*256+posx] = 0;
 					}
 				}
 
