@@ -20,7 +20,7 @@ move Detect_Move(void) {
 	posx = posy = posx_old = posy_old = 0;
 	dx = dy = init_dx = init_dy = n_corners = init = i = 0;
 	dangle = max_dangle_init = dist_last_edge = 0;
-	BG_PALETTE_SUB[1]=ARGB16(1,0,0,0);
+
 
 	memset(pos,0,sizeof(pos[0][0])*100*3); // will contain the x-position, y-position, distanced traveled since the last point. For each point
 	memset(angles_corner,0,sizeof(angles_corner[0])*4); // will contain for each detected edge the angle
@@ -55,7 +55,7 @@ move Detect_Move(void) {
 					dist_last_edge += sqrt(pow(dx,2) + pow(dy,2)); // add the traveled distance
 					int nsteps = 100;
 					if (posy<180){ // Draw the points with linear interpolation between two last points
-						for(i=0;i<=nsteps;i++) BG_MAP_RAM_SUB(17)[(int) floor((posy_old+dy*i/nsteps)*256+posx_old+dx*i/nsteps)] = 1;//ARGB16(1,0,0,0);
+						for(i=0;i<=nsteps;i++) bg3Map_SUB[(int) floor((posy_old+dy*i/nsteps)*256+posx_old+dx*i/nsteps)] =ARGB16(1,0,0,0);
 
 						//for(i=0;i<=nsteps;i++) BG_MAP_RAM_SUB(17)[posy*256+posx] = 0;
 					}

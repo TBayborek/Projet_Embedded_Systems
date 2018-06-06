@@ -57,6 +57,7 @@ void Game_Update(){
 			Game_Status = RESULTS;
 		}
 		if ((game_mode == MULTI) && (HasPlayed2==1)){
+			HasPlayed1 = HasPlayed2 = 0;
 			Game_Status = RESULTS;
 		}
 		break;
@@ -66,14 +67,14 @@ void Game_Update(){
 		break;
 	case NEXT:
 		user_move = opponent_move = ERROR;
-		HasPlayed1 = HasPlayed2 = 0;
+		//HasPlayed1 = HasPlayed2 = 0;
 		delay_ds(20);
 
 		if (game_mode==SINGLE) Game_Status = USER_TURN;
 		if (game_mode==MULTI) Game_Status = MULTIPLAYER_TURN;
 		break;
 	case PAUSE:
-		swiCopy(PauseTiles, BG_TILE_RAM_SUB(0), PauseTilesLen/2);
+		swiCopy(PauseTiles, BG_TILE_RAM_SUB(1), PauseTilesLen/2);
 		swiCopy(PauseMap, bg0Map_SUB, PauseMapLen/2);
 		swiCopy(PausePal, BG_PALETTE_SUB, PausePalLen/2);
 		break;
@@ -100,7 +101,7 @@ void Handle_Button(){
 			if(keys & KEY_START) Game_Status = STOP;
 	}
 
-	if((Game_Status == USER_TURN)  && (keys & KEY_START)){
+	if(((Game_Status == USER_TURN) || (Game_Status == MULTIPLAYER_TURN) || (Game_Status == OPPONENT_TURN)) && (keys & KEY_START)){
 		Old_Status = Game_Status;
 		Game_Status = PAUSE;
 	}
@@ -147,21 +148,21 @@ void printUserChoice(){
 	switch(user_move){
 		case ROCK:
 			//print player's choice
-			swiCopy(RockTiles, BG_TILE_RAM_SUB(0), RockTilesLen/2);
+			swiCopy(RockTiles, BG_TILE_RAM_SUB(1), RockTilesLen/2);
 			swiCopy(RockMap, bg0Map_SUB, RockMapLen/2);
 			swiCopy(RockPal, BG_PALETTE_SUB, RockPalLen/2);
 			mmEffect(SFX_GUITAR);
 			break;
 		case PAPER:
 			//print player's choice
-			swiCopy(PaperTiles, BG_TILE_RAM_SUB(0), PaperTilesLen/2);
+			swiCopy(PaperTiles, BG_TILE_RAM_SUB(1), PaperTilesLen/2);
 			swiCopy(PaperMap, bg0Map_SUB, PaperMapLen/2);
 			swiCopy(PaperPal, BG_PALETTE_SUB, PaperPalLen/2);
 			mmEffect(SFX_PAPER);
 			break;
 		case SCISSORS:
 			//print player's choice
-			swiCopy(ScissorTiles, BG_TILE_RAM_SUB(0), ScissorTilesLen/2);
+			swiCopy(ScissorTiles, BG_TILE_RAM_SUB(1), ScissorTilesLen/2);
 			swiCopy(ScissorMap, bg0Map_SUB, ScissorMapLen/2);
 			swiCopy(ScissorPal, BG_PALETTE_SUB, ScissorPalLen/2);
 			mmEffect(SFX_SHEARS);
@@ -316,14 +317,14 @@ void printMenu2(){
     swiCopy(MenuMap, bg0Map, MenuMapLen/2);
     swiCopy(MenuPal, BG_PALETTE, MenuPalLen/2);
 
-	swiCopy(MenuInstructionTiles, BG_TILE_RAM_SUB(0), MenuInstructionTilesLen/2);
+	swiCopy(MenuInstructionTiles, BG_TILE_RAM_SUB(1), MenuInstructionTilesLen/2);
 	swiCopy(MenuInstructionMap, bg0Map_SUB, MenuInstructionMapLen/2);
 	swiCopy(MenuInstructionPal, BG_PALETTE_SUB, MenuInstructionPalLen/2);
 }
 
 void drawArea(){
 	//print bottom screen ("please draw here")
-	swiCopy(ecranBaseTiles, BG_TILE_RAM_SUB(0), ecranBaseTilesLen/2);
+	swiCopy(ecranBaseTiles, BG_TILE_RAM_SUB(1), ecranBaseTilesLen/2);
 	swiCopy(ecranBaseMap, bg0Map_SUB, ecranBaseMapLen/2);
 	swiCopy(ecranBasePal, BG_PALETTE_SUB, ecranBasePalLen/2);
 
@@ -358,7 +359,7 @@ void drawArea(){
 
 void drawAreaMulti(){
 	//print bottom screen ("please draw here")
-	swiCopy(ecranBaseTiles, BG_TILE_RAM_SUB(0), ecranBaseTilesLen/2);
+	swiCopy(ecranBaseTiles, BG_TILE_RAM_SUB(1), ecranBaseTilesLen/2);
 	swiCopy(ecranBaseMap, bg0Map_SUB, ecranBaseMapLen/2);
 	swiCopy(ecranBasePal, BG_PALETTE_SUB, ecranBasePalLen/2);
 
@@ -392,7 +393,7 @@ void printLobby(){
 	swiCopy(lobbyMainMap, bg0Map, lobbyMainMapLen/2);
 	swiCopy(lobbyMainPal, BG_PALETTE, lobbyMainPalLen/2);
 
-	swiCopy(lobbyTiles, BG_TILE_RAM_SUB(0), lobbyTilesLen/2);
+	swiCopy(lobbyTiles, BG_TILE_RAM_SUB(1), lobbyTilesLen/2);
 	swiCopy(lobbyMap, bg0Map_SUB, lobbyMapLen/2);
 	swiCopy(lobbyPal, BG_PALETTE_SUB, lobbyPalLen/2);
 }
