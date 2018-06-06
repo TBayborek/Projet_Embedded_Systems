@@ -1,1 +1,0 @@
-BackgroundMulti.o: BackgroundMulti.s

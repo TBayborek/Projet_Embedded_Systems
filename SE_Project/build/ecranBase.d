@@ -1,1 +1,0 @@
-ecranBase.o: ecranBase.s

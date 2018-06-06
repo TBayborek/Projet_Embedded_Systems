@@ -1,1 +1,0 @@
-lobby.o: lobby.s

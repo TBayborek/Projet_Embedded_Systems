@@ -1,1 +1,0 @@
-Scissor.o: Scissor.s

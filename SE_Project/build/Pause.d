@@ -1,1 +1,0 @@
-Pause.o: Pause.s

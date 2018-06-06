@@ -27,9 +27,9 @@ void Init_Sub_Graphics(void){
 
 	REG_DISPCNT_SUB = MODE_3_2D | DISPLAY_BG0_ACTIVE; // Sub engine in mode 3, activate BG 0, BG3 will be activated in the pattern recognition
 
-	BGCTRL_SUB[0] = BG_MAP_BASE(15) | BG_TILE_BASE(0) | BG_32x32 | BG_COLOR_256; // Tiled mode
-	//BGCTRL_SUB[3] = BG_MAP_BASE(17) | BG_BMP16_256x256 | BG_COLOR_256; // Rotoscale emulating FB mode
-	BGCTRL_SUB[3] = BG_MAP_BASE(17) | BgSize_B8_256x256;
+	BGCTRL_SUB[0] = BG_MAP_BASE(14) | BG_TILE_BASE(0) | BG_32x32 | BG_COLOR_256; // Tiled mode
+	BGCTRL_SUB[3] = BG_MAP_BASE(16) | BG_BMP16_256x256 | BG_COLOR_256; // Rotoscale emulating FB mode
+	//BGCTRL_SUB[3] = BG_MAP_BASE(17) | BgSize_B8_256x256;
 
     //Affine Marix Transformation
     REG_BG3PA_SUB = 256;
@@ -38,8 +38,8 @@ void Init_Sub_Graphics(void){
     REG_BG3PD_SUB = 256;
 
 	// Define global variables containing the BG map RAM
-	bg0Map_SUB = BG_MAP_RAM_SUB(15);
-	bg3Map_SUB = BG_MAP_RAM_SUB(17);
+	bg0Map_SUB = BG_MAP_RAM_SUB(14);
+	bg3Map_SUB = BG_MAP_RAM_SUB(16);
 
 	// Change priorities of the BG, swap BG 0 and 3
 	BGCTRL_SUB[0] = (BGCTRL_SUB[0] & 0xFFFC) | 3; //Mask with all but the last two bits and initialize these last bits with 3

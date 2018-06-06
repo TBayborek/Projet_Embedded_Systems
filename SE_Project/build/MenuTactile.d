@@ -1,1 +1,0 @@
-MenuTactile.o: MenuTactile.s
