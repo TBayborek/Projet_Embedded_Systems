@@ -8,6 +8,9 @@ move opponent_move;
 
 int scoreHuman=0;
 int scoreBot=0;
+int numPlay=0;
+int lastRoundsPlay[5]={0,0,0,0,0};
+int lastRoundScore=0;
 
 int HasPlayed1=0;
 int HasPlayed2=0;

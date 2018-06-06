@@ -10,11 +10,18 @@ void Game_Update(){
 	switch(Game_Status){
 	case STOP:
 		// PRINT explanations about game and "choose mode"
+		numPlay=0;
+		int i;
+		for (i=0;i<=4;i++){
+			lastRoundsPlay[i]=0;
+		}
+
 		Init_Graphics();
 		break;
 	case START:
 		ticks = err_cnt = n_rock_streak = 0; times_up = false;
 		scoreHuman = scoreBot = 0;
+
 
 		// For multiplayer
 		confirmation1 = confirmation2 = 0;
@@ -27,7 +34,30 @@ void Game_Update(){
 		ticks=0;
 		drawArea();
 		User_Move();
-		if (user_move != ERROR && user_move != LOSE) Game_Status = OPPONENT_TURN;
+		if (user_move != ERROR && user_move != LOSE) {//the player has drawn something
+			numPlay=numPlay+1;
+			for (i=3;i>=0;i--){
+				lastRoundsPlay[i+1]=lastRoundsPlay[i];
+			}
+
+			switch (user_move){
+			case ROCK:
+				lastRoundsPlay[0]=0;
+				break;
+			case PAPER:
+				lastRoundsPlay[0]=1;
+				break;
+			case SCISSORS:
+				lastRoundsPlay[0]=2;
+				break;
+			default:
+				lastRoundsPlay[0]=3;
+				break;
+			}
+
+
+			Game_Status = OPPONENT_TURN;
+		}
 		printUserChoice();
 		break;
 	case LOBBY:
@@ -135,12 +165,81 @@ void User_Move(){
 }
 
 void Opponent_Move(){
-	int choice = rand()%3;
+	int choice;
+	int abus =0;
+	//choice = rand()%3;
+	if (numPlay==1){
+		choice=1;
+	}
+	else {
+
+		abus=0;
+		for (i=0;i<=4;i++){
+
+			if (lastRoundsPlay[i]==2){
+				abus =abus+1;
+			}
+		}
+		if (abus>=3) {
+			choice=0;
+		}
+
+		else if (lastRoundScore==0){
+
+			switch (lastRoundsPlay[1]){
+			case 0:
+				choice=2;
+				break;
+			case 1:
+				choice=0;
+
+				break;
+			case 2:
+				choice=1;
+				break;
+			}
+		}
+		else if (lastRoundScore==1) {
+			switch (lastRoundsPlay[1]){
+			case 0:
+				choice=0;
+
+				break;
+			case 1:
+				choice=1;
+				break;
+			case 2:
+				choice=2;
+				break;
+			}
+		}
+		else if (lastRoundScore==2) {
+			switch (lastRoundsPlay[1]){
+			case 0:
+				choice=1;
+				break;
+			case 1:
+				choice=2;
+
+				break;
+			case 2:
+				choice=2;
+
+				break;
+			}
+		}
+		else if (lastRoundScore==3) {
+			choice = rand()%3;
+
+		}
+
+	}
+
 
 	switch(choice){
 		case 0: opponent_move = ROCK; break;
-		case 1: opponent_move = SCISSORS; break;
-		case 2: opponent_move = PAPER; break;
+		case 1: opponent_move = PAPER; break;
+		case 2: opponent_move = SCISSORS; break;
 	}
 }
 
@@ -209,23 +308,33 @@ void Check_Results(){
 	if((user_move == ROCK && opponent_move == SCISSORS) ||
 			(user_move == SCISSORS && opponent_move == PAPER) ||
 			(user_move == PAPER && opponent_move == ROCK) || ((opponent_move==LOSE)&&(user_move!=LOSE))){
+		lastRoundScore=0;
 		Win_Round();
+
 	}
 
 	else if((user_move == ROCK && opponent_move == PAPER) ||
 			(user_move == SCISSORS && opponent_move == ROCK) ||
 			(user_move == PAPER && opponent_move == SCISSORS)){
 		Lose_Round(0);
+		lastRoundScore=1;
 	}
 
 	else if((user_move == opponent_move) && (opponent_move == LOSE)){
 		handleScore(1);
 		Game_Status=NEXT;
+
 	}
 
-	else if(user_move==LOSE) Game_Status=NEXT;
+	else if(user_move==LOSE) {
+		lastRoundScore=3;
+		Game_Status=NEXT;
+	}
 
-	else if(user_move == opponent_move) Draw_Round();
+	else if(user_move == opponent_move) {
+		lastRoundScore=2;
+		Draw_Round();
+	}
 }
 
 

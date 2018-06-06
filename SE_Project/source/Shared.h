@@ -7,6 +7,9 @@ extern move opponent_move;
 
 extern int scoreHuman;
 extern int scoreBot;
+extern int numPlay;
+extern int lastRoundsPlay[5];
+extern int lastRoundScore;
 
 extern int HasPlayed1;
 extern int HasPlayed2;
