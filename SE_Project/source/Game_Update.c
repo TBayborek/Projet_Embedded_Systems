@@ -166,22 +166,38 @@ void User_Move(){
 
 void Opponent_Move(){
 	int choice;
-	int abus =0;
+	int abusS =0;
+	int abusR =0;
+	int abusP =0;
 	//choice = rand()%3;
 	if (numPlay==1){
 		choice=1;
 	}
 	else {
 
-		abus=0;
+		abusS=0;
 		for (i=0;i<=4;i++){
-
-			if (lastRoundsPlay[i]==2){
-				abus =abus+1;
+			switch (lastRoundsPlay[i]){
+			case 0:
+				abusR=abusR+1;
+				break;
+			case 1:
+				abusP=abusP+1;
+				break;
+			case 2:
+				abusS=abusS+1;
+				break;
 			}
+
 		}
-		if (abus>=3) {
+		if (abusS>=4) {
 			choice=0;
+		}
+		else if(abusR>=4){
+			choice=1;
+		}
+		else if(abusP>=4){
+			choice=2;
 		}
 
 		else if (lastRoundScore==0){
